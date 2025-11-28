@@ -1,3 +1,0 @@
-ollama:
-  host: "http://localhost:11434"
-  model: "granite4:3b"
