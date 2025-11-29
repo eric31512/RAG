@@ -1,7 +1,9 @@
 from tqdm import tqdm
 from utils import load_jsonl, save_jsonl
-from chunker import chunk_documents
-from retriever import create_retriever
+#from chunker import chunk_documents
+from dynamic_chunker import chunk_documents
+#from retriever import create_retriever
+from denseRetriever import create_retriever
 from generator import generate_answer
 import argparse
 
