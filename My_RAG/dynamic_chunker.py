@@ -4,7 +4,7 @@ from langchain_huggingface import HuggingFaceEmbeddings
 def chunk_documents(docs, language, chunk_size=1000, chunk_overlap=200):
     # Initialize embedding model for semantic chunking
     # Using the same model as the retriever for consistency
-    embeddings = HuggingFaceEmbeddings(model_name="paraphrase-multilingual-MiniLM-L12-v2") #Needs to be replaced with the embedding model provided by the TA
+    embeddings = HuggingFaceEmbeddings(model_name="paraphrase-multilingual-MiniLM-L12-v2")
     
     # Initialize Semantic Chunker
     # breakpoint_threshold_type="percentile" is a good starting point
@@ -25,13 +25,39 @@ def chunk_documents(docs, language, chunk_size=1000, chunk_overlap=200):
                 # Create semantic chunks
                 semantic_docs = semantic_chunker.create_documents([text])
                 
-                for i, semantic_doc in enumerate(semantic_docs):
+                # Post-process: Merge small chunks
+                merged_chunks = []
+                current_chunk_text = ""
+                
+                # Minimum size for a chunk to be considered "complete"
+                # We use chunk_size / 2 as a heuristic, or a fixed reasonable minimum like 500
+                MIN_CHUNK_SIZE = 500 
+                
+                for semantic_doc in semantic_docs:
+                    content = semantic_doc.page_content
+                    
+                    if not current_chunk_text:
+                        current_chunk_text = content
+                    else:
+                        # If current buffer is too small, merge with next
+                        if len(current_chunk_text) < MIN_CHUNK_SIZE:
+                            current_chunk_text += "\n" + content
+                        else:
+                            # Current buffer is big enough, save it and start new
+                            merged_chunks.append(current_chunk_text)
+                            current_chunk_text = content
+                
+                # Don't forget the last chunk
+                if current_chunk_text:
+                    merged_chunks.append(current_chunk_text)
+
+                for i, chunk_text in enumerate(merged_chunks):
                     chunk_metadata = doc.copy()
                     chunk_metadata.pop('content', None)
                     chunk_metadata['chunk_index'] = i
                     
                     chunk = {
-                        'page_content': semantic_doc.page_content,
+                        'page_content': chunk_text,
                         'metadata': chunk_metadata
                     }
                     chunks.append(chunk)
