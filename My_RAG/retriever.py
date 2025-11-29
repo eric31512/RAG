@@ -1,9 +1,10 @@
 from rank_bm25 import BM25Okapi
 import jieba
 import numpy as np
-from sentence_transformers import SentenceTransformer
+from ollama import Client
 import faiss
-from utils import rrf_fusion
+from utils import rrf_fusion, SimpleHit
+import os
 
 class HybridRetriever:
     def __init__(self, chunks, language="en"):
@@ -17,12 +18,20 @@ class HybridRetriever:
         self.bm25 = BM25Okapi(self.tokenized_corpus)
 
         # Dense Index
+        ollama_host = os.getenv('OLLAMA_HOST', 'http://ollama-gateway:11434')
+        self.client = Client(host=ollama_host)
+
         if language == "zh":
-            model_name = 'Qwen/Qwen3-Embedding-0.6B'
+            self.model_name = 'qwen3-embedding:0.6b'
         else:
-            model_name = 'google/embeddinggemma-300m'
-        self.encoder = SentenceTransformer(model_name)
-        embeddings = self.encoder.encode(self.corpus, convert_to_numpy=True, show_progress_bar=True)
+            self.model_name = 'embeddinggemma:300m'
+        
+        embeddings = []
+        for text in self.corpus:
+            response = self.client.embeddings(model=self.model_name, prompt=text)
+            embeddings.append(response['embedding'])
+            
+        embeddings = np.array(embeddings).astype('float32')
         dimension = embeddings.shape[1]
         self.index = faiss.IndexFlatIP(dimension)
         faiss.normalize_L2(embeddings)
@@ -38,13 +47,15 @@ class HybridRetriever:
         sparse_top_indices = np.argsort(bm25_scores)[::-1][:candidate_k]
         sparse_hits = [SimpleHit(docid=chunk['doc_id'], score=bm25_scores[i]) for idx in sparse_top_indices]
 
-        query_vector = self.encoder.encode([query], convert_to_numpy=True)
+        response = self.client.embeddings(model=self.model_name, prompt=query)
+        query_vector = np.array([response['embedding']]).astype('float32')
         faiss.normalize_L2(query_vector)
         dense_scores, dense_indices = self.index.search(query_vector, candidate_k)
+        
         dense_hits = []
         for score, idx in zip(dense_scores[0], dense_indices[0]):
-            if idx != -1:   
-                dense_hits.append(SimpleHit(docid=chunk['doc_id'], score=score))
+            if idx != -1:
+                dense_hits.append(SimpleHit(docid=idx, score=score))
 
         rrf_results = rrf_fusion(sparse_hits, dense_hits, k=60)
         top_chunks = []
