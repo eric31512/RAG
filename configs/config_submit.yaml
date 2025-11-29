@@ -1,3 +1,12 @@
 ollama:
   host: "http://ollama-gateway:11434"
   model: "granite4:3b"
+
+EN:
+  host: "http://ollama-gateway:11434"
+  model: "embeddinggemma:300m"
+
+ZH:
+  host: "http://ollama-gateway:11434"
+  model: "qwen3-embedding:0.6b"
+  
