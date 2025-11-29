@@ -1,5 +1,10 @@
 import jsonlines
 
+class SimpleHit:
+    def __init__(self, docid, score):
+        self.docid = docid
+        self.score = score
+
 def load_jsonl(file_path):
     docs = []
     with jsonlines.open(file_path, 'r') as reader:
