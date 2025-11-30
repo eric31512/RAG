@@ -1,6 +1,6 @@
 from langchain_experimental.text_splitter import SemanticChunker
 from ollama import Client
-from generator import load_ollama_config
+from utils import load_ollama_config
 
 EMBEDDING_MODEL = "qwen3-embedding:0.6b"
 
