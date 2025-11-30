@@ -1,9 +1,9 @@
 from tqdm import tqdm
+from pathlib import Path
 from utils import load_jsonl, save_jsonl
-#from chunker import chunk_documents
-from dynamic_chunker import chunk_documents
+from chunker import chunk_documents
 from retriever import create_retriever
-# from denseRetriever import create_retriever
+# from denseRetriever import create_retriever 
 from generator import generate_answer
 import argparse
 
@@ -17,7 +17,14 @@ def main(query_path, docs_path, language, output_path):
 
     # 2. Chunk Documents
     print("Chunking documents...")
-    chunks = chunk_documents(docs_for_chunking, language)
+    precomputed_path = Path(__file__).parent.parent / "precomputed" / f"precomputed_chunks_{language}.jsonl"
+    if precomputed_path.exists():
+        print(f"Using precomputed chunks from {precomputed_path}")
+        chunks = load_jsonl(precomputed_path)
+    else:
+        print("No precomputed chunks found, running chunk_documents at runtime.")
+        chunks = chunk_documents(docs_for_chunking, language)
+        
     print(f"Created {len(chunks)} chunks.")
 
     # 3. Create Retriever
