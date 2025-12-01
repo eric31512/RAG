@@ -6,6 +6,7 @@ from retriever import create_retriever
 # from denseRetriever import create_retriever 
 from generator import generate_answer
 import argparse
+from query_rewriter import rewrite_query
 
 def main(query_path, docs_path, language, output_path):
     # 1. Load Data
@@ -35,17 +36,45 @@ def main(query_path, docs_path, language, output_path):
 
     for query in tqdm(queries, desc="Processing Queries"):
         # 4. Retrieve relevant chunks
-        query_text = query['query']['content']
-        # print(f"\nRetrieving chunks for query: '{query_text}'")
-        retrieved_chunks = retriever.retrieve(query_text)
-        # print(f"Retrieved {len(retrieved_chunks)} chunks.")
+        query_text = query["query"]["content"]
+
+        # choose mode: "none" / "multi" / "hyde" / "decompose" / "stepback"
+        rewritten_queries = rewrite_query(
+            query_text,
+            language=language,
+            mode="stepback",      # or "multi", "hyde", "decompose", "stepback" ,"none"
+            num_queries=3      # optional, for "multi"
+        )
+
+        FINAL_TOP_K = 5
+
+        all_chunks = []
+        for q in rewritten_queries:
+            retrieved = retriever.retrieve(q, top_k=5)
+            all_chunks.extend(retrieved)
+
+        # Deduplicate by retriever_id
+        unique = {}
+        for c in all_chunks:
+            meta = c.get("metadata", {})
+            key = meta.get("retriever_id")
+            if key is None:
+                key = id(c)
+            if key not in unique:
+                unique[key] = c
+
+        final_chunks = list(unique.values())[:FINAL_TOP_K]
 
         # 5. Generate Answer
-        # print("Generating answer...")
-        answer = generate_answer(query_text, retrieved_chunks,language)
+        print("Generating answer...")
+        answer = generate_answer(query_text, final_chunks, language)
+        print(f"Generated Answer: {answer}") #for test prompt
 
         query["prediction"]["content"] = answer
-        query["prediction"]["references"] = [retrieved_chunks[0]['page_content']]
+        if final_chunks:
+            query["prediction"]["references"] = [c["page_content"] for c in final_chunks]   
+        else:
+            query["prediction"]["references"] = []  
 
     save_jsonl(output_path, queries)
     print("Predictions saved at '{}'".format(output_path))
