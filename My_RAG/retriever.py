@@ -18,7 +18,8 @@ class HybridRetriever:
         self.bm25 = BM25Okapi(self.tokenized_corpus)
 
         # Dense Index
-        ollama_host = os.getenv('OLLAMA_HOST', 'http://ollama-gateway:11434')
+        # ollama_host = os.getenv('OLLAMA_HOST', 'http://ollama-gateway:11434')
+        ollama_host = 'http://localhost:11434'
         self.client = Client(host=ollama_host)
 
         if language == "zh":
@@ -45,7 +46,7 @@ class HybridRetriever:
             tokenized_query = query.split(" ")
         bm25_scores = self.bm25.get_scores(tokenized_query)
         sparse_top_indices = np.argsort(bm25_scores)[::-1][:candidate_k]
-        sparse_hits = [SimpleHit(docid=chunk['doc_id'], score=bm25_scores[i]) for idx in sparse_top_indices]
+        sparse_hits = [SimpleHit(docid=idx, score=bm25_scores[idx]) for idx in sparse_top_indices]
 
         response = self.client.embeddings(model=self.model_name, prompt=query)
         query_vector = np.array([response['embedding']]).astype('float32')
