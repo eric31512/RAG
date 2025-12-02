@@ -18,8 +18,8 @@ class HybridRetriever:
         self.bm25 = BM25Okapi(self.tokenized_corpus)
 
         # Dense Index
-        ollama_host = os.getenv('OLLAMA_HOST', 'http://ollama-gateway:11434')
-        #ollama_host = 'http://localhost:11434'
+        # ollama_host = os.getenv('OLLAMA_HOST', 'http://ollama-gateway:11434')
+        ollama_host = 'http://localhost:11434'
         self.client = Client(host=ollama_host)
 
         if language == "zh":
@@ -32,11 +32,11 @@ class HybridRetriever:
             response = self.client.embeddings(model=self.model_name, prompt=text)
             embeddings.append(response['embedding'])
             
-        embeddings = np.array(embeddings).astype('float32')
-        dimension = embeddings.shape[1]
+        self.doc_embeddings = np.array(embeddings).astype('float32')
+        dimension = self.doc_embeddings.shape[1]
         self.index = faiss.IndexFlatIP(dimension)
-        faiss.normalize_L2(embeddings)
-        self.index.add(embeddings)
+        faiss.normalize_L2(self.doc_embeddings)
+        self.index.add(self.doc_embeddings)
 
     def retrieve(self, query, top_k=5):
         candidate_k = min(100, len(self.chunks))
@@ -62,13 +62,15 @@ class HybridRetriever:
         top_chunks = []
         for docid, score in rrf_results[:top_k]:
             original_chunk = self.chunks[docid]
+            emb = self.doc_embeddings[docid]
             result_chunk = {
                 'page_content': original_chunk['page_content'],
                 'metadata': {
                     'id': docid,
                     'score': score,
                     'type': 'hybrid_rf'
-                }
+                },
+                'embedding': emb # return embedding for later use
             }
             top_chunks.append(result_chunk)
 
