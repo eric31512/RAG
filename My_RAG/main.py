@@ -47,7 +47,7 @@ def main(query_path, docs_path, language, output_path):
 
         all_chunks = []
         for q in rewritten_queries:
-            retrieved = retriever.retrieve(q, top_k=FINAL_TOP_K)
+            retrieved = retriever.retrieve(q, top_k=5)
             # retrieved = retriever.retrieve(q, top_k=FINAL_TOP_K*CANDIDATE_FACTOR)
             all_chunks.extend(retrieved)
 
@@ -55,7 +55,7 @@ def main(query_path, docs_path, language, output_path):
         unique = {}
         for c in all_chunks:
             meta = c.get("metadata", {})
-            key = meta.get("retriever_id")
+            key = meta.get("id")
             if key is None:
                 key = id(c)
             if key not in unique:
