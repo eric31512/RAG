@@ -70,11 +70,16 @@ class Retriever:
         
         vector_index = VectorStoreIndex(nodes, embed_model=self.embed_model, show_progress=True)        
         vector = vector_index.as_retriever(similarity_top_k=100)
-        
+        if language == "zh":
+            bm25_weight = 0.0
+            vector_weight = 1.0
+        else:
+            bm25_weight = 0.2
+            vector_weight = 0.8
         # 2. Hybrid Fusion (RRF)
         self.retriever = QueryFusionRetriever(
             retrievers=[bm25, vector],
-            retriever_weights=[0.2, 0.8],
+            retriever_weights=[bm25_weight, vector_weight],
             similarity_top_k=100,
             num_queries=1,
             mode="reciprocal_rerank",

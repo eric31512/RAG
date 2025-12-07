@@ -18,7 +18,7 @@ def main(query_path, docs_path, language, output_path):
     # 2. Chunk Documents
     print("Chunking documents...")
     if language=="zh":
-        chunks = recursive_chunk(docs_for_chunking, language, chunk_size=256)
+        chunks = recursive_chunk(docs_for_chunking, language, chunk_size=512)
     else:
         chunks = recursive_chunk(docs_for_chunking, language, chunk_size=512)
     print(f"Created {len(chunks)} chunks.")
