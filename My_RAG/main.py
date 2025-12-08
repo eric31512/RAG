@@ -30,9 +30,10 @@ def main(query_path, docs_path, language, output_path):
     print("Retriever created successfully.")
 
     #Create Reranker
+    #Create Reranker
     reranker = None
-    if language == "zh":
-        print("Creating reranker for Chinese...")
+    if language == "zh" or language == "en":
+        print(f"Creating reranker for {language}...")
         reranker = LLMReranker(language)
         print("Reranker created successfully.")
 
@@ -50,7 +51,7 @@ def main(query_path, docs_path, language, output_path):
         rewritten_queries = rewrite_query(
             query_text,
             language=language,
-            mode="hyde",      # or "multi", "hyde", "decompose", "stepback" ,"none"
+            mode="none",      # or "multi", "hyde", "decompose", "stepback" ,"none"
             num_queries=3      # optional, for "multi"
         )
        
@@ -83,8 +84,8 @@ def main(query_path, docs_path, language, output_path):
         if not filtered_chunks:
             filtered_chunks = retrieved_chunks
 
-        #Rerank only if ZH, otherwise top-k
-        if language == "zh" and reranker is not None:
+        #Rerank if reranker is initialized
+        if reranker is not None:
             final_chunks = reranker.rerank(query_text, filtered_chunks, top_k=FINAL_TOP_K)
         else:
             final_chunks = filtered_chunks[:FINAL_TOP_K]
