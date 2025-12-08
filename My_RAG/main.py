@@ -6,6 +6,7 @@ from recursiveChunker import recursive_chunk
 from generator import generate_answer, judge_relevance
 import argparse
 from query_rewriter import rewrite_query
+from reranker import LLMReranker
 
 def main(query_path, docs_path, language, output_path):
     # 1. Load Data
@@ -28,6 +29,13 @@ def main(query_path, docs_path, language, output_path):
     retriever = create_retriever(chunks, language)
     print("Retriever created successfully.")
 
+    #Create Reranker
+    reranker = None
+    if language == "zh":
+        print("Creating reranker for Chinese...")
+        reranker = LLMReranker(language)
+        print("Reranker created successfully.")
+
 
     for query in tqdm(queries, desc="Processing Queries"):
         # 4. Retrieve relevant chunks
@@ -37,7 +45,7 @@ def main(query_path, docs_path, language, output_path):
         elif language == "en":
             FINAL_TOP_K = 3
 
-        '''
+        
         # choose mode: "none" / "multi" / "hyde" / "decompose" / "stepback"
         rewritten_queries = rewrite_query(
             query_text,
@@ -46,14 +54,14 @@ def main(query_path, docs_path, language, output_path):
             num_queries=3      # optional, for "multi"
         )
        
-        # CANDIDATE_FACTOR = 4
+        CANDIDATE_FACTOR = 3
 
         all_chunks = []
         for q in rewritten_queries:
             # for hyde mode
-            retrieved = retriever.retrieve(q, top_k=FINAL_TOP_K)
+            #retrieved = retriever.retrieve(q, top_k=FINAL_TOP_K)
             # for multi mode
-            # retrieved = retriever.retrieve(q, top_k=FINAL_TOP_K*CANDIDATE_FACTOR)
+            retrieved = retriever.retrieve(q, top_k=FINAL_TOP_K*CANDIDATE_FACTOR)
             all_chunks.extend(retrieved)
 
         # Deduplicate by retriever_id
@@ -64,9 +72,7 @@ def main(query_path, docs_path, language, output_path):
                 seen.add(key)
                 unique.append(c)
         retrieved_chunks = unique
-        '''
-        retrieved_chunks = retriever.retrieve(query_text, top_k=FINAL_TOP_K)
-
+        
         # 檢索後讓 LLM 判斷每個 chunk 是否相關
         filtered_chunks = []
         for chunk in retrieved_chunks:
@@ -77,7 +83,11 @@ def main(query_path, docs_path, language, output_path):
         if not filtered_chunks:
             filtered_chunks = retrieved_chunks
 
-        final_chunks = filtered_chunks[:FINAL_TOP_K]
+        #Rerank only if ZH, otherwise top-k
+        if language == "zh" and reranker is not None:
+            final_chunks = reranker.rerank(query_text, filtered_chunks, top_k=FINAL_TOP_K)
+        else:
+            final_chunks = filtered_chunks[:FINAL_TOP_K]
 
         #final_chunks = retriever.retrieve(query_text, top_k=FINAL_TOP_K)  
         # 5. Generate Answer
