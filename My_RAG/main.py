@@ -32,11 +32,11 @@ def main(query_path, docs_path, language, output_path):
         # Define rewrite mode based on language strategies
     if language == 'zh':
         # Chinese strategy: Multi (High accuracy and robustness)
-        rewrite_mode = 'multi'
+        rewrite_mode = 'none'
         print("Using strategy: Multi-Query Rewrite")
     else:
         # English strategy: Routing (Best balance of retrieval and generation)
-        rewrite_mode = 'routing'
+        rewrite_mode = 'none'
         print("Using strategy: Semantic Routing")
 
     #Create Reranker
