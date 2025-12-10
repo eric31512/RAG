@@ -8,8 +8,12 @@ from generator import generate_answer
 import argparse
 from llama_query_rewriter import rewrite_query
 # from reranker import LLMReranker
+import os
 
 def main(query_path, docs_path, language, output_path):
+    # For reranker model merging
+    model_dir = os.path.join(os.path.dirname(__file__), "models", "bge-reranker-v2-m3")
+    merge_files(model_dir, "model.safetensors", "model.safetensors.part_")
     # 1. Load Data
     print("Loading documents...")
     docs_for_chunking = load_jsonl(docs_path)
