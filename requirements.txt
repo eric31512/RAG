@@ -31,9 +31,13 @@ llama-index-llms-ollama
 llama-index-postprocessor-flag-embedding-reranker
 
 # For Reranker
+accelerate
+datasets
+ir-datasets
+scikit-learn
+sentencepiece
+sentence-transformers
 torch
 transformers
-sentence-transformers
-accelerate
-scikit-learn
+peft
 protobuf
