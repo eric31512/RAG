@@ -8,6 +8,7 @@ numpy
 openai
 pysbd
 rank_bm25
+pyserini
 
 # NLP
 jieba
