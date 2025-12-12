@@ -103,10 +103,11 @@ class Retriever:
             num_queries=1,
             mode="relative_score",
         )
-        # Cross-encoder rerank
-        self.reranker_module = Reranker(
-            top_n=self.retrieve_topk
-        )
+        # Cross-encoder rerank (Only for Chinese)
+        if self.language == "zh":
+            self.reranker_module = Reranker(
+                top_n=self.retrieve_topk
+            )
         
     def retrieve(self, query, top_k=None):
         if top_k is None:
@@ -116,8 +117,13 @@ class Retriever:
                 top_k = 5
         # Get initial results
         init_nodes = self.retriever.retrieve(query)
-        nodes = init_nodes[:20]
-        reranked_nodes = self.reranker_module.rerank(nodes, query)
+
+        if self.language == "zh":
+            nodes = init_nodes[:20]
+            final_nodes = self.reranker_module.rerank(nodes, query)
+            final_nodes = final_nodes[:top_k]
+        else:
+            final_nodes = init_nodes[:top_k]
                 
         return [
             {
@@ -127,7 +133,7 @@ class Retriever:
                     'type': 'hybrid_llamaindex_compressed',
                     **n.node.metadata
                 }
-            } for i, n in enumerate(reranked_nodes[:top_k])
+            } for i, n in enumerate(final_nodes)
         ]
 
 
