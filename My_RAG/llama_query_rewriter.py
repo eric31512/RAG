@@ -156,13 +156,32 @@ def rewrite_hyde(
     hyde = HyDEQueryTransform(include_original=True, llm=llm)
     
     if language == "zh":
-        # Custom prompt for Chinese HyDE
+        # Custom prompt for Chinese HyDE (Simplified Chinese)
         hyde_prompt = (
-            "你是一個用來協助文件檢索的回答生成器。\n"
-            "根據下面的問題，寫出一段合理、正式且精簡的回答，就像文件中的一段說明文字。\n"
-            "請在內容中盡量包含關鍵實體名稱與重要細節。\n\n"
-            "問題：{query_str}\n\n"
+            "你是一个用来协助文件检索的回答生成器。\n"
+            "根据下面的问题，写出一段合理、正式且精简的回答，就像文件中的一段说明文字。\n"
+            "请在内容中尽量包含关键实体名称与重要细节。\n"
+            "回答请控制在30字以内。\n"
+            "请务必使用简体中文回答。\n\n"
+            "问题：{query_str}\n\n"
             "回答："
+        )
+        hyde = HyDEQueryTransform(
+            include_original=True, 
+            llm=llm,
+            hyde_prompt=PromptTemplate(hyde_prompt)
+        )
+    else:
+        # English HyDE prompt
+        hyde_prompt = (
+            "You are an answer generator to assist with document retrieval.\n"
+            "Based on the question below, write a reasonable, formal, and concise answer, "
+            "as if it were an explanatory passage from a document.\n"
+            "Try to include key entity names and important details in your response.\n"
+            "Keep your answer within 30 words.\n"
+            "You must answer in English.\n\n"
+            "Question: {query_str}\n\n"
+            "Answer:"
         )
         hyde = HyDEQueryTransform(
             include_original=True, 
