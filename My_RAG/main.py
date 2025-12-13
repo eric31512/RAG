@@ -44,11 +44,11 @@ def main(query_path, docs_path, language, output_path):
         # Define rewrite mode based on language strategies
     if language == 'zh':
         # Chinese strategy: Multi (High accuracy and robustness)
-        rewrite_mode = 'hyde'
+        rewrite_mode = 'none'
         #print("Using strategy: Multi-Query Rewrite")
     else:
         # English strategy: Routing (Best balance of retrieval and generation)
-        rewrite_mode = 'hyde'
+        rewrite_mode = 'none'
         #print("Using strategy: Semantic Routing")
 
     for query in tqdm(queries, desc="Processing Queries"):
