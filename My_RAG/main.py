@@ -41,15 +41,11 @@ def main(query_path, docs_path, language, output_path):
     retriever = create_retriever(chunks, language , chunksize=chunk_size)
     print("Retriever created successfully.")
 
-        # Define rewrite mode based on language strategies
+    # Define rewrite mode
     if language == 'zh':
-        # Chinese strategy: Multi (High accuracy and robustness)
-        rewrite_mode = 'none'
-        #print("Using strategy: Multi-Query Rewrite")
+        rewrite_mode = 'multi'
     else:
-        # English strategy: Routing (Best balance of retrieval and generation)
-        rewrite_mode = 'none'
-        #print("Using strategy: Semantic Routing")
+        rewrite_mode = 'multi' # or "multi", "hyde", "decompose", "none"
 
     for query in tqdm(queries, desc="Processing Queries"):
         # 4. Retrieve relevant chunks
