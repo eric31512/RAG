@@ -21,28 +21,6 @@ from flag_reranker_submit import Reranker
 Settings.llm = None
 Settings.embed_model = None
 
-
-def load_stopwords(filename):
-    filepath = os.path.join(os.path.dirname(__file__), filename)
-    if os.path.exists(filepath):
-        with open(filepath, 'r', encoding='utf-8') as f:
-            return set(line.strip() for line in f if line.strip())
-    return set()
-
-STOPWORDS_EN = load_stopwords('en_stopword')
-STOPWORDS_ZH = load_stopwords('zh_stopword')
-
-
-def tokenize(text: str) -> list[str]:
-    is_chinese = any('\u4e00' <= c <= '\u9fff' for c in text)
-    if is_chinese:
-        tokens = list(jieba.cut(text))
-        return [t for t in tokens if t.strip() and t not in STOPWORDS_ZH]
-    else:
-        tokens = text.lower().split()
-        return [t for t in tokens if t not in STOPWORDS_EN]
-
-
 class Retriever:
     def __init__(self, chunks, language="en", chunksize=1024, similarity_threshold=0.5):
         self.language = language
