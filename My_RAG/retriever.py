@@ -89,9 +89,9 @@ class Retriever:
         # Get initial results
         init_nodes = self.retriever.retrieve(query)
 
-        #nodes = init_nodes[:20]
-        #final_nodes = self.reranker_module.rerank(nodes, query)
-        final_nodes = init_nodes[:top_k]
+        nodes = init_nodes[:20]
+        final_nodes = self.reranker_module.rerank(nodes, query)
+        final_nodes = final_nodes[:top_k]
                 
         return [
             {
