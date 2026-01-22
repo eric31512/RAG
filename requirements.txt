@@ -1,5 +1,4 @@
 # Core dependencies
-faiss-cpu
 jsonlines
 tqdm
 PyYAML
@@ -7,12 +6,9 @@ pydantic
 numpy
 openai
 pysbd
-rank_bm25
 pyserini
 
 # NLP
-jieba
-nltk
 rouge
 rouge-chinese
 
@@ -20,13 +16,10 @@ rouge-chinese
 ollama
 
 # LangChain (for chunking)
-langchain-experimental
-langchain_ollama
 langchain-text-splitters
 
 # LlamaIndex (for retrieval)
 llama-index-core
-
 llama-index-embeddings-ollama
 llama-index-llms-ollama
 llama-index-postprocessor-flag-embedding-reranker

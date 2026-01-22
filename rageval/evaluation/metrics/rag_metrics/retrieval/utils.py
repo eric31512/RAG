@@ -1,6 +1,5 @@
 from typing import List, Union
 import re
-from nltk.tokenize import sent_tokenize, word_tokenize
 from pysbd import Segmenter
 import jieba
 

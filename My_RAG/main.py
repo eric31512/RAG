@@ -3,23 +3,12 @@ from pathlib import Path
 from utils import load_jsonl, save_jsonl
 from retriever import create_retriever
 from recursiveChunker import recursive_chunk
-# from generator import generate_answer, judge_relevance
 from generator import generate_answer
 import argparse
-from llama_query_rewriter import rewrite_query
-# from reranker import LLMReranker
-from merge_model import merge_files
+from query_rewriter import rewrite_query
 import os
 
 def main(query_path, docs_path, language, output_path):
-    
-    # For reranker model merging
-    # model_dir = os.path.join(os.path.dirname(__file__), "models", "bge-reranker-v2-m3")
-    # If model.safetensors does not exist, merge the model
-    # model_path = os.path.join(model_dir, "model.safetensors")
-    
-    # if not Path(model_path).exists():
-    #     merge_files(model_dir, "model.safetensors", "model.safetensors.part_")
     # 1. Load Data
     print("Loading documents...")
     docs_for_chunking = load_jsonl(docs_path)
@@ -42,10 +31,11 @@ def main(query_path, docs_path, language, output_path):
     print("Retriever created successfully.")
 
     # Define rewrite mode
+    # "multi", "hyde", "decompose", "none"
     if language == 'zh':
         rewrite_mode = 'none'
     else:
-        rewrite_mode = 'none' # or "multi", "hyde", "decompose", "none"
+        rewrite_mode = 'none' 
 
     for query in tqdm(queries, desc="Processing Queries"):
         # 4. Retrieve relevant chunks
