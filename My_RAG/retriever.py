@@ -13,6 +13,7 @@ from llama_index.core import StorageContext, load_index_from_storage
 from pyserini_bm25 import PyseriniBM25Retriever
 from utils import load_ollama_config
 from reranker import Reranker
+import os
 
 # Disable OpenAI defaults - use Ollama only (fully offline)
 Settings.llm = None
@@ -56,7 +57,24 @@ class Retriever:
             b=0.75,
         )
         
-        vector_index = VectorStoreIndex(nodes, embed_model=self.embed_model, show_progress=True)        
+        # 2. Vector Index with caching
+        if isinstance(chunksize, (int, float)) or str(chunksize).replace('.', '').isdigit():
+            vector_cache_path = f"./vector_index_cache/{language}_chunksize{chunksize}"
+        else:
+            vector_cache_path = f"./vector_index_cache/{language}_{chunksize}"
+        
+        if os.path.exists(vector_cache_path):
+            # Load from cache
+            print(f"Loading vector index from cache: {vector_cache_path}")
+            storage_context = StorageContext.from_defaults(persist_dir=vector_cache_path)
+            vector_index = load_index_from_storage(storage_context, embed_model=self.embed_model)
+        else:
+            # Build and save
+            print(f"Building vector index and saving to: {vector_cache_path}")
+            vector_index = VectorStoreIndex(nodes, embed_model=self.embed_model, show_progress=True)
+            os.makedirs(vector_cache_path, exist_ok=True)
+            vector_index.storage_context.persist(persist_dir=vector_cache_path)
+        
         vector = vector_index.as_retriever(similarity_top_k=self.retrieve_topk)
         if language == "zh":
             bm25_weight = 0.6
