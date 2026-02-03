@@ -8,7 +8,7 @@ import argparse
 from query_rewriter import rewrite_query
 import os
 
-def main(query_path, docs_path, language, output_path):
+def main(query_path, docs_path, language, output_path, use_kg=False):
     # 1. Load Data
     print("Loading documents...")
     docs_for_chunking = load_jsonl(docs_path)
@@ -27,7 +27,7 @@ def main(query_path, docs_path, language, output_path):
     # 3. Create Retriever
     print("Creating retriever...")
     chunk_size = 128 if language == "zh" else 512
-    retriever = create_retriever(chunks, language , chunksize=chunk_size)
+    retriever = create_retriever(chunks, language, chunksize=chunk_size, use_kg=use_kg)
     print("Retriever created successfully.")
 
     # Define rewrite mode
@@ -101,5 +101,7 @@ if __name__ == "__main__":
     parser.add_argument('--docs_path', help='Path to the documents file')
     parser.add_argument('--language', help='Language to filter queries (zh or en), if not specified, process all')
     parser.add_argument('--output', help='Path to the output file')
+    parser.add_argument('--use-kg', action='store_true', 
+                        help='Enable Knowledge Graph augmented retrieval')
     args = parser.parse_args()
-    main(args.query_path, args.docs_path, args.language, args.output)
+    main(args.query_path, args.docs_path, args.language, args.output, use_kg=args.use_kg)

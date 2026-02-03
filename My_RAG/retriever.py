@@ -2,6 +2,7 @@
 Hybrid Retriever using LlamaIndex with Ollama embeddings (fully offline).
 Combines BM25 sparse retrieval with Vector dense retrieval (RRF fusion).
 Includes SimilarityPostprocessor for contextual compression.
+Optionally integrates Knowledge Graph retrieval via nano-graphrag.
 """
 from llama_index.core import VectorStoreIndex, Settings
 from llama_index.core.schema import TextNode
@@ -20,7 +21,7 @@ Settings.llm = None
 Settings.embed_model = None
 
 class Retriever:
-    def __init__(self, chunks, language="en", chunksize=1024, similarity_threshold=0.5):
+    def __init__(self, chunks, language="en", chunksize=1024, similarity_threshold=0.5, use_kg=False):
         self.language = language
         
         # Convert to LlamaIndex nodes
@@ -95,30 +96,61 @@ class Retriever:
             top_n=self.retrieve_topk
         )
         
-    def retrieve(self, query, top_k=None):
+        # KG Retriever (optional)
+        self.use_kg = use_kg
+        self.kg_retriever = None
+        if use_kg:
+            try:
+                from kg_retriever import create_kg_retriever
+                self.kg_retriever = create_kg_retriever(language)
+                print(f"[Retriever] KG retrieval enabled for {language}")
+            except Exception as e:
+                print(f"[Retriever] Warning: KG retrieval disabled - {e}")
+                self.use_kg = False
+        
+    def retrieve(self, query, top_k=None, include_kg=True):
         if top_k is None:
             if self.language == "zh":
                 top_k = 3
             else:
                 top_k = 5
-        # Get initial results
+        
+        # Get initial results from hybrid retriever
         init_nodes = self.retriever.retrieve(query)
-
         nodes = init_nodes[:20]
         final_nodes = self.reranker_module.rerank(nodes, query)
         final_nodes = final_nodes[:top_k]
-                
-        return [
+        
+        results = [
             {
                 'page_content': n.node.get_content(),
                 'metadata': {
-                    'score': n.score, # Use the reranked score
-                    'type': 'hybrid_llamaindex_compressed',
+                    'score': n.score,
+                    'type': 'hybrid_retrieval',
                     **n.node.metadata
                 }
             } for i, n in enumerate(final_nodes)
         ]
+        
+        # Add KG context if enabled
+        if self.use_kg and self.kg_retriever and include_kg:
+            try:
+                kg_result = self.kg_retriever.retrieve_local(query)
+                if kg_result.get("kg_context"):
+                    results.append({
+                        'page_content': kg_result["kg_context"],
+                        'metadata': {
+                            'score': 1.0,
+                            'type': 'knowledge_graph',
+                            'mode': kg_result.get("mode", "local")
+                        }
+                    })
+                    print(f"[Retriever] Added KG context")
+            except Exception as e:
+                print(f"[Retriever] KG retrieval failed: {e}")
+        
+        return results
 
 
-def create_retriever(chunks, language ,chunksize, similarity_threshold=0.5):
-    return Retriever(chunks, language ,chunksize, similarity_threshold)
+def create_retriever(chunks, language, chunksize, similarity_threshold=0.5, use_kg=False):
+    return Retriever(chunks, language, chunksize, similarity_threshold, use_kg=use_kg)

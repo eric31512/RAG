@@ -532,20 +532,36 @@ def _get_domain_prompt_zh(query, context, domain):
 
 def generate_answer(query, context_chunks, language):
     formatted_context = []
+    kg_context_parts = []
+    doc_count = 0
+    
     for i, chunk in enumerate(context_chunks):
-        # 根據 metadata 加入公司名稱或時間
+        # Check if this is KG context
+        chunk_type = chunk.get('metadata', {}).get('type', 'hybrid_retrieval')
+        
+        if chunk_type == 'knowledge_graph':
+            # KG context is handled separately
+            kg_context_parts.append(chunk['page_content'])
+            continue
+        
+        # Regular document chunks
+        doc_count += 1
         meta_info = ""
         if 'metadata' in chunk:
-         if'company_name' in chunk['metadata']:
-            company = chunk['metadata'].get('company_name', '') 
-            meta_info = f"[Company: {company}]" if company else ""
-         elif 'court_name' in chunk['metadata']:
-            court = chunk['metadata'].get('court_name', '') 
-            meta_info = f"[Court: {court}]" if court else ""
-         elif 'hospital_patient_name' in chunk['metadata']:
-            patient = chunk['metadata'].get('hospital_patient_name', '') 
-            meta_info = f"[Patient: {patient}]" if patient else ""
-        formatted_context.append(f"--- Document Fragment {i+1} {meta_info} ---\n{chunk['page_content']}")
+            if 'company_name' in chunk['metadata']:
+                company = chunk['metadata'].get('company_name', '') 
+                meta_info = f"[Company: {company}]" if company else ""
+            elif 'court_name' in chunk['metadata']:
+                court = chunk['metadata'].get('court_name', '') 
+                meta_info = f"[Court: {court}]" if court else ""
+            elif 'hospital_patient_name' in chunk['metadata']:
+                patient = chunk['metadata'].get('hospital_patient_name', '') 
+                meta_info = f"[Patient: {patient}]" if patient else ""
+        formatted_context.append(f"--- Document Fragment {doc_count} {meta_info} ---\n{chunk['page_content']}")
+    
+    # Add KG context if available
+    if kg_context_parts:
+        formatted_context.append(f"--- Knowledge Graph Context ---\n" + "\n".join(kg_context_parts))
 
     context = "\n\n".join(formatted_context)
     context_snippet_preview = context_chunks[0]['page_content'][:500] if context_chunks else ""
@@ -572,7 +588,7 @@ def generate_answer(query, context_chunks, language):
             stream=False,
             options={
                "temperature": 0.2,
-               "num_ctx":131072
+               "num_ctx":20000
             }
          )
         return response["response"]
