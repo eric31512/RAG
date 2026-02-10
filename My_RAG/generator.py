@@ -532,19 +532,30 @@ def _get_domain_prompt_zh(query, context, domain):
 
 def generate_answer(query, context_chunks, language):
     formatted_context = []
-    kg_context_parts = []
+    kg_structured_parts = []
     doc_count = 0
     
     for i, chunk in enumerate(context_chunks):
-        # Check if this is KG context
+        # Check chunk type
         chunk_type = chunk.get('metadata', {}).get('type', 'hybrid_retrieval')
         
         if chunk_type == 'knowledge_graph':
-            # KG context is handled separately
-            kg_context_parts.append(chunk['page_content'])
+            # Legacy KG context (backward compatibility)
+            kg_structured_parts.append(chunk['page_content'])
             continue
         
-        # Regular document chunks
+        if chunk_type == 'kg_structured':
+            # Compact entity/relationship summary from structured KG retrieval
+            kg_structured_parts.append(chunk['page_content'])
+            continue
+        
+        if chunk_type == 'kg_source_text':
+            # KG source text chunks — treat as document fragments (they are real source data)
+            doc_count += 1
+            formatted_context.append(f"--- Document Fragment {doc_count} [Source: Knowledge Graph] ---\n{chunk['page_content']}")
+            continue
+        
+        # Regular document chunks (hybrid_retrieval)
         doc_count += 1
         meta_info = ""
         if 'metadata' in chunk:
@@ -559,9 +570,9 @@ def generate_answer(query, context_chunks, language):
                 meta_info = f"[Patient: {patient}]" if patient else ""
         formatted_context.append(f"--- Document Fragment {doc_count} {meta_info} ---\n{chunk['page_content']}")
     
-    # Add KG context if available
-    if kg_context_parts:
-        formatted_context.append(f"--- Knowledge Graph Context ---\n" + "\n".join(kg_context_parts))
+    # Add structured KG context (entities + relationships) if available
+    if kg_structured_parts:
+        formatted_context.append(f"--- Structured Knowledge Graph Context ---\n" + "\n".join(kg_structured_parts))
 
     context = "\n\n".join(formatted_context)
     context_snippet_preview = context_chunks[0]['page_content'][:500] if context_chunks else ""

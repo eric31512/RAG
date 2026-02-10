@@ -5,7 +5,7 @@ Includes SimilarityPostprocessor for contextual compression.
 Optionally integrates Knowledge Graph retrieval via nano-graphrag.
 """
 from llama_index.core import VectorStoreIndex, Settings
-from llama_index.core.schema import TextNode
+from llama_index.core.schema import TextNode, NodeWithScore
 from llama_index.core.retrievers import QueryFusionRetriever
 from llama_index.core.postprocessor import SimilarityPostprocessor
 
@@ -21,7 +21,7 @@ Settings.llm = None
 Settings.embed_model = None
 
 class Retriever:
-    def __init__(self, chunks, language="en", chunksize=1024, similarity_threshold=0.5, use_kg=False):
+    def __init__(self, chunks, language="en", chunksize=1024, similarity_threshold=0.5, use_kg=False, contextual_kg=False):
         self.language = language
         
         # Convert to LlamaIndex nodes
@@ -32,14 +32,22 @@ class Retriever:
             ) for i, c in enumerate(chunks)
         ]
         
-        # Select embedding model (Ollama - offline)
-        model = "embeddinggemma:300m" if language == "en" else "qwen3-embedding:0.6b"
-        self.embed_model = OllamaEmbedding(
-            model_name=model,
-            base_url=load_ollama_config()['host'],
-            embed_batch_size=64,
-            options={"num_parallel": 6}
-        )
+        # Select embedding model
+        # Using Ollama embedding models (lightweight, shared server)
+        if language == "en":
+            # nomic-embed-text: 274MB, 768 dim (same as EmbeddingGemma-300m)
+            self.embed_model = OllamaEmbedding(
+                model_name="nomic-embed-text",
+                base_url=load_ollama_config()['host'],
+                embed_batch_size=64,
+            )
+        else:
+            # Use Ollama for Chinese
+            self.embed_model = OllamaEmbedding(
+                model_name="qwen3-embedding:0.6b",
+                base_url=load_ollama_config()['host'],
+                embed_batch_size=64,
+            )
         Settings.embed_model = self.embed_model
         
         self.retrieve_topk = 100
@@ -98,59 +106,141 @@ class Retriever:
         
         # KG Retriever (optional)
         self.use_kg = use_kg
+        self.contextual_kg = contextual_kg
         self.kg_retriever = None
         if use_kg:
             try:
                 from kg_retriever import create_kg_retriever
-                self.kg_retriever = create_kg_retriever(language)
-                print(f"[Retriever] KG retrieval enabled for {language}")
+                self.kg_retriever = create_kg_retriever(language, contextual=contextual_kg)
+                kg_type = "contextual" if contextual_kg else "regular"
+                print(f"[Retriever] KG retrieval enabled for {language} ({kg_type})")
             except Exception as e:
                 print(f"[Retriever] Warning: KG retrieval disabled - {e}")
                 self.use_kg = False
         
-    def retrieve(self, query, top_k=None, include_kg=True):
+    def retrieve(self, query, top_k=None, mode="hybrid"):
+        """
+        Retrieve relevant chunks based on mode.
+        
+        Args:
+            query: The query string
+            top_k: Number of results to return
+            mode: Retrieval mode - 'hybrid', 'kg', 'kg-contextual',
+                  'hybrid-kg', 'hybrid-kg-contextual'
+        
+        Returns:
+            List of retrieved chunks with metadata
+        """
         if top_k is None:
             if self.language == "zh":
                 top_k = 3
             else:
                 top_k = 5
         
-        # Get initial results from hybrid retriever
-        init_nodes = self.retriever.retrieve(query)
-        nodes = init_nodes[:20]
-        final_nodes = self.reranker_module.rerank(nodes, query)
+        results = []
+        kg_entity_names = []
+        
+        # --- Step 1: KG retrieval (do this first to get entity names for query expansion) ---
+        if mode in ["kg", "kg-contextual", "hybrid-kg", "hybrid-kg-contextual"]:
+            if self.kg_retriever:
+                try:
+                    kg_result = self.kg_retriever.retrieve_local(query)
+                    
+                    # Extract entity names for query expansion
+                    kg_entity_names = kg_result.get("entity_names", [])
+                    
+                    # Add KG source text chunks as separate document fragments
+                    for i, chunk in enumerate(kg_result.get("source_chunks", [])):
+                        results.append({
+                            'page_content': chunk["content"],
+                            'metadata': {
+                                'score': 0.9 - (i * 0.05),  # Decreasing score
+                                'type': 'kg_source_text',
+                                'mode': kg_result.get("mode", "local")
+                            }
+                        })
+                    
+                    # Add compact entity/relationship summary as structured context
+                    kg_context = kg_result.get("kg_context", "")
+                    if kg_context:
+                        results.append({
+                            'page_content': kg_context,
+                            'metadata': {
+                                'score': 0.85,
+                                'type': 'kg_structured',
+                                'mode': kg_result.get("mode", "local")
+                            }
+                        })
+                    
+                    n_src = len(kg_result.get("source_chunks", []))
+                    n_ent = len(kg_result.get("entities", []))
+                    print(f"[Retriever] KG structured: {n_src} source chunks, "
+                          f"{n_ent} entities, {len(kg_entity_names)} names for expansion")
+                          
+                except Exception as e:
+                    print(f"[Retriever] KG retrieval failed: {e}")
+            elif mode in ["kg", "kg-contextual"]:
+                print("[Retriever] Warning: KG-only mode but KG retriever not initialized")
+        
+        # --- Step 2: Hybrid retrieval (with optional query expansion) ---
+        hybrid_nodes = []
+        if mode in ["hybrid", "hybrid-kg", "hybrid-kg-contextual"]:
+            # Query expansion: append top KG entity names to improve BM25/vector recall
+            expanded_query = query
+            if kg_entity_names:
+                # Use top 5 most relevant entity names
+                expansion_terms = " ".join(kg_entity_names[:5])
+                expanded_query = f"{query} {expansion_terms}"
+                print(f"[Retriever] Query expanded with KG entities: +[{expansion_terms}]")
+            
+            # Initial retrieval (BM25 + Vector)
+            hybrid_nodes = self.retriever.retrieve(expanded_query)
+            
+        # --- Step 3: Combine, Deduplicate, and Rerank ---
+        
+        # Convert KG results to NodeWithScore format
+        kg_nodes = []
+        for res in results:
+             # Create a TextNode
+             node = TextNode(text=res['page_content'], metadata=res['metadata'])
+             # Create NodeWithScore (using the initial score assigned in Step 1)
+             kg_nodes.append(NodeWithScore(node=node, score=res['metadata']['score']))
+             
+        # Combine all candidates
+        all_candidates = hybrid_nodes + kg_nodes
+        
+        # Deduplicate by content
+        seen_content = set()
+        unique_candidates = []
+        for node in all_candidates:
+            content = node.node.get_content().strip()
+            if content and content not in seen_content:
+                seen_content.add(content)
+                unique_candidates.append(node)
+        
+        print(f"[Retriever] Merging results: {len(hybrid_nodes)} Hybrid + {len(kg_nodes)} KG -> {len(unique_candidates)} Unique")
+        
+        # Rerank everything together
+        # We use the ORIGINAL query for reranking to ensure relevance
+        final_nodes = self.reranker_module.rerank(unique_candidates, query)
+        
+        # Return top_k
         final_nodes = final_nodes[:top_k]
         
-        results = [
+        # Convert back to dict format for main.py
+        final_results = [
             {
                 'page_content': n.node.get_content(),
                 'metadata': {
                     'score': n.score,
-                    'type': 'hybrid_retrieval',
+                    'type': n.node.metadata.get('type', 'hybrid_retrieval'), # Keep original type if exists
                     **n.node.metadata
                 }
-            } for i, n in enumerate(final_nodes)
+            } for n in final_nodes
         ]
         
-        # Add KG context if enabled
-        if self.use_kg and self.kg_retriever and include_kg:
-            try:
-                kg_result = self.kg_retriever.retrieve_local(query)
-                if kg_result.get("kg_context"):
-                    results.append({
-                        'page_content': kg_result["kg_context"],
-                        'metadata': {
-                            'score': 1.0,
-                            'type': 'knowledge_graph',
-                            'mode': kg_result.get("mode", "local")
-                        }
-                    })
-                    print(f"[Retriever] Added KG context")
-            except Exception as e:
-                print(f"[Retriever] KG retrieval failed: {e}")
-        
-        return results
+        return final_results
 
 
-def create_retriever(chunks, language, chunksize, similarity_threshold=0.5, use_kg=False):
-    return Retriever(chunks, language, chunksize, similarity_threshold, use_kg=use_kg)
+def create_retriever(chunks, language, chunksize, similarity_threshold=0.5, use_kg=False, contextual_kg=False):
+    return Retriever(chunks, language, chunksize, similarity_threshold, use_kg=use_kg, contextual_kg=contextual_kg)

@@ -2,6 +2,7 @@ from typing import List, Union
 import re
 from pysbd import Segmenter
 import jieba
+from nltk.tokenize import word_tokenize
 
 segmenter = Segmenter()
 

@@ -18,7 +18,7 @@ DOCS_FILE = "./dragonball_dataset/dragonball_docs.jsonl"
 # Get Ollama host from config
 OLLAMA_HOST = load_ollama_config().get('host', 'http://localhost:11434')
 OLLAMA_LLM_MODEL = "granite4:3b"
-OLLAMA_EMBED_MODEL = "embeddinggemma:300m"
+OLLAMA_EMBED_MODEL = "nomic-embed-text"
 
 
 async def ollama_llm_func(prompt, system_prompt=None, history_messages=[], **kwargs) -> str:
@@ -109,18 +109,26 @@ def load_documents(file_path: str, language: str = None) -> list[str]:
     return documents
 
 
-def main(language: str, query_only: bool = False):
+def main(language: str, query_only: bool = False, llm_model: str = None, chunk_overlap: int = 200):
     """Main function to build/query the knowledge graph.
     
     Args:
         language: Language for the KG ('en' or 'zh')
         query_only: If True, skip building and only query
+        llm_model: Override LLM model name
+        chunk_overlap: Token overlap between chunks (default: 200)
     """
+    global OLLAMA_LLM_MODEL
+    if llm_model:
+        OLLAMA_LLM_MODEL = llm_model
+    
     # Set working directory based on language
     working_dir = f"./nano_graphrag_cache_{language}"
     
     print(f"Language: {language.upper()}")
     print(f"Working directory: {working_dir}")
+    print(f"LLM Model: {OLLAMA_LLM_MODEL}")
+    print(f"Chunk overlap: {chunk_overlap}")
     
     # Wrap embedding function with attributes
     embedding_func = EmbeddingFunc(
@@ -136,7 +144,7 @@ def main(language: str, query_only: bool = False):
         cheap_model_func=ollama_llm_func,
         embedding_func=embedding_func,
         chunk_token_size=1200,
-        chunk_overlap_token_size=100,
+        chunk_overlap_token_size=chunk_overlap,
     )
     
     # Only build KG if not in query-only mode
@@ -170,6 +178,11 @@ if __name__ == "__main__":
                         help="Language for the knowledge graph ('en' or 'zh')")
     parser.add_argument('-q', '--query', action='store_true',
                         help="Query-only mode (use cached KG)")
+    parser.add_argument('--llm-model', type=str, default=None,
+                        help="Override LLM model (e.g. 'granite4:8b' for better quality)")
+    parser.add_argument('--chunk-overlap', type=int, default=200,
+                        help="Token overlap between chunks (default: 200)")
     
     args = parser.parse_args()
-    main(language=args.lang, query_only=args.query)
+    main(language=args.lang, query_only=args.query, 
+         llm_model=args.llm_model, chunk_overlap=args.chunk_overlap)

@@ -65,11 +65,11 @@ def main():
     parser.add_argument("--output_file", help="Path to the output JSONL file")
     parser.add_argument("--num_workers", type=int, default=4, help="Number of worker processes")
     parser.add_argument("--language", type=str, help="Language for the metric")
+    parser.add_argument("--model", type=str, default="llama3.1:8b", help="Model name for keypoint evaluation (default: llama3.1:8b)")
 
     args = parser.parse_args()
-    #evaluator_names = ["rouge-l", "words_precision", "words_recall", "sentences_precision", "sentences_recall", "keypoint_metrics"]
-    evaluator_names = ["rouge-l", "words_precision", "words_recall", "sentences_precision", "sentences_recall"]
-    process_jsonl(args.input_file, args.output_file, evaluator_names, args.num_workers, True, args.language, "gpt-oss:20b", "v1")
+    evaluator_names = ["rouge-l", "words_precision", "words_recall", "sentences_precision", "sentences_recall", "keypoint_metrics"]
+    process_jsonl(args.input_file, args.output_file, evaluator_names, args.num_workers, True, args.language, args.model, "v1")
 
 if __name__ == "__main__":
     main()
