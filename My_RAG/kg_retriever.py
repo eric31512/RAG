@@ -265,7 +265,7 @@ class KGRetriever:
             if not raw_context:
                 print(f"[KGRetriever] No context returned for query")
                 return self._empty_result(mode)
-            
+            # Parse results
             parsed = _parse_structured_context(raw_context)
             
             # Extract entity names for query expansion

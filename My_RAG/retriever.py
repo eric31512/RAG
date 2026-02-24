@@ -242,5 +242,24 @@ class Retriever:
         return final_results
 
 
+
 def create_retriever(chunks, language, chunksize, similarity_threshold=0.5, use_kg=False, contextual_kg=False):
-    return Retriever(chunks, language, chunksize, similarity_threshold, use_kg=use_kg, contextual_kg=contextual_kg)
+    """
+    Factory function to create a configured Retriever.
+    """
+    return Retriever(
+        chunks=chunks,
+        language=language,
+        chunksize=chunksize,
+        similarity_threshold=similarity_threshold,
+        use_kg=use_kg,
+        contextual_kg=contextual_kg
+    )
+
+
+def create_kg_retriever(language, contextual=False):
+    """
+    Factory function to create a KG Retriever.
+    """
+    from kg_retriever import KGRetriever
+    return KGRetriever(language=language, contextual=contextual)
