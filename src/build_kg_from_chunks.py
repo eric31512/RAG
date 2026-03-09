@@ -20,42 +20,42 @@ OLLAMA_EMBED_MODEL = "nomic-embed-text"  # Working Ollama embedding model
 
 
 
-# 覆蓋 entity_extraction prompt — 解耦 Context 與 Extraction
-# PROMPTS["entity_extraction"] = """-Goal-
-# Given a text document with background context and a target chunk, 
-# identify all entities and relationships from the TARGET CHUNK ONLY.
+#覆蓋 entity_extraction prompt — 解耦 Context 與 Extraction
+PROMPTS["entity_extraction"] = """-Goal-
+Given a text document with background context and a target chunk, 
+identify all entities and relationships from the TARGET CHUNK ONLY.
 
-# {input_text}
+{input_text}
 
-# -Steps-
-# 1. Identify all entities from the Target Chunk. For each identified entity, extract:
-# - entity_name: Name of the entity, capitalized
-# - entity_type: One of the following types: [{entity_types}]
-# - entity_description: Comprehensive description of the entity's attributes and activities
-# Format each entity as ("entity"{tuple_delimiter}<entity_name>{tuple_delimiter}<entity_type>{tuple_delimiter}<entity_description>)
+-Steps-
+1. Identify all entities from the Target Chunk. For each identified entity, extract:
+- entity_name: Name of the entity, capitalized
+- entity_type: One of the following types: [{entity_types}]
+- entity_description: Comprehensive description of the entity's attributes and activities
+Format each entity as ("entity"{tuple_delimiter}<entity_name>{tuple_delimiter}<entity_type>{tuple_delimiter}<entity_description>)
 
-# 2. From the entities identified in step 1, identify all pairs of (source_entity, target_entity) that are *clearly related* to each other.
-# For each pair, extract:
-# - source_entity: name of the source entity
-# - target_entity: name of the target entity  
-# - relationship_description: explanation of why they are related
-# - relationship_strength: a numeric score indicating strength of the relationship
-# Format each relationship as ("relationship"{tuple_delimiter}<source_entity>{tuple_delimiter}<target_entity>{tuple_delimiter}<relationship_description>{tuple_delimiter}<relationship_strength>)
+2. From the entities identified in step 1, identify all pairs of (source_entity, target_entity) that are *clearly related* to each other.
+For each pair, extract:
+- source_entity: name of the source entity
+- target_entity: name of the target entity  
+- relationship_description: explanation of why they are related
+- relationship_strength: a numeric score indicating strength of the relationship
+Format each relationship as ("relationship"{tuple_delimiter}<source_entity>{tuple_delimiter}<target_entity>{tuple_delimiter}<relationship_description>{tuple_delimiter}<relationship_strength>)
 
-# 3. Return output as a single list using **{record_delimiter}** as the list delimiter.
+3. Return output as a single list using **{record_delimiter}** as the list delimiter.
 
-# 4. When finished, output {completion_delimiter}
+4. When finished, output {completion_delimiter}
 
-# -Strict Rules-
-# - Ignore high-level themes (e.g., "Company Overview", "Industry Trends") from the Background Context.
-# - Focus on specific actors, metrics, events, and their direct causal relationships within the Target Chunk.
-# - Never invent entities not explicitly present in the Target Chunk.
+-Strict Rules-
+- Ignore high-level themes (e.g., "Company Overview", "Industry Trends") from the Background Context.
+- Focus on specific actors, metrics, events, and their direct causal relationships within the Target Chunk.
+- Never invent entities not explicitly present in the Target Chunk.
 
-# ######################
-# Entity_types: {entity_types}
-# ######################
-# Output:
-# """
+######################
+Entity_types: {entity_types}
+######################
+Output:
+"""
 
 
 async def ollama_llm_func(prompt, system_prompt=None, history_messages=[], **kwargs) -> str:
@@ -99,45 +99,45 @@ async def ollama_embedding_func(texts: list[str]) -> np.ndarray:
         embeddings.append(response['embedding'])
     return np.array(embeddings)
 
-# def load_cached_chunks(cache_path: str) -> list[str]:
-#     with open(cache_path, 'r', encoding='utf-8') as f:
-#         chunks = json.load(f)
-    
-#     documents = []
-#     for chunk in chunks:
-#         meta = chunk.get('metadata', {})
-#         prefix = meta.get('contextual_prefix', '')
-#         content = meta.get('original_content', chunk['page_content'])
-        
-#         # 用明確標記讓 LLM 區分背景與目標
-#         combined = (
-#             f"-Background Context (DO NOT extract from this section)-\n"
-#             f"{prefix}\n\n"
-#             f"-Target Chunk (Extract ONLY from the text below)-\n"
-#             f"{content}"
-#         )
-#         documents.append(combined)
-    
-#     print(f"Loaded {len(documents)} chunks from cache")
-#     return documents
-
-
 def load_cached_chunks(cache_path: str) -> list[str]:
-    """Load pre-cached chunks and return as list of strings.
-    
-    Args:
-        cache_path: Path to the chunk cache file (JSON)
-    
-    Returns:
-        List of chunk content strings
-    """
     with open(cache_path, 'r', encoding='utf-8') as f:
         chunks = json.load(f)
     
-    # Extract page_content from each chunk
-    documents = [chunk['page_content'] for chunk in chunks]
+    documents = []
+    for chunk in chunks:
+        meta = chunk.get('metadata', {})
+        prefix = meta.get('contextual_prefix', '')
+        content = meta.get('original_content', chunk['page_content'])
+        
+        # 用明確標記讓 LLM 區分背景與目標
+        combined = (
+            f"-Background Context (DO NOT extract from this section)-\n"
+            f"{prefix}\n\n"
+            f"-Target Chunk (Extract ONLY from the text below)-\n"
+            f"{content}"
+        )
+        documents.append(combined)
+    
     print(f"Loaded {len(documents)} chunks from cache")
     return documents
+
+
+# def load_cached_chunks(cache_path: str) -> list[str]:
+#     """Load pre-cached chunks and return as list of strings.
+    
+#     Args:
+#         cache_path: Path to the chunk cache file (JSON)
+    
+#     Returns:
+#         List of chunk content strings
+#     """
+#     with open(cache_path, 'r', encoding='utf-8') as f:
+#         chunks = json.load(f)
+    
+#     # Extract page_content from each chunk
+#     documents = [chunk['page_content'] for chunk in chunks]
+#     print(f"Loaded {len(documents)} chunks from cache")
+#     return documents
 
 
 def main(language: str, chunk_cache: str, output_dir: str = None, query_only: bool = False):
