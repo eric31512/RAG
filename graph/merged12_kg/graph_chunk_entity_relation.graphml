@@ -1,0 +1,1173 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd"><key id="d7" for="edge" attr.name="order" attr.type="long"/>
+<key id="d6" for="edge" attr.name="source_id" attr.type="string"/>
+<key id="d5" for="edge" attr.name="description" attr.type="string"/>
+<key id="d4" for="edge" attr.name="weight" attr.type="double"/>
+<key id="d3" for="node" attr.name="clusters" attr.type="string"/>
+<key id="d2" for="node" attr.name="source_id" attr.type="string"/>
+<key id="d1" for="node" attr.name="description" attr.type="string"/>
+<key id="d0" for="node" attr.name="entity_type" attr.type="string"/>
+<graph edgedefault="undirected"><node id="ACME GOVERNMENT SOLUTIONS">
+  <data key="d0">ORGANIZATION</data>
+  <data key="d1">...&lt;SEP&gt;A government industry company specializing in providing comprehensive government services and solutions. Established on June 1, 2001, in Washington, D.C.&lt;SEP&gt;Acme Government Solutions is a government services company conducting financial reviews and strategic partnerships.&lt;SEP&gt;Acme Government Solutions is a government services company with significant financial indicators.</data>
+  <data key="d2">chunk-b2fe366c1e03267f881e81f6b3c08b86&lt;SEP&gt;chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2&lt;SEP&gt;chunk-710e433987ccbb1d687dbca379e116c4</data>
+  <data key="d3">[{"level": 0, "cluster": 0}]</data>
+</node>
+<node id="WASHINGTON DC">
+  <data key="d0">GEO</data>
+  <data key="d1">The company is established in Washington, D.C., which is a significant location for the U.S. government sector.</data>
+  <data key="d2">chunk-710e433987ccbb1d687dbca379e116c4</data>
+</node>
+<node id="DIVIDEND DISTRIBUTION">
+  <data key="d0">EVENT</data>
+  <data key="d1">Declared in July 2017, with a dividend distribution of $0.50 per share, totaling $20 million, boosting shareholder returns and reflecting strong financial performance.&lt;SEP&gt;In December 2019, the company decided to distribute $5 million in dividends to shareholders.&lt;SEP&gt;In December 2019, the company distributed $5 million in dividends to shareholders, reflecting strong financial performance.&lt;SEP&gt;In January 2021, Acme Government Solutions distributed $5 million of dividends to its shareholders.</data>
+  <data key="d2">chunk-7956ab069ce99514ade3267d3c938ac2&lt;SEP&gt;chunk-710e433987ccbb1d687dbca379e116c4&lt;SEP&gt;chunk-aca93e51cb89abee49a4c47d5b74548a</data>
+  <data key="d3">[{"level": 0, "cluster": 0}]</data>
+</node>
+<node id="MAJOR GOVERNMENT CONTRACT ACQUISITION">
+  <data key="d0">EVENT</data>
+  <data key="d1">Acme Government Solutions acquired a major government contract worth $100 million in March 2021.</data>
+  <data key="d2">chunk-710e433987ccbb1d687dbca379e116c4</data>
+</node>
+<node id="REGIONAL OFFICES EXPANSION">
+  <data key="d0">EVENT</data>
+  <data key="d1">In April 2021, Acme Government Solutions established regional offices in three new states to expand its presence and market reach.</data>
+  <data key="d2">chunk-710e433987ccbb1d687dbca379e116c4</data>
+</node>
+<node id="STRATEGIC PARTNERSHIP WITH TECHNOLOGY FIRM">
+  <data key="d0">EVENT</data>
+  <data key="d1">In May 2021, Acme Government Solutions forged a partnership with a leading technology firm to develop innovative solutions for government agencies.</data>
+  <data key="d2">chunk-710e433987ccbb1d687dbca379e116c4</data>
+</node>
+<node id="HIGH-PROFILE PROJECT COMPLETION">
+  <data key="d0">EVENT</data>
+  <data key="d1">In May 2021, Acme Government Solutions successfully completed a significant project for a government client.</data>
+  <data key="d2">chunk-710e433987ccbb1d687dbca379e116c4</data>
+</node>
+<node id="ACQUISITION OF NATIONAL SECURITY SERVICES">
+  <data key="d0">EVENT</data>
+  <data key="d1">In February 2021, Acme Government Solutions completed the acquisition of Nationwide Security Services for $20 million.</data>
+  <data key="d2">chunk-710e433987ccbb1d687dbca379e116c4</data>
+</node>
+<node id="FINANCIAL BOOST THROUGH DEBT ISSUANCE">
+  <data key="d0">EVENT</data>
+  <data key="d1">In March 2021, Acme Government Solutions raised $50 million of funds by issuing new debt.</data>
+  <data key="d2">chunk-710e433987ccbb1d687dbca379e116c4</data>
+</node>
+<node id="STRATEGIC ACQUISITION OF 51% OF GOVERNMENT IT SOLUTIONS">
+  <data key="d0">EVENT</data>
+  <data key="d1">In May 2021, Acme Government Solutions acquired 51% equity of Government IT Solutions.</data>
+  <data key="d2">chunk-710e433987ccbb1d687dbca379e116c4</data>
+</node>
+<node id="INVESTMENT IN MODERNIZING PUBLIC INFRASTRUCTURE PROJECT">
+  <data key="d0">EVENT</data>
+  <data key="d1">In June 2021, Acme Government Solutions invested $30 million in the Modernizing Public Infrastructure project.</data>
+  <data key="d2">chunk-710e433987ccbb1d687dbca379e116c4</data>
+</node>
+<node id="DEBT RESTRUCTURING">
+  <data key="d0">EVENT</data>
+  <data key="d1">In August 2021, Acme Government Solutions underwent debt restructuring to reduce liabilities by $15 million.&lt;SEP&gt;In July 2019, the company optimized its capital structure and reduced liabilities by $20 million through debt restructuring.&lt;SEP&gt;In July 2019, the company underwent debt restructuring to optimize capital structure and reduce liabilities by $20 million.&lt;SEP&gt;The process of reorganizing and reducing debt liabilities in September 2019.</data>
+  <data key="d2">chunk-975be914f8bb23cf2cc514afda9287d0&lt;SEP&gt;chunk-710e433987ccbb1d687dbca379e116c4&lt;SEP&gt;chunk-aca93e51cb89abee49a4c47d5b74548a</data>
+</node>
+<node id="ASSET RESTRUCTURING">
+  <data key="d0">EVENT</data>
+  <data key="d1">In October 2019, Entertainment Enterprises Inc. streamlined its operations by focusing on core entertainment businesses and selling non-core assets.&lt;SEP&gt;In October 2019, the company underwent asset restructuring by focusing on core entertainment businesses and selling non-core assets.&lt;SEP&gt;In September 2021, Acme Government Solutions underwent asset restructuring to optimize its business structure.&lt;SEP&gt;The process of reorganizing assets to optimize business structure in November 2019.</data>
+  <data key="d2">chunk-975be914f8bb23cf2cc514afda9287d0&lt;SEP&gt;chunk-710e433987ccbb1d687dbca379e116c4&lt;SEP&gt;chunk-aca93e51cb89abee49a4c47d5b74548a</data>
+</node>
+<node id="FINANCIAL INDICATORS">
+  <data key="d0">METRIC</data>
+  <data key="d1">Includes operating income, net profit, total assets, liabilities, shareholder equity, cash flow, debt ratio, and return on equity.</data>
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d3">[{"level": 0, "cluster": 0}]</data>
+</node>
+<node id="OPERATING INCOME">
+  <data key="d0">METRIC</data>
+  <data key="d1">Reached $100 million due to increased market demand and product price changes.</data>
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d3">[{"level": 0, "cluster": 0}]</data>
+</node>
+<node id="NET PROFIT">
+  <data key="d0">METRIC</data>
+  <data key="d1">Reached $20 million due to effective cost control measures and non-recurring gains/losses.</data>
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+</node>
+<node id="TOTAL ASSETS">
+  <data key="d0">METRIC</data>
+  <data key="d1">Stood at $500 million, primarily influenced by asset acquisitions, disposals, and revaluations.</data>
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d3">[{"level": 0, "cluster": 0}]</data>
+</node>
+<node id="TOTAL LIABILITIES">
+  <data key="d0">METRIC</data>
+  <data key="d1">Amounted to $200 million, influenced by new debt issuances, repayments, and restructuring.</data>
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d3">[{"level": 0, "cluster": 0}]</data>
+</node>
+<node id="SHAREHOLDER EQUITY">
+  <data key="d0">METRIC</data>
+  <data key="d1">Reached $300 million, driven by net profit, dividends, and capital reserves.&lt;SEP&gt;Shareholder equity is reported at $900 million, representing the total amount belonging to shareholders.</data>
+  <data key="d2">chunk-689fcff3369d87c0d1932bfeb27bbc25&lt;SEP&gt;chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d3">[{"level": 0, "cluster": 0}]</data>
+</node>
+<node id="CASH FLOW">
+  <data key="d0">METRIC</data>
+  <data key="d1">Amounted to $50 million, reflecting efficient management across operations, investments, and financing.&lt;SEP&gt;Total cash flow of Entertainment Enterprises Inc. is reported as $100 million within a certain accounting period.</data>
+  <data key="d2">chunk-689fcff3369d87c0d1932bfeb27bbc25&lt;SEP&gt;chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d3">[{"level": 0, "cluster": 0}]</data>
+</node>
+<node id="DEBT RATIO">
+  <data key="d0">METRIC</data>
+  <data key="d1">Debt ratio is calculated as the total liabilities divided by total assets, standing at 25%.&lt;SEP&gt;Stood at 0.4, indicating moderate levels of debt.</data>
+  <data key="d2">chunk-689fcff3369d87c0d1932bfeb27bbc25&lt;SEP&gt;chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d3">[{"level": 0, "cluster": 0}]</data>
+</node>
+<node id="DEBT TO ASSETS RATIO">
+  <data key="d0">METRIC</data>
+  <data key="d1">Was 40%, highlighting the company's financial leverage.</data>
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d3">[{"level": 0, "cluster": 0}]</data>
+</node>
+<node id="RETURN ON EQUITY">
+  <data key="d0">METRIC</data>
+  <data key="d1">Return on equity is 12%, reflecting the operational efficiency of shareholder equity.&lt;SEP&gt;Was 6.67%, reflecting operational efficiency driven by shareholder equity.</data>
+  <data key="d2">chunk-689fcff3369d87c0d1932bfeb27bbc25&lt;SEP&gt;chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d3">[{"level": 0, "cluster": 0}]</data>
+</node>
+<node id="SHAREHOLDERS' MEETING RESOLUTION">
+  <data key="d0">EVENT</data>
+  <data key="d1">Occurred in February 2021, leading to changes in governance and strategies.</data>
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d3">[{"level": 0, "cluster": 0}]</data>
+</node>
+<node id="BOARD OF DIRECTORS ELECTION">
+  <data key="d0">EVENT</data>
+  <data key="d1">Led to changes in governance structure and operational strategies.</data>
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+</node>
+<node id="CEO APPOINTMENT">
+  <data key="d0">EVENT</data>
+  <data key="d1">In March 2021, a new CEO was appointed, impacting company direction and operations.</data>
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+</node>
+<node id="FINANCIAL PERFORMANCE REVIEW">
+  <data key="d0">EVENT</data>
+  <data key="d1">Conducted in April 2021 to assess and improve financial health.&lt;SEP&gt;Conducted in April 2021, directly impacting the company's financial health.</data>
+  <data key="d2">chunk-b2fe366c1e03267f881e81f6b3c08b86&lt;SEP&gt;chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d3">[{"level": 0, "cluster": 0}]</data>
+</node>
+<node id="STRATEGIC PARTNERSHIP ANNOUNCEMENT">
+  <data key="d0">EVENT</data>
+  <data key="d1">In May 2021, a strategic partnership was announced to expand market reach.</data>
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d3">[{"level": 0, "cluster": 0}]</data>
+</node>
+<node id="GLOBAL HEALTH INITIATIVE">
+  <data key="d0">ORGANIZATION</data>
+  <data key="d1">Promotes health equity worldwide through disease prevention, healthcare access, and health education.</data>
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+</node>
+<node id="HEALTH ACCESS INITIATIVE">
+  <data key="d0">PROJECT</data>
+  <data key="d1">Aims to increase accessibility to essential medicines in low-income regions.</data>
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+</node>
+<node id="INNOVATECH INC.">
+  <data key="d0">ORGANIZATION</data>
+  <data key="d1">A leading technology company based in Silicon Valley focusing on AI research and renewable energy solutions.</data>
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+</node>
+<node id="ARTIFICIAL INTELLIGENCE (AI)">
+  <data key="d0">EVENT</data>
+  <data key="d1">Adoption of AI technologies in various industries for innovation and growth.&lt;SEP&gt;Advancements enabling businesses to analyze data for personalization and optimization.&lt;SEP&gt;Innovatech's latest project involves developing advanced machine learning algorithms for predicting stock market trends.&lt;SEP&gt;Integration of AI systems for personalized teaching and performance analysis.</data>
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+</node>
+<node id="SILICON VALLEY">
+  <data key="d0">GEO</data>
+  <data key="d1">A hub for technology companies, including Innovatech Inc., known for fostering innovation and entrepreneurship.</data>
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+</node>
+<node id="RENEWABLE ENERGY SOLUTIONS">
+  <data key="d0">METRIC</data>
+  <data key="d1">The company invests heavily in developing efficient solar panel systems to reduce electricity costs for businesses and households.</data>
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+</node>
+<node id="TELEMEDICINE">
+  <data key="d0">EVENT</data>
+  <data key="d1">Increasingly adopted for remote patient consultations during COVID-19 pandemic.</data>
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+</node>
+<node id="ELECTRONIC HEALTH RECORDS (EHR)">
+  <data key="d0">EVENT</data>
+  <data key="d1">Seamless sharing of patient information across providers improving care quality and efficiency.</data>
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+</node>
+<node id="PREVENTIVE CARE">
+  <data key="d0">EVENT</data>
+  <data key="d1">Educates individuals on healthy lifestyles and promotes early disease detection through screenings.</data>
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+</node>
+<node id="PERSONALIZED MEDICINE">
+  <data key="d0">EVENT</data>
+  <data key="d1">Tailors treatment plans based on genetic or other unique characteristics.</data>
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+</node>
+<node id="COVID-19 PANDEMIC">
+  <data key="d0">EVENT</data>
+  <data key="d1">Current global economic challenges driven by COVID-19 pandemic.</data>
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+</node>
+<node id="DIGITALIZATION">
+  <data key="d0">EVENT</data>
+  <data key="d1">Accelerated in public administration and private sectors through technology investments.</data>
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+</node>
+<node id="ONLINE LEARNING PLATFORMS">
+  <data key="d0">EVENT</data>
+  <data key="d1">Widespread adoption of flexible digital tools for accessible education.</data>
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+</node>
+<node id="LIFELONG LEARNING">
+  <data key="d0">EVENT</data>
+  <data key="d1">Emphasis on developing skills needed for evolving job market and economy.</data>
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+</node>
+<node id="&lt;ENTITY_NAME&gt;">
+  <data key="d0">&lt;ENTITY_TYPE&gt;</data>
+  <data key="d1">&lt;entity_description&gt;</data>
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+</node>
+<node id="SOLAR PANELS">
+  <data key="d0">EVENT</data>
+  <data key="d1">Increasing adoption of more affordable and efficient renewable energy technology.</data>
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+</node>
+<node id="SMART GRIDS">
+  <data key="d0">EVENT</data>
+  <data key="d1">Integration of advanced technology for real-time monitoring and management of electricity distribution.</data>
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+</node>
+<node id="GOVERNMENT POLICIES">
+  <data key="d0">EVENT</data>
+  <data key="d1">Regulatory frameworks promoting clean energy investments and incentives for green technologies.</data>
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+</node>
+<node id="ELECTRIC VEHICLES (EVS)">
+  <data key="d0">EVENT</data>
+  <data key="d1">Increasing popularity among consumers seeking environmentally friendly transportation options.</data>
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+</node>
+<node id="SMART TRAFFIC MANAGEMENT SYSTEMS">
+  <data key="d0">EVENT</data>
+  <data key="d1">Implementation of data-driven technologies to optimize traffic flow and enhance safety.</data>
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+</node>
+<node id="GREEN INITIATIVES IN TRANSPORTATION INDUSTRY">
+  <data key="d0">EVENT</data>
+  <data key="d1">Investments in eco-friendly logistics or transitioning fleet fuel sources.</data>
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+</node>
+<node id="DATA ANALYTICS">
+  <data key="d0">EVENT</data>
+  <data key="d1">Use of data-driven insights for optimizing operations and enhancing customer experiences.</data>
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+</node>
+<node id="SUSTAINABLE TECHNOLOGIES IN CORPORATE SOCIAL RESPONSIBILITY EFFORTS">
+  <data key="d0">EVENT</data>
+  <data key="d1">Investments in green technologies aligning with corporate values.</data>
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+</node>
+<node id="FINTECH COMPANIES">
+  <data key="d0">EVENT</data>
+  <data key="d1">Offering innovative solutions like mobile payments and cryptocurrency trading platforms.</data>
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+</node>
+<node id="BLOCKCHAIN TECHNOLOGY AND DECENTRALIZED FINANCE (DEFI)">
+  <data key="d0">EVENT</data>
+  <data key="d1">Emerging technologies enabling new investment opportunities and disrupting traditional finance models.</data>
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+</node>
+<node id="GREEN POLICIES IN THE FINANCIAL SECTOR">
+  <data key="d0">EVENT</data>
+  <data key="d1">Integration of environmentally friendly practices into operations and investment offerings.</data>
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+</node>
+<node id="ELECTRONIC HEALTH RECORDS (EHRS)">
+  <data key="d0">EVENT</data>
+  <data key="d1">Adoption of digital systems for storing patient information improves efficiency in healthcare facilities.</data>
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+</node>
+<node id="TELEMEDICINE PLATFORMS">
+  <data key="d0">EVENT</data>
+  <data key="d1">Technology enabling remote consultations for patients in rural or underserved areas.</data>
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+</node>
+<node id="PATIENT-CENTERED CARE INITIATIVES">
+  <data key="d0">EVENT</data>
+  <data key="d1">Focus on improving patient outcomes through personalized treatment plans.</data>
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+</node>
+<node id="SUSTAINABILITY INITIATIVES IN THE HEALTHCARE INDUSTRY">
+  <data key="d0">EVENT</data>
+  <data key="d1">Efforts aimed at reducing carbon footprint while delivering quality care.</data>
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+</node>
+<node id="SUSTAINABLE BUILDINGS">
+  <data key="d0">EVENT</data>
+  <data key="d1">Developments that minimize environmental impact while maximizing energy efficiency.</data>
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+</node>
+<node id="SMART BUILDINGS UTILIZING ADVANCED TECHNOLOGIES LIKE ARTIFICIAL INTELLIGENCE (AI) AND INTERNET OF THINGS (IOT) DEVICES">
+  <data key="d0">EVENT</data>
+  <data key="d1">Utilization of advanced technologies for optimizing space utilization, improving occupant comfort, and reducing maintenance expenses.</data>
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+</node>
+<node id="STREAMING SERVICES OFFERING ON-DEMAND ACCESS TO MOVIES TV SHOWS MUSIC AND OTHER FORMS OF CONTENT">
+  <data key="d0">EVENT</data>
+  <data key="d1">On-demand access to diverse content for global consumers.</data>
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+</node>
+<node id="VIRTUAL REALITY (VR) AND AUGMENTED REALITY (AR) TECHNOLOGIES THAT ENABLE IMMERSIVE EXPERIENCES FOR USERS ACROSS VARIOUS PLATFORMS SUCH AS SMARTPHONES TABLETS OR DEDICATED DEVICES LIKE VR HEADSETS">
+  <data key="d0">EVENT</data>
+  <data key="d1">Immersive experiences enabled by emerging technologies like VR and AR for users across platforms such as smartphones, tablets, or dedicated devices like VR headsets.</data>
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+</node>
+<node id="ONLINE LEARNING PLATFORMS PROVIDING STUDENTS WITH FLEXIBLE ACCESS TO EDUCATIONAL RESOURCES REGARDLESS OF THEIR LOCATION OR TIME CONSTRAINTS">
+  <data key="d0">EVENT</data>
+  <data key="d1">Flexible access to educational resources for students regardless of location or time constraints.</data>
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+</node>
+<node id="ARTIFICIAL INTELLIGENCE (AI) SYSTEMS ENABLING ADAPTIVE TUTORING FOR STUDENTS WITH VARYING LEVELS OF PROFICIENCY ACROSS DIFFERENT SUBJECTS OR DOMAINS">
+  <data key="d0">EVENT</data>
+  <data key="d1">Adaptive tutoring systems powered by AI for students with varying levels of proficiency in different subjects.</data>
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+</node>
+<node id="ELECTRONIC HEALTH RECORDS (EHR) ENABLING PROVIDERS TO ACCESS COMPREHENSIVE MEDICAL HISTORIES FOR PATIENTS REGARDLESS OF THEIR LOCATION OR TIME CONSTRAINTS">
+  <data key="d0">EVENT</data>
+  <data key="d1">Access to comprehensive medical histories for patients regardless of location or time constraints.</data>
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+</node>
+<node id="TELEMEDICINE PLATFORMS ALLOWING PATIENTS TO RECEIVE REMOTE CONSULTATIONS WITH PHYSICIANS VIA VIDEO CONFERENCING OR OTHER DIGITAL CHANNELS">
+  <data key="d0">EVENT</data>
+  <data key="d1">Remote consultations with physicians via video conferencing or other digital channels.</data>
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+</node>
+<node id="STRATEGIC PARTNERSHIP">
+  <data key="d0">EVENT</data>
+  <data key="d1">Announced in May 2021, expanding capabilities and market reach.</data>
+  <data key="d2">chunk-b2fe366c1e03267f881e81f6b3c08b86</data>
+</node>
+<node id="NEW MARKET EXPANSION PLAN">
+  <data key="d0">EVENT</data>
+  <data key="d1">Unveiled in June 2021 to diversify revenue streams and expand client base.</data>
+  <data key="d2">chunk-b2fe366c1e03267f881e81f6b3c08b86</data>
+</node>
+<node id="COMPLIANCE AND REGULATORY UPDATES">
+  <data key="d0">EVENT</data>
+  <data key="d1">Occurred in March 2021, ensuring adherence to laws and regulations.</data>
+  <data key="d2">chunk-b2fe366c1e03267f881e81f6b3c08b86</data>
+</node>
+<node id="BOARD OF DIRECTORS">
+  <data key="d0">ORGANIZATION</data>
+  <data key="d1">The governing body of Acme Government Solutions responsible for strategic direction and governance.</data>
+  <data key="d2">chunk-b2fe366c1e03267f881e81f6b3c08b86</data>
+</node>
+<node id="MANAGEMENT TEAM">
+  <data key="d0">PERSON</data>
+  <data key="d1">Key leaders within Acme Government Solutions focused on operational priorities and performance.</data>
+  <data key="d2">chunk-b2fe366c1e03267f881e81f6b3c08b86</data>
+</node>
+<node id="SUSTAINABILITY AND SOCIAL RESPONSIBILITY INITIATIVES">
+  <data key="d0">EVENT</data>
+  <data key="d1">Focused on environmental protection, social responsibility, and corporate citizenship in June 2021.</data>
+  <data key="d2">chunk-b2fe366c1e03267f881e81f6b3c08b86</data>
+</node>
+<node id="ENTERTAINMENT ENTERPRISES INC.">
+  <data key="d0">ORGANIZATION</data>
+  <data key="d1">Entertainment Enterprises Inc. is a company in the entertainment industry that embraces diversity and inclusion.&lt;SEP&gt;Entertainment Enterprises Inc. is an entertainment company established in Los Angeles, California, engaged in film production and distribution, TV shows, and music creation.&lt;SEP&gt;Entertainment Enterprises Inc. is an entertainment company with total assets of $1.2 billion and liabilities of $300 million.&lt;SEP&gt;Entertainment Enterprises Inc., an entertainment company established in Los Angeles, specializes in film production and distribution, television programming, and music creation.</data>
+  <data key="d2">chunk-689fcff3369d87c0d1932bfeb27bbc25&lt;SEP&gt;chunk-b2781b10037fc8d117504266c9640136&lt;SEP&gt;chunk-aca93e51cb89abee49a4c47d5b74548a</data>
+</node>
+<node id="LOS ANGELES">
+  <data key="d0">GEO</data>
+  <data key="d1">A city located in the state of California, USA.&lt;SEP&gt;Los Angeles is a major city in California known for its vibrant entertainment industry.</data>
+  <data key="d2">chunk-aca93e51cb89abee49a4c47d5b74548a</data>
+</node>
+<node id="THE GREAT ESCAPE">
+  <data key="d0">EVENT</data>
+  <data key="d1">A blockbuster film that significantly influenced Entertainment Enterprises Inc.'s strategic investments and financial planning.&lt;SEP&gt;The blockbuster film made a major investment by Entertainment Enterprises Inc. to produce this movie.</data>
+  <data key="d2">chunk-aca93e51cb89abee49a4c47d5b74548a</data>
+</node>
+<node id="$50 MILLION INVESTMENT">
+  <data key="d0">METRIC</data>
+  <data key="d1">Entertainment Enterprises Inc. invested $50 million in the production of "The Great Escape."&lt;SEP&gt;Entertainment Enterprises Inc.'s major investment in the production of "The Great Escape."</data>
+  <data key="d2">chunk-aca93e51cb89abee49a4c47d5b74548a</data>
+</node>
+<node id="GLOBAL BOX OFFICE REVENUE FORECAST">
+  <data key="d0">METRIC</data>
+  <data key="d1">An estimated global box office revenue of $300 million from "The Great Escape."&lt;SEP&gt;The expected global box office revenue from the film, set at $300 million.</data>
+  <data key="d2">chunk-aca93e51cb89abee49a4c47d5b74548a</data>
+</node>
+<node id="EXPANSION OF DIGITAL DISTRIBUTION PLATFORM">
+  <data key="d0">EVENT</data>
+  <data key="d1">In January 2019, Entertainment Enterprises Inc. expanded its digital distribution platform by adding more titles from its library and partnering with major streaming platforms for exclusive content licensing.&lt;SEP&gt;The company expanded its digital distribution platform in January 2019, adding more content titles and partnering with major streaming services for exclusive licensing deals.</data>
+  <data key="d2">chunk-aca93e51cb89abee49a4c47d5b74548a</data>
+</node>
+<node id="VISUAL EFFECTS AND ANIMATION PRODUCTION STUDIO ACQUISITION">
+  <data key="d0">EVENT</data>
+  <data key="d1">In March 2019, Entertainment Enterprises Inc. acquired a leading studio specializing in visual effects and animation.&lt;SEP&gt;In March 2019, Entertainment Enterprises Inc. acquired a renowned production studio specializing in visual effects and animation.</data>
+  <data key="d2">chunk-aca93e51cb89abee49a4c47d5b74548a</data>
+</node>
+<node id="MUSIC PRODUCTIONS INC.">
+  <data key="d0">ORGANIZATION</data>
+  <data key="d1">A leading record label that Entertainment Enterprises Inc. acquired 30% equity in, expanding its music industry presence.&lt;SEP&gt;A prominent record label that Entertainment Enterprises Inc. invested in, enhancing its music industry presence.</data>
+  <data key="d2">chunk-aca93e51cb89abee49a4c47d5b74548a</data>
+</node>
+<node id="BOND ISSUANCE FINANCING">
+  <data key="d0">EVENT</data>
+  <data key="d1">A bond issuance of $100 million in August 2019 strengthened the company's financial position.&lt;SEP&gt;In August 2019, Entertainment Enterprises Inc. raised $100 million through a bond issuance, strengthening its financial position.</data>
+  <data key="d2">chunk-aca93e51cb89abee49a4c47d5b74548a</data>
+</node>
+<node id="DREAM STUDIOS ACQUISITION">
+  <data key="d0">EVENT</data>
+  <data key="d1">Entertainment Enterprises Inc.'s acquisition of Dream Studios for $200 million in November 2019 expanded its film production capabilities and competitive position.&lt;SEP&gt;In November 2019, Entertainment Enterprises Inc. acquired Dream Studios for a total value of $200 million, expanding its business scope and competitiveness.</data>
+  <data key="d2">chunk-aca93e51cb89abee49a4c47d5b74548a</data>
+</node>
+<node id="ASSETS">
+  <data key="d0">METRIC</data>
+  <data key="d1">Total assets of Entertainment Enterprises Inc. are reported as $1.2 billion at the end of the accounting period.</data>
+  <data key="d2">chunk-689fcff3369d87c0d1932bfeb27bbc25</data>
+</node>
+<node id="LIABILITIES">
+  <data key="d0">METRIC</data>
+  <data key="d1">Total liabilities of Entertainment Enterprises Inc. amount to $300 million at the end of the accounting period.</data>
+  <data key="d2">chunk-689fcff3369d87c0d1932bfeb27bbc25</data>
+</node>
+<node id="SUSTAINABILITY PROGRAM">
+  <data key="d0">EVENT</data>
+  <data key="d1">Launched in January 2019 to reduce carbon footprint and implement environmentally friendly practices.</data>
+  <data key="d2">chunk-689fcff3369d87c0d1932bfeb27bbc25</data>
+</node>
+<node id="DIVERSITY AND INCLUSION INITIATIVE">
+  <data key="d0">EVENT</data>
+  <data key="d1">Implemented in January 2019 to promote equal opportunities and foster diversity within the workforce.</data>
+  <data key="d2">chunk-689fcff3369d87c0d1932bfeb27bbc25</data>
+</node>
+<node id="COMMUNITY ENGAGEMENT PROGRAMS">
+  <data key="d0">EVENT</data>
+  <data key="d1">Entertainment Enterprises Inc. supported various community engagement programs.&lt;SEP&gt;Implemented by Entertainment Enterprises Inc. to support local communities and improve public image.</data>
+  <data key="d2">chunk-689fcff3369d87c0d1932bfeb27bbc25&lt;SEP&gt;chunk-b2781b10037fc8d117504266c9640136</data>
+</node>
+<node id="GROWTH AND SUCCESS">
+  <data key="d0">EVENT</data>
+  <data key="d1">Entertainment Enterprises Inc. has experienced significant growth and success in the entertainment industry.</data>
+  <data key="d2">chunk-689fcff3369d87c0d1932bfeb27bbc25</data>
+</node>
+<node id="GOVERNMENT CONTRACT ACQUISITION">
+  <data key="d0">EVENT</data>
+  <data key="d1">Involvement in a major government contract acquisition, enhancing profitability and market competitiveness.</data>
+  <data key="d2">chunk-689fcff3369d87c0d1932bfeb27bbc25</data>
+</node>
+<node id="SUSTAINABILITY PROGRAM IMPLEMENTATION">
+  <data key="d0">EVENT</data>
+  <data key="d1">Initiated in January 2019 with a significant impact on operating costs, resource efficiency, and public perception of environmental responsibility.</data>
+  <data key="d2">chunk-689fcff3369d87c0d1932bfeb27bbc25</data>
+</node>
+<node id="DIVERSITY AND INCLUSION INITIATIVE IMPLEMENTATION">
+  <data key="d0">EVENT</data>
+  <data key="d1">Implemented in January 2019 to promote equal opportunities and foster a diverse workforce.</data>
+  <data key="d2">chunk-689fcff3369d87c0d1932bfeb27bbc25</data>
+</node>
+<node id="COMMUNITY ENGAGEMENT PROGRAMS IMPLEMENTATION">
+  <data key="d0">EVENT</data>
+  <data key="d1">Active involvement in community engagement programs to support local communities and improve public image.</data>
+  <data key="d2">chunk-689fcff3369d87c0d1932bfeb27bbc25</data>
+</node>
+<node id="DIVERSITY AND INCLUSION">
+  <data key="d0">EVENT</data>
+  <data key="d1">The company's focus on diversity and inclusion positioned it as progressive within the entertainment industry.</data>
+  <data key="d2">chunk-b2781b10037fc8d117504266c9640136</data>
+</node>
+<node id="LOCAL COMMUNITIES">
+  <data key="d0">GEOMAP</data>
+  <data key="d1">The company made a positive impact in local communities through these programs.</data>
+  <data key="d2">chunk-b2781b10037fc8d117504266c9640136</data>
+</node>
+<node id="PHILANTHROPIC EFFORTS">
+  <data key="d0">EVENT</data>
+  <data key="d1">Entertainment Enterprises Inc. initiated philanthropic efforts to support causes aligned with its values.</data>
+  <data key="d2">chunk-b2781b10037fc8d117504266c9640136</data>
+</node>
+<node id="JENNIFER ADAMS">
+  <data key="d0">PERSON</data>
+  <data key="d1">Jennifer Adams was appointed as an independent director in February 2019.</data>
+  <data key="d2">chunk-b2781b10037fc8d117504266c9640136</data>
+</node>
+<node id="MICHAEL COLLINS">
+  <data key="d0">PERSON</data>
+  <data key="d1">Michael Collins was also appointed as an independent director in February 2019.</data>
+  <data key="d2">chunk-b2781b10037fc8d117504266c9640136</data>
+</node>
+<node id="SHAREHOLDERS MEETING">
+  <data key="d0">EVENT</data>
+  <data key="d1">A shareholders' meeting took place in March 2019 where key decisions were made.</data>
+  <data key="d2">chunk-b2781b10037fc8d117504266c9640136</data>
+</node>
+<node id="INTERNAL FRAUD INCIDENT">
+  <data key="d0">EVENT</data>
+  <data key="d1">An internal fraud incident was identified by Entertainment Enterprises Inc. in July 2019.</data>
+  <data key="d2">chunk-b2781b10037fc8d117504266c9640136</data>
+</node>
+<node id="COMPLIANCE UPDATES">
+  <data key="d0">EVENT</data>
+  <data key="d1">In August 2019, Entertainment Enterprises Inc. updated its compliance practices to align with regulatory changes in the entertainment industry.</data>
+  <data key="d2">chunk-b2781b10037fc8d117504266c9640136</data>
+</node>
+<node id="CORPORATE GOVERNANCE POLICY REVISEMENT">
+  <data key="d0">EVENT</data>
+  <data key="d1">In September 2019, Entertainment Enterprises Inc. revised its corporate governance policy to enhance transparency and accountability.</data>
+  <data key="d2">chunk-b2781b10037fc8d117504266c9640136</data>
+</node>
+<node id="SARAH JOHNSON">
+  <data key="d0">PERSON</data>
+  <data key="d1">Sarah Johnson was appointed as the new Chief Executive Officer in December 2019.</data>
+  <data key="d2">chunk-b2781b10037fc8d117504266c9640136</data>
+</node>
+<node id="ENTERTAINMENT INDUSTRY">
+  <data key="d0">ORGANIZATION</data>
+  <data key="d1">The broader industry sector within which Entertainment Enterprises Inc. operates, emphasizing entertainment and cultural content production.</data>
+  <data key="d2">chunk-b2781b10037fc8d117504266c9640136</data>
+</node>
+<node id="GOVERNANCE EXCELLENCE">
+  <data key="d0">EVENT</data>
+  <data key="d1">A theme encompassing various governance activities and initiatives undertaken by Entertainment Enterprises Inc. to enhance transparency, accountability, and stakeholder trust.</data>
+  <data key="d2">chunk-b2781b10037fc8d117504266c9640136</data>
+</node>
+<node id="ADVANCED MANUFACTURING SOLUTIONS INC.">
+  <data key="d0">ORGANIZATION</data>
+  <data key="d1">A publicly listed manufacturing company established in August 2005, specializing in high-tech precision tools and equipment for various industries.</data>
+  <data key="d2">chunk-7956ab069ce99514ade3267d3c938ac2</data>
+</node>
+<node id="CITYVILLE">
+  <data key="d0">GEO</data>
+  <data key="d1">Cityville is a location where Advanced Manufacturing Solutions Inc. was established.</data>
+  <data key="d2">chunk-7956ab069ce99514ade3267d3c938ac2</data>
+</node>
+<node id="TECHLAND">
+  <data key="d0">GEO</data>
+  <data key="d1">Techland is another location associated with the establishment of Advanced Manufacturing Solutions Inc.</data>
+  <data key="d2">chunk-7956ab069ce99514ade3267d3c938ac2</data>
+</node>
+<node id="PROJECT AUTOMATE">
+  <data key="d0">EVENT</data>
+  <data key="d1">A significant investment made by the company in 2017 for groundbreaking automated manufacturing technology, which expanded its business areas and enhanced profitability.</data>
+  <data key="d2">chunk-7956ab069ce99514ade3267d3c938ac2</data>
+</node>
+<node id="TECH TOOLS LTD.">
+  <data key="d0">ORGANIZATION</data>
+  <data key="d1">A business acquired by Advanced Manufacturing Solutions Inc. for $80 million, further expanding its business scope and enhancing market competitiveness.</data>
+  <data key="d2">chunk-7956ab069ce99514ade3267d3c938ac2</data>
+</node>
+<node id="PRECISION COMPONENTS LTD.">
+  <data key="d0">ORGANIZATION</data>
+  <data key="d1">A renowned manufacturer acquired by Advanced Manufacturing Solutions Inc., enhancing the company's control over market dynamics and strengthening its overall market position.</data>
+  <data key="d2">chunk-7956ab069ce99514ade3267d3c938ac2</data>
+</node>
+<node id="DEBT RESTRUCTURING PROCESS">
+  <data key="d0">EVENT</data>
+  <data key="d1">Executed by the company in June 2017, resulting in a reduction of liabilities by $30 million and improved financial strength.</data>
+  <data key="d2">chunk-7956ab069ce99514ade3267d3c938ac2</data>
+</node>
+<node id="CORPORATE BOND ISSUANCE">
+  <data key="d0">EVENT</data>
+  <data key="d1">Performed by the company in December 2017, raising $100 million to support expansion and development plans.</data>
+  <data key="d2">chunk-7956ab069ce99514ade3267d3c938ac2</data>
+</node>
+<node id="MARCH 2017">
+  <data key="d0">EVENT</data>
+  <data key="d1">The month when significant investments and acquisitions took place, including Project Automate investment and acquisition of Tech Tools Ltd.</data>
+  <data key="d2">chunk-7956ab069ce99514ade3267d3c938ac2</data>
+</node>
+<node id="ECOGUARD SOLUTIONS">
+  <data key="d0">ORGANIZATION</data>
+  <data key="d1">A company focused on environmental protection and sustainability.&lt;SEP&gt;A company specializing in environmental protection solutions.&lt;SEP&gt;A listed NASDAQ company based in San Francisco, California, United States, specializing in providing innovative environmental protection services and solutions to various industries.</data>
+  <data key="d2">chunk-975be914f8bb23cf2cc514afda9287d0&lt;SEP&gt;chunk-672984301753d0e346cd1c5cc1cfe908&lt;SEP&gt;chunk-6ae9afa65ef8f71c3dd7c7c926bf42f2</data>
+</node>
+<node id="PROJECT CLEANWATER">
+  <data key="d0">EVENT</data>
+  <data key="d1">A cutting-edge water purification technology investment made by EcoGuard Solutions in 2019.</data>
+  <data key="d2">chunk-6ae9afa65ef8f71c3dd7c7c926bf42f2</data>
+</node>
+<node id="NASDAQ">
+  <data key="d0">ORGANIZATION</data>
+  <data key="d1">The National Association of Stock Exchange, a well-known stock exchange platform.</data>
+  <data key="d2">chunk-6ae9afa65ef8f71c3dd7c7c926bf42f2</data>
+</node>
+<node id="SAN FRANCISCO">
+  <data key="d0">GEO</data>
+  <data key="d1">A major city located in California, United States.</data>
+  <data key="d2">chunk-6ae9afa65ef8f71c3dd7c7c926bf42f2</data>
+</node>
+<node id="GOVERNMENT GRANT">
+  <data key="d0">EVENT</data>
+  <data key="d1">A financial award granted to EcoGuard Solutions for developing eco-friendly water purification solutions.</data>
+  <data key="d2">chunk-6ae9afa65ef8f71c3dd7c7c926bf42f2</data>
+</node>
+<node id="RESEARCH AND DEVELOPMENT DEPARTMENT EXPANSION">
+  <data key="d0">ORGANIZATION</data>
+  <data key="d1">An expansion of EcoGuard's R&amp;D team to meet demand for innovative solutions, hiring top-tier scientists and engineers.</data>
+  <data key="d2">chunk-975be914f8bb23cf2cc514afda9287d0</data>
+</node>
+<node id="STRATEGIC PARTNERSHIP WITH INDUSTRY LEADER">
+  <data key="d0">ORGANIZATION</data>
+  <data key="d1">A collaboration aimed at improving market presence and technological capabilities, involving knowledge-sharing and joint R&amp;D efforts.</data>
+  <data key="d2">chunk-975be914f8bb23cf2cc514afda9287d0</data>
+</node>
+<node id="ACQUISITION OF COMPETITOR">
+  <data key="d0">EVENT</data>
+  <data key="d1">A significant acquisition aimed at consolidating market position, expanding product portfolio, and leveraging acquired technology for revenue growth.&lt;SEP&gt;EcoGuard Solutions identified and acquired a competitor to consolidate its market position and expand its product portfolio.&lt;SEP&gt;The acquisition of a competitor in October 2019 allowed EcoGuard Solutions to consolidate its market position and expand its product portfolio.</data>
+  <data key="d2">chunk-672984301753d0e346cd1c5cc1cfe908&lt;SEP&gt;chunk-975be914f8bb23cf2cc514afda9287d0</data>
+</node>
+<node id="CORPORATE GOVERNANCE POLICIES REVISION">
+  <data key="d0">EVENT</data>
+  <data key="d1">Revised policies focusing on transparency, accountability, and stakeholder confidence to protect shareholder interests.</data>
+  <data key="d2">chunk-975be914f8bb23cf2cc514afda9287d0</data>
+</node>
+<node id="RISK MANAGEMENT DEPARTMENT">
+  <data key="d0">ORGANIZATION</data>
+  <data key="d1">A dedicated department established to enhance the company's risk management framework.</data>
+  <data key="d2">chunk-975be914f8bb23cf2cc514afda9287d0</data>
+</node>
+<node id="FINANCIAL PERFORMANCE 2019">
+  <data key="d0">EVENT</data>
+  <data key="d1">EcoGuard Solutions achieved impressive financial results in 2019, including operating income of $250 million and a net profit of $30 million.</data>
+  <data key="d2">chunk-975be914f8bb23cf2cc514afda9287d0</data>
+</node>
+<node id="CORPORATE GOVERNANCE AND SUSTAINABILITY FOCUS">
+  <data key="d0">EVENT</data>
+  <data key="d1">In 2019, EcoGuard demonstrated a strong commitment to corporate governance and sustainability, enhancing its governance structure and compliance with regulatory updates.</data>
+  <data key="d2">chunk-975be914f8bb23cf2cc514afda9287d0</data>
+</node>
+<node id="STRATEGIC R&amp;D EXPANSION">
+  <data key="d0">ORGANIZATION</data>
+  <data key="d1">In June 2019, EcoGuard expanded its Research and Development department by hiring top-tier scientists and engineers to meet increasing demand for innovative solutions.</data>
+  <data key="d2">chunk-975be914f8bb23cf2cc514afda9287d0</data>
+</node>
+<node id="MARKET PRESENCE ENHANCEMENT PARTNERSHIP">
+  <data key="d0">ORGANIZATION</data>
+  <data key="d1">A strategic partnership formed with an industry leader in August 2019 to improve market presence and technological capabilities through knowledge-sharing and joint R&amp;D efforts.</data>
+  <data key="d2">chunk-975be914f8bb23cf2cc514afda9287d0</data>
+</node>
+<node id="FUTURE OUTLOOK FOR GROWTH AND INNOVATION">
+  <data key="d0">EVENT</data>
+  <data key="d1">EcoGuard outlined a comprehensive future outlook, focusing on cost control measures, financial discipline, expansion of research capabilities, investment in renewable energy projects, and strategic acquisitions to enhance service portfolio and market presence.</data>
+  <data key="d2">chunk-975be914f8bb23cf2cc514afda9287d0</data>
+</node>
+<node id="FINANCIAL RISKS IDENTIFICATION">
+  <data key="d0">EVENT</data>
+  <data key="d1">The company identified major financial risks such as regulatory changes, market fluctuations, and project execution risks in 2019.</data>
+  <data key="d2">chunk-975be914f8bb23cf2cc514afda9287d0</data>
+</node>
+<node id="DIVERSIFICATION STRATEGIES FOR RISK MITIGATION">
+  <data key="d0">EVENT</data>
+  <data key="d1">To mitigate identified financial risks, EcoGuard implemented diversification strategies and rigorous due diligence on market dynamics.</data>
+  <data key="d2">chunk-975be914f8bb23cf2cc514afda9287d0</data>
+</node>
+<node id="MICHAEL THOMPSON">
+  <data key="d0">PERSON</data>
+  <data key="d1">Former Chief Executive Officer of EcoGuard Solutions, appointed to the role in November 2019.</data>
+  <data key="d2">chunk-672984301753d0e346cd1c5cc1cfe908</data>
+</node>
+<node id="ROBERT JOHNSON">
+  <data key="d0">PERSON</data>
+  <data key="d1">An environmental scientist who joined the Board of Directors in December 2019, contributing expertise and insights.</data>
+  <data key="d2">chunk-672984301753d0e346cd1c5cc1cfe908</data>
+</node>
+<node id="REVISED CORPORATE GOVERNANCE POLICIES">
+  <data key="d0">EVENT</data>
+  <data key="d1">In April 2019, EcoGuard Solutions revised its corporate governance policies focusing on transparency, accountability, and stakeholder confidence.</data>
+  <data key="d2">chunk-672984301753d0e346cd1c5cc1cfe908</data>
+</node>
+<node id="IMPLEMENTATION OF RISK MANAGEMENT MEASURES">
+  <data key="d0">EVENT</data>
+  <data key="d1">EcoGuard Solutions established a dedicated risk management department in May 2019 to enhance resilience and operational stability.</data>
+  <data key="d2">chunk-672984301753d0e346cd1c5cc1cfe908</data>
+</node>
+<node id="ETHICS AND INTEGRITY INCIDENT">
+  <data key="d0">EVENT</data>
+  <data key="d1">An incident of unauthorized data access occurred in August 2019, prompting enhanced cybersecurity measures and employee training.</data>
+  <data key="d2">chunk-672984301753d0e346cd1c5cc1cfe908</data>
+</node>
+<node id="COLLABORATION WITH LOCAL COMMUNITIES">
+  <data key="d0">EVENT</data>
+  <data key="d1">In October 2019, EcoGuard Solutions engaged with local communities to enhance public image and sustainability initiatives.</data>
+  <data key="d2">chunk-672984301753d0e346cd1c5cc1cfe908</data>
+</node>
+<node id="EDUCATIONAL OUTREACH INITIATIVE">
+  <data key="d0">EVENT</data>
+  <data key="d1">EcoGuard Solutions expanded its educational outreach efforts in October 2019.</data>
+  <data key="d2">chunk-672984301753d0e346cd1c5cc1cfe908</data>
+</node>
+<node id="SUPERIOR INTEGRITY AND ACCOUNTABILITY MEASURES">
+  <data key="d0">EVENT</data>
+  <data key="d1">In November 2019, EcoGuard Solutions achieved a comprehensive audit finding of 100% compliance with no issues related to integrity and accountability.</data>
+  <data key="d2">chunk-672984301753d0e346cd1c5cc1cfe908</data>
+</node>
+<node id="RISK MANAGEMENT STRATEGIES">
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d1">These strategies were put in place to ensure business continuity and long-term success.</data>
+  <data key="d0">"UNKNOWN"</data>
+  <data key="d3">[{"level": 0, "cluster": 0}]</data>
+</node>
+<node id="COST-EFFECTIVENESS">
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d1">Remote consultations reduce healthcare costs by minimizing travel and office expenses.</data>
+  <data key="d0">"UNKNOWN"</data>
+</node>
+<node id="COORDINATION OF CARE">
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d1">EHRs enable better coordination among healthcare professionals, reducing errors.</data>
+  <data key="d0">"UNKNOWN"</data>
+</node>
+<node id="DISEASE PREVENTION">
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d1">Prevents illnesses before they occur, leading to improved health outcomes.</data>
+  <data key="d0">"UNKNOWN"</data>
+</node>
+<node id="TREATMENT EFFECTIVENESS">
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d1">Personalized medicine leads to more effective treatments and better patient outcomes.</data>
+  <data key="d0">"UNKNOWN"</data>
+</node>
+<node id="EFFICIENCY">
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d1">Modernization enhances operational efficiency across sectors.</data>
+  <data key="d0">"UNKNOWN"</data>
+</node>
+<node id="BUSINESS ADAPTATION">
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d1">Businesses use AI to streamline operations, improve customer experiences.</data>
+  <data key="d0">"UNKNOWN"</data>
+</node>
+<node id="ACCESSIBILITY">
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d1">These platforms provide anytime-anywhere access to educational resources, promoting inclusivity.</data>
+  <data key="d0">"UNKNOWN"</data>
+</node>
+<node id="PERSONALIZED LEARNING">
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d1">AI-powered systems enhance engagement by tailoring support to individual needs.</data>
+  <data key="d0">"UNKNOWN"</data>
+</node>
+<node id="JOB MARKET TRANSFORMATIONS">
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d1">Upskilling initiatives equip individuals to adapt to changing economic demands.</data>
+  <data key="d0">"UNKNOWN"</data>
+</node>
+<node id="REDUCED RELIANCE ON FOSSIL FUELS">
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d1">Decreases greenhouse gas emissions by reducing dependence on fossil fuels.</data>
+  <data key="d0">"UNKNOWN"</data>
+</node>
+<node id="INTEGRATION OF VARIABLE RENEWABLE SOURCES">
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d1">Enables seamless incorporation of solar and wind power into the grid.</data>
+  <data key="d0">"UNKNOWN"</data>
+</node>
+<node id="SUSTAINABLE PRACTICES">
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d1">Policies such as tax credits or subsidies encourage adoption of environmentally friendly solutions.</data>
+  <data key="d0">"UNKNOWN"</data>
+</node>
+<node id="REDUCED GREENHOUSE GAS EMISSIONS">
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d1">Adoption of EVs decreases reliance on fossil fuels for daily commutes.</data>
+  <data key="d0">"UNKNOWN"</data>
+</node>
+<node id="REDUCED CONGESTION AND IMPROVED SAFETY">
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d1">Dynamic signal adjustments based on real-time conditions lead to better overall efficiency.</data>
+  <data key="d0">"UNKNOWN"</data>
+</node>
+<node id="CLIMATE CHANGE COMBAT AND BRAND REPUTATION ENHANCEMENT">
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d1">Adopting cleaner fuels aligns with global sustainability efforts and improves customer loyalty.</data>
+  <data key="d0">"UNKNOWN"</data>
+</node>
+<node id="PERSONALIZED SERVICES AND HIGHER ENGAGEMENT">
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d1">AI algorithms tailor offerings based on user preferences, leading to increased satisfaction.</data>
+  <data key="d0">"UNKNOWN"</data>
+</node>
+<node id="DIGITAL TRANSFORMATION INITIATIVES AND IMPROVED CUSTOMER SATISFACTION">
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d1">Companies using analytics to gain insights drive operational improvements and boost satisfaction.</data>
+  <data key="d0">"UNKNOWN"</data>
+</node>
+<node id="CORPORATE SOCIAL RESPONSIBILITY AND IMPROVED CUSTOMER LOYALTY">
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d1">Green initiatives enhance brand reputation and customer loyalty.</data>
+  <data key="d0">"UNKNOWN"</data>
+</node>
+<node id="ACCESSIBILITY AND COMPETITIVENESS IN FINANCIAL SERVICES">
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d1">These companies make financial services more accessible, driving competition among traditional banks.</data>
+  <data key="d0">"UNKNOWN"</data>
+</node>
+<node id="INNOVATION IN FINANCIAL SERVICES AND COMPETITION WITH TRADITIONAL BANKS">
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d1">Blockchain and DeFi enable new forms of investing, challenging established banking institutions.</data>
+  <data key="d0">"UNKNOWN"</data>
+</node>
+<node id="ENVIRONMENTAL IMPACT AND BRAND REPUTATION ENHANCEMENT">
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d1">Adopting green policies enhances a company's reputation and attracts environmentally conscious customers.</data>
+  <data key="d0">"UNKNOWN"</data>
+</node>
+<node id="EFFICIENCY IN HOSPITALS AND REMOTE CONSULTATIONS BETWEEN PATIENTS AND PROVIDERS">
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d1">EHRs streamline workflows and enable telemedicine, expanding access to care.</data>
+  <data key="d0">"UNKNOWN"</data>
+</node>
+<node id="ACCESSIBILITY TO QUALITY HEALTHCARE SERVICES IN RURAL OR UNSERVED AREAS AND IMPROVED EFFICIENCY WITHIN HOSPITALS">
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d1">Telemedicine expands healthcare access and improves efficiency in urban settings.</data>
+  <data key="d0">"UNKNOWN"</data>
+</node>
+<node id="BETTER OUTCOMES AND HIGHER LEVELS OF SATISFACTION AMONG USERS">
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d1">Personalized care leads to improved health outcomes and higher satisfaction among patients.</data>
+  <data key="d0">"UNKNOWN"</data>
+</node>
+<node id="ENVIRONMENTAL IMPACT AND CONTINUED DELIVERY OF HIGH-QUALITY CARE">
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d1">These initiatives reduce waste and resource consumption without compromising patient care.</data>
+  <data key="d0">"UNKNOWN"</data>
+</node>
+<node id="ENVIRONMENTAL IMPACT REDUCTION AND ENERGY EFFICIENCY ENHANCEMENT THROUGH INTEGRATION OF RENEWABLE ENERGY SOURCES LIKE SOLAR PANELS OR WIND TURBINES">
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d1">Developers are integrating renewable energy sources into buildings to reduce operational costs and enhance property value.</data>
+  <data key="d0">"UNKNOWN"</data>
+</node>
+<node id="SEAMLESS COMMUNICATION BETWEEN VARIOUS BUILDING COMPONENTS ALLOWING FOR MORE EFFICIENT MANAGEMENT OF RESOURCES SUCH AS LIGHTING, HEATING, COOLING, AND SECURITY REDUCING MAINTENANCE EXPENSES WHILE IMPROVING OCCUPANT COMFORT THROUGH OPTIMIZED SPACE UTILIZATION">
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d1">Integration of AI and IoT devices enables efficient management of resources and enhances occupant comfort.</data>
+  <data key="d0">"UNKNOWN"</data>
+</node>
+<edge source="ACME GOVERNMENT SOLUTIONS" target="DIVIDEND DISTRIBUTION">
+  <data key="d4">18.0</data>
+  <data key="d5">The dividend distribution was made after the successful acquisition of the major government contract, showcasing the company's commitment to rewarding investors.</data>
+  <data key="d6">chunk-710e433987ccbb1d687dbca379e116c4</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="ACME GOVERNMENT SOLUTIONS" target="FINANCIAL INDICATORS">
+  <data key="d4">9.0</data>
+  <data key="d5">The company's financial indicators have been directly impacted by various events.</data>
+  <data key="d6">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="ACME GOVERNMENT SOLUTIONS" target="OPERATING INCOME">
+  <data key="d4">18.0</data>
+  <data key="d5">The net profit of $20 million reflects the company's effective cost control measures and impacts from operating income.&lt;SEP&gt;The operating income of $100 million was driven by increased market demand and changes in product prices.</data>
+  <data key="d6">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="ACME GOVERNMENT SOLUTIONS" target="TOTAL ASSETS">
+  <data key="d4">9.0</data>
+  <data key="d5">Total assets of $500 million were significantly impacted by various financial transactions.</data>
+  <data key="d6">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="ACME GOVERNMENT SOLUTIONS" target="TOTAL LIABILITIES">
+  <data key="d4">9.0</data>
+  <data key="d5">Total liabilities of $200 million were affected by changes in debt related activities.</data>
+  <data key="d6">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="ACME GOVERNMENT SOLUTIONS" target="SHAREHOLDER EQUITY">
+  <data key="d4">9.0</data>
+  <data key="d5">Shareholder equity of $300 million was influenced by the company's financial performance including net profit.</data>
+  <data key="d6">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="ACME GOVERNMENT SOLUTIONS" target="CASH FLOW">
+  <data key="d4">9.0</data>
+  <data key="d5">The cash flow of $50 million demonstrates effective financial management practices.</data>
+  <data key="d6">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="ACME GOVERNMENT SOLUTIONS" target="DEBT RATIO">
+  <data key="d4">9.0</data>
+  <data key="d5">The debt ratio of 0.4 reflects a balanced level of financial leverage.</data>
+  <data key="d6">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="ACME GOVERNMENT SOLUTIONS" target="DEBT TO ASSETS RATIO">
+  <data key="d4">9.0</data>
+  <data key="d5">The debt to assets ratio of 40% indicates a moderate level of financial risk associated with debt.</data>
+  <data key="d6">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="ACME GOVERNMENT SOLUTIONS" target="RETURN ON EQUITY">
+  <data key="d4">9.0</data>
+  <data key="d5">The return on equity of 6.67% demonstrates the company's effective use of shareholder investments.</data>
+  <data key="d6">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="ACME GOVERNMENT SOLUTIONS" target="SHAREHOLDERS' MEETING RESOLUTION">
+  <data key="d4">27.0</data>
+  <data key="d5">The appointment of the new CEO followed the meeting resolution, leading to strategic changes.&lt;SEP&gt;The board of directors election was a direct outcome of the meeting resolution, bringing new perspectives.&lt;SEP&gt;The resolution resulted in several strategic shifts including board member elections and CEO appointment.</data>
+  <data key="d6">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="ACME GOVERNMENT SOLUTIONS" target="FINANCIAL PERFORMANCE REVIEW">
+  <data key="d4">18.0</data>
+  <data key="d5">Conducted review directly impacting financial health.&lt;SEP&gt;The review provided insights into the company's performance, allowing for strategic adjustments.</data>
+  <data key="d6">chunk-b2fe366c1e03267f881e81f6b3c08b86&lt;SEP&gt;chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="ACME GOVERNMENT SOLUTIONS" target="STRATEGIC PARTNERSHIP ANNOUNCEMENT">
+  <data key="d4">9.0</data>
+  <data key="d5">The announcement aimed at expanding the company's presence in emerging markets through collaboration.</data>
+  <data key="d6">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="ACME GOVERNMENT SOLUTIONS" target="RISK MANAGEMENT STRATEGIES">
+  <data key="d4">9.0</data>
+  <data key="d5">These strategies were put in place to ensure business continuity and long-term success.</data>
+  <data key="d6">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="DEBT RESTRUCTURING" target="ECOGUARD SOLUTIONS">
+  <data key="d4">9.0</data>
+  <data key="d5">EcoGuard reduced its liabilities by $15 million through debt restructuring, improving financial stability and freeing up resources for growth.</data>
+  <data key="d6">chunk-975be914f8bb23cf2cc514afda9287d0</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="GLOBAL HEALTH INITIATIVE" target="HEALTH ACCESS INITIATIVE">
+  <data key="d4">9.0</data>
+  <data key="d5">The HAI is a project launched by the GHI to improve healthcare access in underserved communities.</data>
+  <data key="d6">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="ARTIFICIAL INTELLIGENCE (AI)" target="BUSINESS ADAPTATION">
+  <data key="d4">9.0</data>
+  <data key="d5">Businesses use AI to streamline operations, improve customer experiences.</data>
+  <data key="d6">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="ARTIFICIAL INTELLIGENCE (AI)" target="PERSONALIZED LEARNING">
+  <data key="d4">9.0</data>
+  <data key="d5">AI-powered systems enhance engagement by tailoring support to individual needs.</data>
+  <data key="d6">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="ARTIFICIAL INTELLIGENCE (AI)" target="PERSONALIZED SERVICES AND HIGHER ENGAGEMENT">
+  <data key="d4">9.0</data>
+  <data key="d5">AI algorithms tailor offerings based on user preferences, leading to increased satisfaction.</data>
+  <data key="d6">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="TELEMEDICINE" target="COST-EFFECTIVENESS">
+  <data key="d4">8.0</data>
+  <data key="d5">Remote consultations reduce healthcare costs by minimizing travel and office expenses.</data>
+  <data key="d6">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="ELECTRONIC HEALTH RECORDS (EHR)" target="COORDINATION OF CARE">
+  <data key="d4">9.0</data>
+  <data key="d5">EHRs enable better coordination among healthcare professionals, reducing errors.</data>
+  <data key="d6">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="PREVENTIVE CARE" target="DISEASE PREVENTION">
+  <data key="d4">9.0</data>
+  <data key="d5">Prevents illnesses before they occur, leading to improved health outcomes.</data>
+  <data key="d6">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="PERSONALIZED MEDICINE" target="TREATMENT EFFECTIVENESS">
+  <data key="d4">9.0</data>
+  <data key="d5">Personalized medicine leads to more effective treatments and better patient outcomes.</data>
+  <data key="d6">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="COVID-19 PANDEMIC" target="GOVERNMENT POLICIES">
+  <data key="d4">9.0</data>
+  <data key="d5">Governments have implemented various measures to mitigate crisis impact.</data>
+  <data key="d6">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="DIGITALIZATION" target="EFFICIENCY">
+  <data key="d4">9.0</data>
+  <data key="d5">Modernization enhances operational efficiency across sectors.</data>
+  <data key="d6">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="ONLINE LEARNING PLATFORMS" target="ACCESSIBILITY">
+  <data key="d4">9.0</data>
+  <data key="d5">These platforms provide anytime-anywhere access to educational resources, promoting inclusivity.</data>
+  <data key="d6">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="LIFELONG LEARNING" target="JOB MARKET TRANSFORMATIONS">
+  <data key="d4">9.0</data>
+  <data key="d5">Upskilling initiatives equip individuals to adapt to changing economic demands.</data>
+  <data key="d6">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="SOLAR PANELS" target="REDUCED RELIANCE ON FOSSIL FUELS">
+  <data key="d4">9.0</data>
+  <data key="d5">Decreases greenhouse gas emissions by reducing dependence on fossil fuels.</data>
+  <data key="d6">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="SMART GRIDS" target="INTEGRATION OF VARIABLE RENEWABLE SOURCES">
+  <data key="d4">9.0</data>
+  <data key="d5">Enables seamless incorporation of solar and wind power into the grid.</data>
+  <data key="d6">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="GOVERNMENT POLICIES" target="SUSTAINABLE PRACTICES">
+  <data key="d4">9.0</data>
+  <data key="d5">Policies such as tax credits or subsidies encourage adoption of environmentally friendly solutions.</data>
+  <data key="d6">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="ELECTRIC VEHICLES (EVS)" target="REDUCED GREENHOUSE GAS EMISSIONS">
+  <data key="d4">9.0</data>
+  <data key="d5">Adoption of EVs decreases reliance on fossil fuels for daily commutes.</data>
+  <data key="d6">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="SMART TRAFFIC MANAGEMENT SYSTEMS" target="REDUCED CONGESTION AND IMPROVED SAFETY">
+  <data key="d4">9.0</data>
+  <data key="d5">Dynamic signal adjustments based on real-time conditions lead to better overall efficiency.</data>
+  <data key="d6">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="GREEN INITIATIVES IN TRANSPORTATION INDUSTRY" target="CLIMATE CHANGE COMBAT AND BRAND REPUTATION ENHANCEMENT">
+  <data key="d4">9.0</data>
+  <data key="d5">Adopting cleaner fuels aligns with global sustainability efforts and improves customer loyalty.</data>
+  <data key="d6">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="DATA ANALYTICS" target="DIGITAL TRANSFORMATION INITIATIVES AND IMPROVED CUSTOMER SATISFACTION">
+  <data key="d4">9.0</data>
+  <data key="d5">Companies using analytics to gain insights drive operational improvements and boost satisfaction.</data>
+  <data key="d6">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="SUSTAINABLE TECHNOLOGIES IN CORPORATE SOCIAL RESPONSIBILITY EFFORTS" target="CORPORATE SOCIAL RESPONSIBILITY AND IMPROVED CUSTOMER LOYALTY">
+  <data key="d4">9.0</data>
+  <data key="d5">Green initiatives enhance brand reputation and customer loyalty.</data>
+  <data key="d6">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="FINTECH COMPANIES" target="ACCESSIBILITY AND COMPETITIVENESS IN FINANCIAL SERVICES">
+  <data key="d4">9.0</data>
+  <data key="d5">These companies make financial services more accessible, driving competition among traditional banks.</data>
+  <data key="d6">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="BLOCKCHAIN TECHNOLOGY AND DECENTRALIZED FINANCE (DEFI)" target="INNOVATION IN FINANCIAL SERVICES AND COMPETITION WITH TRADITIONAL BANKS">
+  <data key="d4">9.0</data>
+  <data key="d5">Blockchain and DeFi enable new forms of investing, challenging established banking institutions.</data>
+  <data key="d6">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="GREEN POLICIES IN THE FINANCIAL SECTOR" target="ENVIRONMENTAL IMPACT AND BRAND REPUTATION ENHANCEMENT">
+  <data key="d4">9.0</data>
+  <data key="d5">Adopting green policies enhances a company's reputation and attracts environmentally conscious customers.</data>
+  <data key="d6">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="ELECTRONIC HEALTH RECORDS (EHRS)" target="EFFICIENCY IN HOSPITALS AND REMOTE CONSULTATIONS BETWEEN PATIENTS AND PROVIDERS">
+  <data key="d4">9.0</data>
+  <data key="d5">EHRs streamline workflows and enable telemedicine, expanding access to care.</data>
+  <data key="d6">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="TELEMEDICINE PLATFORMS" target="ACCESSIBILITY TO QUALITY HEALTHCARE SERVICES IN RURAL OR UNSERVED AREAS AND IMPROVED EFFICIENCY WITHIN HOSPITALS">
+  <data key="d4">9.0</data>
+  <data key="d5">Telemedicine expands healthcare access and improves efficiency in urban settings.</data>
+  <data key="d6">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="PATIENT-CENTERED CARE INITIATIVES" target="BETTER OUTCOMES AND HIGHER LEVELS OF SATISFACTION AMONG USERS">
+  <data key="d4">9.0</data>
+  <data key="d5">Personalized care leads to improved health outcomes and higher satisfaction among patients.</data>
+  <data key="d6">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="SUSTAINABILITY INITIATIVES IN THE HEALTHCARE INDUSTRY" target="ENVIRONMENTAL IMPACT AND CONTINUED DELIVERY OF HIGH-QUALITY CARE">
+  <data key="d4">9.0</data>
+  <data key="d5">These initiatives reduce waste and resource consumption without compromising patient care.</data>
+  <data key="d6">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="SUSTAINABLE BUILDINGS" target="ENVIRONMENTAL IMPACT REDUCTION AND ENERGY EFFICIENCY ENHANCEMENT THROUGH INTEGRATION OF RENEWABLE ENERGY SOURCES LIKE SOLAR PANELS OR WIND TURBINES">
+  <data key="d4">9.0</data>
+  <data key="d5">Developers are integrating renewable energy sources into buildings to reduce operational costs and enhance property value.</data>
+  <data key="d6">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="SMART BUILDINGS UTILIZING ADVANCED TECHNOLOGIES LIKE ARTIFICIAL INTELLIGENCE (AI) AND INTERNET OF THINGS (IOT) DEVICES" target="SEAMLESS COMMUNICATION BETWEEN VARIOUS BUILDING COMPONENTS ALLOWING FOR MORE EFFICIENT MANAGEMENT OF RESOURCES SUCH AS LIGHTING, HEATING, COOLING, AND SECURITY REDUCING MAINTENANCE EXPENSES WHILE IMPROVING OCCUPANT COMFORT THROUGH OPTIMIZED SPACE UTILIZATION">
+  <data key="d4">9.0</data>
+  <data key="d5">Integration of AI and IoT devices enables efficient management of resources and enhances occupant comfort.</data>
+  <data key="d6">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="BOARD OF DIRECTORS" target="ROBERT JOHNSON">
+  <data key="d4">16.0</data>
+  <data key="d5">Robert Johnson joined the Board of Directors as an environmental scientist in December 2019, contributing to strategic direction and sustainability efforts.)&lt;SEP&gt;Robert Johnson joined the Board of Directors as an environmental scientist in December 2019, contributing to sustainability initiatives and strategic direction.)</data>
+  <data key="d6">chunk-672984301753d0e346cd1c5cc1cfe908</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="ECOGUARD SOLUTIONS" target="PROJECT CLEANWATER">
+  <data key="d4">17.0</data>
+  <data key="d5">Expansion of business scope and market potential.&lt;SEP&gt;Investment and Partnership.</data>
+  <data key="d6">chunk-6ae9afa65ef8f71c3dd7c7c926bf42f2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="ECOGUARD SOLUTIONS" target="GOVERNMENT GRANT">
+  <data key="d4">9.0</data>
+  <data key="d5">Secured financial support for research and development of Project CleanWater.</data>
+  <data key="d6">chunk-6ae9afa65ef8f71c3dd7c7c926bf42f2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="ECOGUARD SOLUTIONS" target="REVISED CORPORATE GOVERNANCE POLICIES">
+  <data key="d4">16.0</data>
+  <data key="d5">EcoGuard Solutions revised its governance policies in April 2019, focusing on transparency, accountability, and stakeholder confidence.)&lt;SEP&gt;The acquisition prompted the company to revise its governance policies in April 2019, focusing on transparency and stakeholder confidence.</data>
+  <data key="d6">chunk-672984301753d0e346cd1c5cc1cfe908</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="ECOGUARD SOLUTIONS" target="IMPLEMENTATION OF RISK MANAGEMENT MEASURES">
+  <data key="d4">14.0</data>
+  <data key="d5">To enhance resilience post-acquisition, EcoGuard Solutions established a dedicated risk management department in May 2019.)&lt;SEP&gt;To enhance resilience, EcoGuard Solutions established a dedicated risk management department in May 2019, aligning with the acquisition strategy.)</data>
+  <data key="d6">chunk-672984301753d0e346cd1c5cc1cfe908</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="ECOGUARD SOLUTIONS" target="MICHAEL THOMPSON">
+  <data key="d4">14.0</data>
+  <data key="d5">Michael Thompson became Chief Executive Officer in November 2019, aligning the company's focus on R&amp;D and client relationships with market trends.)</data>
+  <data key="d6">chunk-672984301753d0e346cd1c5cc1cfe908</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="ACQUISITION OF COMPETITOR" target="COLLABORATION WITH LOCAL COMMUNITIES">
+  <data key="d4">16.0</data>
+  <data key="d5">Post-acquisition, EcoGuard Solutions engaged more deeply with local communities for sustainability initiatives.)&lt;SEP&gt;The acquisition strengthened EcoGuard Solutions' position in the industry, enabling it to expand into local communities for sustainability initiatives.)</data>
+  <data key="d6">chunk-672984301753d0e346cd1c5cc1cfe908</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="ACQUISITION OF COMPETITOR" target="IMPLEMENTATION OF RISK MANAGEMENT MEASURES">
+  <data key="d4">7.0</data>
+  <data key="d5">Post-acquisition, EcoGuard Solutions prioritized risk management to ensure operational stability and protect shareholder interests.)</data>
+  <data key="d6">chunk-672984301753d0e346cd1c5cc1cfe908</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="ACQUISITION OF COMPETITOR" target="ETHICS AND INTEGRITY INCIDENT">
+  <data key="d4">16.0</data>
+  <data key="d5">Following the acquisition, an incident of unauthorized data access occurred in August 2019, prompting enhanced cybersecurity and ethical measures.)&lt;SEP&gt;Following the acquisition, the company addressed an incident of unauthorized data access in August 2019, enhancing cybersecurity measures and reinforcing ethical standards.)</data>
+  <data key="d6">chunk-672984301753d0e346cd1c5cc1cfe908</data>
+  <data key="d7">1</data>
+</edge>
+</graph></graphml>

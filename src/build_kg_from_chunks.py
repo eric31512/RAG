@@ -5,6 +5,7 @@ Uses chunk_cache instead of re-chunking documents.
 import os
 import json
 import argparse
+from collections import defaultdict
 import numpy as np
 from nano_graphrag import GraphRAG, QueryParam
 from nano_graphrag._utils import EmbeddingFunc
@@ -233,7 +234,47 @@ def load_cached_chunks(cache_path: str , use_prefix: bool = True) -> list[str]:
     return documents
 
 
-def main(language: str, chunk_cache: str, output_dir: str = None, query_only: bool = False, use_prefix: bool = True):
+def load_merged_chunks(cache_path: str, group_size: int = 12, overlap: int = 2) -> list[str]:
+    """Load chunks and merge N adjacent chunks per doc_id with sliding window overlap.
+    
+    Args:
+        cache_path: Path to the chunk cache file (JSON)
+        group_size: Number of adjacent chunks to merge (default: 12)
+        overlap: Number of chunks to overlap between windows (default: 2)
+    
+    Returns:
+        List of merged chunk strings
+    """
+    with open(cache_path, 'r', encoding='utf-8') as f:
+        chunks = json.load(f)
+    
+    # Group chunks by doc_id, preserving order
+    doc_chunks = defaultdict(list)
+    for chunk in chunks:
+        doc_id = chunk.get('metadata', {}).get('doc_id', 'unknown')
+        content = chunk.get('metadata', {}).get('original_content', chunk['page_content'])
+        doc_chunks[doc_id].append(content)
+    
+    # Merge with sliding window: stride = group_size - overlap
+    stride = group_size - overlap
+    documents = []
+    for doc_id, contents in doc_chunks.items():
+        for i in range(0, len(contents), stride):
+            group = contents[i:i + group_size]
+            if len(group) < group_size and i > 0:
+                # Skip the last window if it's too small (already covered by previous window)
+                break
+            merged = "\n\n".join(group)
+            documents.append(merged)
+    
+    total_original = sum(len(v) for v in doc_chunks.values())
+    print(f"Merged {total_original} chunks into {len(documents)} documents "
+          f"(group_size={group_size}, overlap={overlap}, stride={stride}, doc_ids={list(doc_chunks.keys())})")
+    return documents
+
+
+def main(language: str, chunk_cache: str, output_dir: str = None, query_only: bool = False, 
+         use_prefix: bool = True, merge_chunks: int = 1, overlap: int = 2):
     """Main function to build/query the KG from cached chunks.
     
     Args:
@@ -242,6 +283,7 @@ def main(language: str, chunk_cache: str, output_dir: str = None, query_only: bo
         output_dir: Output directory for KG cache (default: nano_graphrag_cache_contextual_{lang})
         query_only: If True, skip building and only query
         use_prefix: If True, use prefix prompt + prefix data; if False, use no-prefix prompt + raw chunks
+        merge_chunks: Number of adjacent chunks to merge before extraction (1 = no merge)
     """
     # 根據 use_prefix 選擇對應的 prompt
     if use_prefix:
@@ -272,13 +314,16 @@ def main(language: str, chunk_cache: str, output_dir: str = None, query_only: bo
         best_model_func=ollama_llm_func,
         cheap_model_func=ollama_llm_func,
         embedding_func=embedding_func,
-        chunk_token_size=10000,  # Large value to prevent re-chunking
+        chunk_token_size=10000 * merge_chunks,  # Scale up to prevent re-chunking merged docs
         chunk_overlap_token_size=0,
     )
     
     if not query_only:
         print(f"Loading cached chunks from: {chunk_cache}")
-        documents = load_cached_chunks(chunk_cache, use_prefix=use_prefix)
+        if merge_chunks > 1:
+            documents = load_merged_chunks(chunk_cache, group_size=merge_chunks, overlap=overlap)
+        else:
+            documents = load_cached_chunks(chunk_cache, use_prefix=use_prefix)
         
         print(f"Building knowledge graph from {len(documents)} chunks...")
         print("This may take a while...")
@@ -313,7 +358,12 @@ if __name__ == "__main__":
                         help="Query-only mode (use existing KG)")
     parser.add_argument('--use_prefix', action='store_true', default=False,
                         help="Use prefix (background context) in prompt and data (default: False)")
+    parser.add_argument('--merge_chunks', type=int, default=1,
+                        help="Merge N adjacent chunks per doc_id before extraction (default: 1, no merge)")
+    parser.add_argument('--overlap', type=int, default=2,
+                        help="Number of chunks to overlap between merged windows (default: 2)")
     
     args = parser.parse_args()
     main(language=args.lang, chunk_cache=args.chunk_cache, 
-         output_dir=args.output, query_only=args.query, use_prefix=args.use_prefix)
+         output_dir=args.output, query_only=args.query, use_prefix=args.use_prefix,
+         merge_chunks=args.merge_chunks, overlap=args.overlap)
