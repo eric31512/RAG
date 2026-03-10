@@ -20,71 +20,129 @@ OLLAMA_EMBED_MODEL = "nomic-embed-text"  # Working Ollama embedding model
 
 
 
-#覆蓋 entity_extraction prompt — 解耦 Context 與 Extraction
-# PROMPTS["entity_extraction"] = """-Goal-
-# Given a text document with background context and a target chunk, 
-# identify all entities and relationships from the TARGET CHUNK ONLY.
+# ===== Prompt 選擇 =====
+# 帶 prefix 版本：解耦 Context 與 Extraction
+PROMPT_WITH_PREFIX = """-Goal-
+Given a text document with background context and a target chunk, 
+identify all entities and relationships from the TARGET CHUNK ONLY.
 
-# {input_text}
+{input_text}
 
-# -Steps-
-# 1. Identify all entities from the Target Chunk. For each identified entity, extract:
-# - entity_name: Name of the entity, capitalized
-# - entity_type: One of the following types: [{entity_types}]
-# - entity_description: Comprehensive description of the entity's attributes and activities
-# Format each entity as ("entity"{tuple_delimiter}<entity_name>{tuple_delimiter}<entity_type>{tuple_delimiter}<entity_description>)
+-Steps-
+1. Identify all entities from the Target Chunk. For each identified entity, extract:
+- entity_name: Name of the entity, capitalized
+- entity_type: One of the following types: [{entity_types}]
+- entity_description: Comprehensive description of the entity's attributes and activities
+Format each entity as ("entity"{tuple_delimiter}<entity_name>{tuple_delimiter}<entity_type>{tuple_delimiter}<entity_description>)
 
-# 2. From the entities identified in step 1, identify all pairs of (source_entity, target_entity) that are *clearly related* to each other.
-# For each pair, extract:
-# - source_entity: name of the source entity
-# - target_entity: name of the target entity  
-# - relationship_description: explanation of why they are related
-# - relationship_strength: a numeric score indicating strength of the relationship
-# Format each relationship as ("relationship"{tuple_delimiter}<source_entity>{tuple_delimiter}<target_entity>{tuple_delimiter}<relationship_description>{tuple_delimiter}<relationship_strength>)
+2. From the entities identified in step 1, identify all pairs of (source_entity, target_entity) that are *clearly related* to each other.
+For each pair, extract:
+- source_entity: name of the source entity
+- target_entity: name of the target entity  
+- relationship_description: explanation of why they are related
+- relationship_strength: a numeric score indicating strength of the relationship
+Format each relationship as ("relationship"{tuple_delimiter}<source_entity>{tuple_delimiter}<target_entity>{tuple_delimiter}<relationship_description>{tuple_delimiter}<relationship_strength>)
 
-# 3. Return output as a single list using **{record_delimiter}** as the list delimiter.
+3. Return output as a single list using **{record_delimiter}** as the list delimiter.
 
-# 4. When finished, output {completion_delimiter}
+4. When finished, output {completion_delimiter}
 
-# -Strict Rules-
-# - Ignore high-level themes (e.g., "Company Overview", "Industry Trends") from the Background Context.
-# - Focus on specific actors, metrics, events, and their direct causal relationships within the Target Chunk.
-# - Never invent entities not explicitly present in the Target Chunk.
-# - Even if an entity already appears in the Background Context, you MUST still extract it if it is mentioned in the Target Chunk.
+-Strict Rules-
+- Ignore high-level themes (e.g., "Company Overview", "Industry Trends") from the Background Context.
+- Focus on specific actors, metrics, events, and their direct causal relationships within the Target Chunk.
+- Never invent entities not explicitly present in the Target Chunk.
+- Even if an entity already appears in the Background Context, you MUST still extract it if it is mentioned in the Target Chunk.
 
-# ######################
-# -Example-
+######################
+-Example-
 
-# Entity_types: [organization, person, event, geo, metric]
+Entity_types: [organization, person, event, geo, metric]
 
-# Input:
-# -Background Context (DO NOT extract from this section)-
-# This section describes Acme Government Solutions' decision to distribute dividends to shareholders following a major government contract acquisition.
+Input:
+-Background Context (DO NOT extract from this section)-
+This section describes Acme Government Solutions' decision to distribute dividends to shareholders following a major government contract acquisition.
 
-# -Target Chunk (Extract ONLY from the text below)-
-# In January 2021, Acme Government Solutions made a significant decision to distribute $5 million of dividends to its shareholders. This dividend distribution was a result of the company's successful acquisition of a major government contract worth $100 million in March 2021.
+-Target Chunk (Extract ONLY from the text below)-
+In January 2021, Acme Government Solutions made a significant decision to distribute $5 million of dividends to its shareholders. This dividend distribution was a result of the company's successful acquisition of a major government contract worth $100 million in March 2021.
 
-# Output:
-# ("entity"{tuple_delimiter}ACME GOVERNMENT SOLUTIONS{tuple_delimiter}ORGANIZATION{tuple_delimiter}Acme Government Solutions is a government services company that distributed dividends and acquired a major government contract.){record_delimiter}
-# ("entity"{tuple_delimiter}DIVIDEND DISTRIBUTION{tuple_delimiter}EVENT{tuple_delimiter}In January 2021, Acme Government Solutions distributed $5 million of dividends to its shareholders.){record_delimiter}
-# ("entity"{tuple_delimiter}GOVERNMENT CONTRACT ACQUISITION{tuple_delimiter}EVENT{tuple_delimiter}In March 2021, Acme Government Solutions acquired a major government contract worth $100 million.){record_delimiter}
-# ("entity"{tuple_delimiter}$5 MILLION{tuple_delimiter}METRIC{tuple_delimiter}The amount of dividends distributed to shareholders by Acme Government Solutions in January 2021.){record_delimiter}
-# ("entity"{tuple_delimiter}$100 MILLION{tuple_delimiter}METRIC{tuple_delimiter}The value of the major government contract acquired by Acme Government Solutions in March 2021.){record_delimiter}
-# ("relationship"{tuple_delimiter}ACME GOVERNMENT SOLUTIONS{tuple_delimiter}DIVIDEND DISTRIBUTION{tuple_delimiter}Acme Government Solutions made the decision to distribute dividends to shareholders.{tuple_delimiter}9){record_delimiter}
-# ("relationship"{tuple_delimiter}ACME GOVERNMENT SOLUTIONS{tuple_delimiter}GOVERNMENT CONTRACT ACQUISITION{tuple_delimiter}Acme Government Solutions successfully acquired a major government contract.{tuple_delimiter}9){record_delimiter}
-# ("relationship"{tuple_delimiter}GOVERNMENT CONTRACT ACQUISITION{tuple_delimiter}DIVIDEND DISTRIBUTION{tuple_delimiter}The dividend distribution was a direct result of the successful government contract acquisition.{tuple_delimiter}8){record_delimiter}
-# ("relationship"{tuple_delimiter}DIVIDEND DISTRIBUTION{tuple_delimiter}$5 MILLION{tuple_delimiter}The dividend distribution amounted to $5 million.{tuple_delimiter}10){record_delimiter}
-# ("relationship"{tuple_delimiter}GOVERNMENT CONTRACT ACQUISITION{tuple_delimiter}$100 MILLION{tuple_delimiter}The acquired government contract was worth $100 million.{tuple_delimiter}10)
-# {completion_delimiter}
+Output:
+("entity"{tuple_delimiter}ACME GOVERNMENT SOLUTIONS{tuple_delimiter}ORGANIZATION{tuple_delimiter}Acme Government Solutions is a government services company that distributed dividends and acquired a major government contract.){record_delimiter}
+("entity"{tuple_delimiter}DIVIDEND DISTRIBUTION{tuple_delimiter}EVENT{tuple_delimiter}In January 2021, Acme Government Solutions distributed $5 million of dividends to its shareholders.){record_delimiter}
+("entity"{tuple_delimiter}GOVERNMENT CONTRACT ACQUISITION{tuple_delimiter}EVENT{tuple_delimiter}In March 2021, Acme Government Solutions acquired a major government contract worth $100 million.){record_delimiter}
+("entity"{tuple_delimiter}$5 MILLION{tuple_delimiter}METRIC{tuple_delimiter}The amount of dividends distributed to shareholders by Acme Government Solutions in January 2021.){record_delimiter}
+("entity"{tuple_delimiter}$100 MILLION{tuple_delimiter}METRIC{tuple_delimiter}The value of the major government contract acquired by Acme Government Solutions in March 2021.){record_delimiter}
+("relationship"{tuple_delimiter}ACME GOVERNMENT SOLUTIONS{tuple_delimiter}DIVIDEND DISTRIBUTION{tuple_delimiter}Acme Government Solutions made the decision to distribute dividends to shareholders.{tuple_delimiter}9){record_delimiter}
+("relationship"{tuple_delimiter}ACME GOVERNMENT SOLUTIONS{tuple_delimiter}GOVERNMENT CONTRACT ACQUISITION{tuple_delimiter}Acme Government Solutions successfully acquired a major government contract.{tuple_delimiter}9){record_delimiter}
+("relationship"{tuple_delimiter}GOVERNMENT CONTRACT ACQUISITION{tuple_delimiter}DIVIDEND DISTRIBUTION{tuple_delimiter}The dividend distribution was a direct result of the successful government contract acquisition.{tuple_delimiter}8){record_delimiter}
+("relationship"{tuple_delimiter}DIVIDEND DISTRIBUTION{tuple_delimiter}$5 MILLION{tuple_delimiter}The dividend distribution amounted to $5 million.{tuple_delimiter}10){record_delimiter}
+("relationship"{tuple_delimiter}GOVERNMENT CONTRACT ACQUISITION{tuple_delimiter}$100 MILLION{tuple_delimiter}The acquired government contract was worth $100 million.{tuple_delimiter}10)
+{completion_delimiter}
 
-# Note: "ACME GOVERNMENT SOLUTIONS" appeared in both the Background Context and the Target Chunk. It was correctly extracted because it is explicitly present in the Target Chunk.
-# ######################
+Note: "ACME GOVERNMENT SOLUTIONS" appeared in both the Background Context and the Target Chunk. It was correctly extracted because it is explicitly present in the Target Chunk.
+######################
 
-# ######################
-# Entity_types: {entity_types}
-# ######################
-# Output:
-# """
+######################
+Entity_types: {entity_types}
+######################
+Output:
+"""
+
+# 不帶 prefix 版本：同樣的 prompt 結構，但只處理 chunk 本身
+PROMPT_WITHOUT_PREFIX = """-Goal-
+Given a text document, identify all entities and relationships from the text.
+
+{input_text}
+
+-Steps-
+1. Identify all entities from the text. For each identified entity, extract:
+- entity_name: Name of the entity, capitalized
+- entity_type: One of the following types: [{entity_types}]
+- entity_description: Comprehensive description of the entity's attributes and activities
+Format each entity as ("entity"{tuple_delimiter}<entity_name>{tuple_delimiter}<entity_type>{tuple_delimiter}<entity_description>)
+
+2. From the entities identified in step 1, identify all pairs of (source_entity, target_entity) that are *clearly related* to each other.
+For each pair, extract:
+- source_entity: name of the source entity
+- target_entity: name of the target entity  
+- relationship_description: explanation of why they are related
+- relationship_strength: a numeric score indicating strength of the relationship
+Format each relationship as ("relationship"{tuple_delimiter}<source_entity>{tuple_delimiter}<target_entity>{tuple_delimiter}<relationship_description>{tuple_delimiter}<relationship_strength>)
+
+3. Return output as a single list using **{record_delimiter}** as the list delimiter.
+
+4. When finished, output {completion_delimiter}
+
+-Strict Rules-
+- Focus on specific actors, metrics, events, and their direct causal relationships within the text.
+- Never invent entities not explicitly present in the text.
+
+######################
+-Example-
+
+Entity_types: [organization, person, event, geo, metric]
+
+Input:
+In January 2021, Acme Government Solutions made a significant decision to distribute $5 million of dividends to its shareholders. This dividend distribution was a result of the company's successful acquisition of a major government contract worth $100 million in March 2021.
+
+Output:
+("entity"{tuple_delimiter}ACME GOVERNMENT SOLUTIONS{tuple_delimiter}ORGANIZATION{tuple_delimiter}Acme Government Solutions is a government services company that distributed dividends and acquired a major government contract.){record_delimiter}
+("entity"{tuple_delimiter}DIVIDEND DISTRIBUTION{tuple_delimiter}EVENT{tuple_delimiter}In January 2021, Acme Government Solutions distributed $5 million of dividends to its shareholders.){record_delimiter}
+("entity"{tuple_delimiter}GOVERNMENT CONTRACT ACQUISITION{tuple_delimiter}EVENT{tuple_delimiter}In March 2021, Acme Government Solutions acquired a major government contract worth $100 million.){record_delimiter}
+("entity"{tuple_delimiter}$5 MILLION{tuple_delimiter}METRIC{tuple_delimiter}The amount of dividends distributed to shareholders by Acme Government Solutions in January 2021.){record_delimiter}
+("entity"{tuple_delimiter}$100 MILLION{tuple_delimiter}METRIC{tuple_delimiter}The value of the major government contract acquired by Acme Government Solutions in March 2021.){record_delimiter}
+("relationship"{tuple_delimiter}ACME GOVERNMENT SOLUTIONS{tuple_delimiter}DIVIDEND DISTRIBUTION{tuple_delimiter}Acme Government Solutions made the decision to distribute dividends to shareholders.{tuple_delimiter}9){record_delimiter}
+("relationship"{tuple_delimiter}ACME GOVERNMENT SOLUTIONS{tuple_delimiter}GOVERNMENT CONTRACT ACQUISITION{tuple_delimiter}Acme Government Solutions successfully acquired a major government contract.{tuple_delimiter}9){record_delimiter}
+("relationship"{tuple_delimiter}GOVERNMENT CONTRACT ACQUISITION{tuple_delimiter}DIVIDEND DISTRIBUTION{tuple_delimiter}The dividend distribution was a direct result of the successful government contract acquisition.{tuple_delimiter}8){record_delimiter}
+("relationship"{tuple_delimiter}DIVIDEND DISTRIBUTION{tuple_delimiter}$5 MILLION{tuple_delimiter}The dividend distribution amounted to $5 million.{tuple_delimiter}10){record_delimiter}
+("relationship"{tuple_delimiter}GOVERNMENT CONTRACT ACQUISITION{tuple_delimiter}$100 MILLION{tuple_delimiter}The acquired government contract was worth $100 million.{tuple_delimiter}10)
+{completion_delimiter}
+######################
+
+######################
+Entity_types: {entity_types}
+######################
+Output:
+"""
 
 
 async def ollama_llm_func(prompt, system_prompt=None, history_messages=[], **kwargs) -> str:
@@ -123,8 +181,14 @@ async def ollama_embedding_func(texts: list[str]) -> np.ndarray:
         embeddings.append(response['embedding'])
     return np.array(embeddings)
 
-# original content
-# def load_cached_chunks(cache_path: str) -> list[str]:
+# def load_cached_chunks(cache_path: str, use_prefix: bool = True) -> list[str]:
+#     """Load pre-cached chunks.
+    
+#     Args:
+#         cache_path: Path to the chunk cache file (JSON)
+#         use_prefix: If True, include contextual prefix as Background Context.
+#                     If False, only use the original content.
+#     """
 #     with open(cache_path, 'r', encoding='utf-8') as f:
 #         chunks = json.load(f)
     
@@ -133,41 +197,25 @@ async def ollama_embedding_func(texts: list[str]) -> np.ndarray:
 #         meta = chunk.get('metadata', {})
 #         content = meta.get('original_content', chunk['page_content'])
         
-#         # 用明確標記讓 LLM 區分背景與目標
-#         combined = (
-#             f"-Target Chunk (Extract ONLY from the text below)-\n"
-#             f"{content}"
-#         )
-#         documents.append(combined)
-    
-#     print(f"Loaded {len(documents)} chunks from cache")
-#     return documents
-
-# original with prefix
-# def load_cached_chunks(cache_path: str) -> list[str]:
-#     with open(cache_path, 'r', encoding='utf-8') as f:
-#         chunks = json.load(f)
-    
-#     documents = []
-#     for chunk in chunks:
-#         meta = chunk.get('metadata', {})
-#         prefix = meta.get('contextual_prefix', '')
-#         content = meta.get('original_content', chunk['page_content'])
+#         if use_prefix:
+#             prefix = meta.get('contextual_prefix', '')
+#             # 用明確標記讓 LLM 區分背景與目標
+#             combined = (
+#                 f"-Background Context (DO NOT extract from this section)-\n"
+#                 f"{prefix}\n\n"
+#                 f"-Target Chunk (Extract ONLY from the text below)-\n"
+#                 f"{content}"
+#             )
+#         else:
+#             combined = content
         
-#         # 用明確標記讓 LLM 區分背景與目標
-#         combined = (
-#             f"-Background Context (DO NOT extract from this section)-\n"
-#             f"{prefix}\n\n"
-#             f"-Target Chunk (Extract ONLY from the text below)-\n"
-#             f"{content}"
-#         )
 #         documents.append(combined)
     
-#     print(f"Loaded {len(documents)} chunks from cache")
+#     print(f"Loaded {len(documents)} chunks (use_prefix={use_prefix}) from cache")
 #     return documents
 
-# merge prefix and content
-def load_cached_chunks(cache_path: str) -> list[str]:
+#merge prefix and content
+def load_cached_chunks(cache_path: str , use_prefix: bool = True) -> list[str]:
     """Load pre-cached chunks and return as list of strings.
     
     Args:
@@ -185,7 +233,7 @@ def load_cached_chunks(cache_path: str) -> list[str]:
     return documents
 
 
-def main(language: str, chunk_cache: str, output_dir: str = None, query_only: bool = False):
+def main(language: str, chunk_cache: str, output_dir: str = None, query_only: bool = False, use_prefix: bool = True):
     """Main function to build/query the KG from cached chunks.
     
     Args:
@@ -193,7 +241,15 @@ def main(language: str, chunk_cache: str, output_dir: str = None, query_only: bo
         chunk_cache: Path to the chunk cache file
         output_dir: Output directory for KG cache (default: nano_graphrag_cache_contextual_{lang})
         query_only: If True, skip building and only query
+        use_prefix: If True, use prefix prompt + prefix data; if False, use no-prefix prompt + raw chunks
     """
+    # 根據 use_prefix 選擇對應的 prompt
+    if use_prefix:
+        PROMPTS["entity_extraction"] = PROMPT_WITH_PREFIX
+        print("Using prompt: WITH prefix (decoupled context)")
+    else:
+        PROMPTS["entity_extraction"] = PROMPT_WITHOUT_PREFIX
+        print("Using prompt: WITHOUT prefix (chunk only)")
     # Set output directory
     if output_dir is None:
         output_dir = f"./nano_graphrag_cache_contextual_{language}"
@@ -222,7 +278,7 @@ def main(language: str, chunk_cache: str, output_dir: str = None, query_only: bo
     
     if not query_only:
         print(f"Loading cached chunks from: {chunk_cache}")
-        documents = load_cached_chunks(chunk_cache)
+        documents = load_cached_chunks(chunk_cache, use_prefix=use_prefix)
         
         print(f"Building knowledge graph from {len(documents)} chunks...")
         print("This may take a while...")
@@ -255,7 +311,9 @@ if __name__ == "__main__":
                         help="Output directory for KG cache")
     parser.add_argument('-q', '--query', action='store_true',
                         help="Query-only mode (use existing KG)")
+    parser.add_argument('--use_prefix', action='store_true', default=False,
+                        help="Use prefix (background context) in prompt and data (default: False)")
     
     args = parser.parse_args()
     main(language=args.lang, chunk_cache=args.chunk_cache, 
-         output_dir=args.output, query_only=args.query)
+         output_dir=args.output, query_only=args.query, use_prefix=args.use_prefix)
