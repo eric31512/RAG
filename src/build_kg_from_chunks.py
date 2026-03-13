@@ -24,10 +24,9 @@ OLLAMA_EMBED_MODEL = "nomic-embed-text"  # Working Ollama embedding model
 # ===== Prompt 選擇 =====
 # 帶 prefix 版本：解耦 Context 與 Extraction
 PROMPT_WITH_PREFIX = """-Goal-
-Given a text document with background context and a target chunk, 
+Given a text document containing a Background Context and a Target Chunk, 
 identify all entities and relationships from the TARGET CHUNK ONLY.
-
-{input_text}
+The Background Context is provided STRICTLY for understanding the situation (e.g., resolving pronouns).
 
 -Steps-
 1. Identify all entities from the Target Chunk. For each identified entity, extract:
@@ -49,10 +48,11 @@ Format each relationship as ("relationship"{tuple_delimiter}<source_entity>{tupl
 4. When finished, output {completion_delimiter}
 
 -Strict Rules-
-- Ignore high-level themes (e.g., "Company Overview", "Industry Trends") from the Background Context.
-- Focus on specific actors, metrics, events, and their direct causal relationships within the Target Chunk.
+- NEVER extract any entity that appears ONLY in the Background Context.
+- Use the Background Context ONLY to resolve ambiguous pronouns (like "it", "they", "the company") found in the Target Chunk. Extract the resolved proper name if the pronoun points to it.
+- Focus strictly on specific actors, metrics, events, and their direct causal relationships within the Target Chunk.
 - Never invent entities not explicitly present in the Target Chunk.
-- Even if an entity already appears in the Background Context, you MUST still extract it if it is mentioned in the Target Chunk.
+- If an entity appears in the Background Context AND the Target Chunk, you MUST extract it.
 
 ######################
 -Example-
@@ -61,29 +61,35 @@ Entity_types: [organization, person, event, geo, metric]
 
 Input:
 -Background Context (DO NOT extract from this section)-
-This section describes Acme Government Solutions' decision to distribute dividends to shareholders following a major government contract acquisition.
+This section describes Acme Government Solutions' decision to distribute dividends to shareholders following a major government contract acquisition. The contract was originally negotiated by their partner, Beta Technologies.
 
 -Target Chunk (Extract ONLY from the text below)-
-In January 2021, Acme Government Solutions made a significant decision to distribute $5 million of dividends to its shareholders. This dividend distribution was a result of the company's successful acquisition of a major government contract worth $100 million in March 2021.
+In January 2021, Acme Government Solutions made a significant decision to distribute $5 million of dividends to its shareholders. The company also announced a new $100 million government contract.
 
 Output:
 ("entity"{tuple_delimiter}ACME GOVERNMENT SOLUTIONS{tuple_delimiter}ORGANIZATION{tuple_delimiter}Acme Government Solutions is a government services company that distributed dividends and acquired a major government contract.){record_delimiter}
 ("entity"{tuple_delimiter}DIVIDEND DISTRIBUTION{tuple_delimiter}EVENT{tuple_delimiter}In January 2021, Acme Government Solutions distributed $5 million of dividends to its shareholders.){record_delimiter}
-("entity"{tuple_delimiter}GOVERNMENT CONTRACT ACQUISITION{tuple_delimiter}EVENT{tuple_delimiter}In March 2021, Acme Government Solutions acquired a major government contract worth $100 million.){record_delimiter}
+("entity"{tuple_delimiter}GOVERNMENT CONTRACT{tuple_delimiter}EVENT{tuple_delimiter}Acme Government Solutions announced a new $100 million government contract.){record_delimiter}
 ("entity"{tuple_delimiter}$5 MILLION{tuple_delimiter}METRIC{tuple_delimiter}The amount of dividends distributed to shareholders by Acme Government Solutions in January 2021.){record_delimiter}
-("entity"{tuple_delimiter}$100 MILLION{tuple_delimiter}METRIC{tuple_delimiter}The value of the major government contract acquired by Acme Government Solutions in March 2021.){record_delimiter}
+("entity"{tuple_delimiter}$100 MILLION{tuple_delimiter}METRIC{tuple_delimiter}The value of the new government contract announced by Acme Government Solutions.){record_delimiter}
 ("relationship"{tuple_delimiter}ACME GOVERNMENT SOLUTIONS{tuple_delimiter}DIVIDEND DISTRIBUTION{tuple_delimiter}Acme Government Solutions made the decision to distribute dividends to shareholders.{tuple_delimiter}9){record_delimiter}
-("relationship"{tuple_delimiter}ACME GOVERNMENT SOLUTIONS{tuple_delimiter}GOVERNMENT CONTRACT ACQUISITION{tuple_delimiter}Acme Government Solutions successfully acquired a major government contract.{tuple_delimiter}9){record_delimiter}
-("relationship"{tuple_delimiter}GOVERNMENT CONTRACT ACQUISITION{tuple_delimiter}DIVIDEND DISTRIBUTION{tuple_delimiter}The dividend distribution was a direct result of the successful government contract acquisition.{tuple_delimiter}8){record_delimiter}
+("relationship"{tuple_delimiter}ACME GOVERNMENT SOLUTIONS{tuple_delimiter}GOVERNMENT CONTRACT{tuple_delimiter}Acme Government Solutions announced a new government contract.{tuple_delimiter}9){record_delimiter}
 ("relationship"{tuple_delimiter}DIVIDEND DISTRIBUTION{tuple_delimiter}$5 MILLION{tuple_delimiter}The dividend distribution amounted to $5 million.{tuple_delimiter}10){record_delimiter}
-("relationship"{tuple_delimiter}GOVERNMENT CONTRACT ACQUISITION{tuple_delimiter}$100 MILLION{tuple_delimiter}The acquired government contract was worth $100 million.{tuple_delimiter}10)
+("relationship"{tuple_delimiter}GOVERNMENT CONTRACT{tuple_delimiter}$100 MILLION{tuple_delimiter}The announced government contract was worth $100 million.{tuple_delimiter}10)
 {completion_delimiter}
 
-Note: "ACME GOVERNMENT SOLUTIONS" appeared in both the Background Context and the Target Chunk. It was correctly extracted because it is explicitly present in the Target Chunk.
+Note: 
+1. "ACME GOVERNMENT SOLUTIONS" appeared in both the Context and the Chunk. It was correctly extracted.
+2. "BETA TECHNOLOGIES" appeared in the Background Context but NOT in the Target Chunk. It was correctly IGNORED and NOT extracted.
+3. "The company" in the Chunk was correctly resolved to "ACME GOVERNMENT SOLUTIONS" using the Context.
 ######################
 
 ######################
+-Real Data-
 Entity_types: {entity_types}
+
+Input:
+{input_text}
 ######################
 Output:
 """
@@ -91,8 +97,6 @@ Output:
 # 不帶 prefix 版本：同樣的 prompt 結構，但只處理 chunk 本身
 PROMPT_WITHOUT_PREFIX = """-Goal-
 Given a text document, identify all entities and relationships from the text.
-
-{input_text}
 
 -Steps-
 1. Identify all entities from the text. For each identified entity, extract:
@@ -140,7 +144,11 @@ Output:
 ######################
 
 ######################
+-Real Data-
 Entity_types: {entity_types}
+
+Input:
+{input_text}
 ######################
 Output:
 """
@@ -182,58 +190,58 @@ async def ollama_embedding_func(texts: list[str]) -> np.ndarray:
         embeddings.append(response['embedding'])
     return np.array(embeddings)
 
-# def load_cached_chunks(cache_path: str, use_prefix: bool = True) -> list[str]:
-#     """Load pre-cached chunks.
-    
-#     Args:
-#         cache_path: Path to the chunk cache file (JSON)
-#         use_prefix: If True, include contextual prefix as Background Context.
-#                     If False, only use the original content.
-#     """
-#     with open(cache_path, 'r', encoding='utf-8') as f:
-#         chunks = json.load(f)
-    
-#     documents = []
-#     for chunk in chunks:
-#         meta = chunk.get('metadata', {})
-#         content = meta.get('original_content', chunk['page_content'])
-        
-#         if use_prefix:
-#             prefix = meta.get('contextual_prefix', '')
-#             # 用明確標記讓 LLM 區分背景與目標
-#             combined = (
-#                 f"-Background Context (DO NOT extract from this section)-\n"
-#                 f"{prefix}\n\n"
-#                 f"-Target Chunk (Extract ONLY from the text below)-\n"
-#                 f"{content}"
-#             )
-#         else:
-#             combined = content
-        
-#         documents.append(combined)
-    
-#     print(f"Loaded {len(documents)} chunks (use_prefix={use_prefix}) from cache")
-#     return documents
-
-#merge prefix and content
-def load_cached_chunks(cache_path: str , use_prefix: bool = True) -> list[str]:
-    """Load pre-cached chunks and return as list of strings.
+def load_cached_chunks(cache_path: str, use_prefix: bool = True) -> list[str]:
+    """Load pre-cached chunks.
     
     Args:
         cache_path: Path to the chunk cache file (JSON)
-    
-    Returns:
-        List of chunk content strings
+        use_prefix: If True, include contextual prefix as Background Context.
+                    If False, only use the original content.
     """
     with open(cache_path, 'r', encoding='utf-8') as f:
         chunks = json.load(f)
     
-    # Extract page_content from each chunk
-    documents = [chunk['page_content'] for chunk in chunks]
-    print(f"Loaded {len(documents)} chunks from cache")
+    documents = []
+    for chunk in chunks:
+        meta = chunk.get('metadata', {})
+        content = meta.get('original_content', chunk['page_content'])
+        
+        if use_prefix:
+            prefix = meta.get('contextual_prefix', '')
+            # 用明確標記讓 LLM 區分背景與目標
+            combined = (
+                f"-Background Context (DO NOT extract from this section)-\n"
+                f"{prefix}\n\n"
+                f"-Target Chunk (Extract ONLY from the text below)-\n"
+                f"{content}"
+            )
+        else:
+            combined = content
+        
+        documents.append(combined)
+    
+    print(f"Loaded {len(documents)} chunks (use_prefix={use_prefix}) from cache")
     return documents
 
+#merge prefix and content
+# def load_cached_chunks(cache_path: str , use_prefix: bool = True) -> list[str]:
+#     """Load pre-cached chunks and return as list of strings.
+    
+#     Args:
+#         cache_path: Path to the chunk cache file (JSON)
+    
+#     Returns:
+#         List of chunk content strings
+#     """
+#     with open(cache_path, 'r', encoding='utf-8') as f:
+#         chunks = json.load(f)
+    
+#     # Extract page_content from each chunk
+#     documents = [chunk['page_content'] for chunk in chunks]
+#     print(f"Loaded {len(documents)} chunks from cache")
+#     return documents
 
+# merge 12
 def load_merged_chunks(cache_path: str, group_size: int = 12, overlap: int = 2) -> list[str]:
     """Load chunks and merge N adjacent chunks per doc_id with sliding window overlap.
     

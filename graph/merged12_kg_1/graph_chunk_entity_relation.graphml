@@ -1,0 +1,703 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd"><key id="d7" for="edge" attr.name="order" attr.type="long"/>
+<key id="d6" for="edge" attr.name="source_id" attr.type="string"/>
+<key id="d5" for="edge" attr.name="description" attr.type="string"/>
+<key id="d4" for="edge" attr.name="weight" attr.type="double"/>
+<key id="d3" for="node" attr.name="clusters" attr.type="string"/>
+<key id="d2" for="node" attr.name="source_id" attr.type="string"/>
+<key id="d1" for="node" attr.name="description" attr.type="string"/>
+<key id="d0" for="node" attr.name="entity_type" attr.type="string"/>
+<graph edgedefault="undirected"><node id="ACME GOVERNMENT SOLUTIONS">
+  <data key="d0">ORGANIZATION</data>
+  <data key="d1">Acme Government Solutions is a government industry company established in Washington, D.C., specializing in comprehensive government services and solutions.&lt;SEP&gt;Acme Government Solutions is a government services company that distributed dividends and acquired a major government contract.&lt;SEP&gt;Acme Government Solutions is a government services provider focusing on financial performance reviews, strategic partnerships, market expansion initiatives, compliance with regulations, and sustainability efforts.&lt;SEP&gt;Acme Government Solutions is an organization involved in government services with financial indicators such as operating income, net profit, total assets, liabilities, shareholder equity, cash flow, debt ratio, and return on equity.</data>
+  <data key="d2">chunk-b2fe366c1e03267f881e81f6b3c08b86&lt;SEP&gt;chunk-710e433987ccbb1d687dbca379e116c4&lt;SEP&gt;chunk-aca93e51cb89abee49a4c47d5b74548a&lt;SEP&gt;chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d3">[{"level": 0, "cluster": 1}]</data>
+</node>
+<node id="WASHINGT">
+  <data key="d0">GEO</data>
+  <data key="d1">The company is headquartered in Washington, D.C., indicating its regional focus on the U.S. capital area.</data>
+  <data key="d2">chunk-710e433987ccbb1d687dbca379e116c4</data>
+</node>
+<node id="$5 MILLION">
+  <data key="d0">METRIC</data>
+  <data key="d1">The amount of dividends distributed to shareholders by Acme Government Solutions in January 2021.</data>
+  <data key="d2">chunk-710e433987ccbb1d687dbca379e116c4&lt;SEP&gt;chunk-aca93e51cb89abee49a4c47d5b74548a</data>
+  <data key="d3">[{"level": 0, "cluster": 2}]</data>
+</node>
+<node id="$100 MILLION">
+  <data key="d0">METRIC</data>
+  <data key="d1">The value of the major government contract acquired by Acme Government Solutions in March 2021.</data>
+  <data key="d2">chunk-710e433987ccbb1d687dbca379e116c4&lt;SEP&gt;chunk-aca93e51cb89abee49a4c47d5b74548a</data>
+  <data key="d3">[{"level": 0, "cluster": 0}]</data>
+</node>
+<node id="REGIONAL OFFICES EXPANSION">
+  <data key="d0">EVENT</data>
+  <data key="d1">Acme Government Solutions established regional offices in three new states, expanding its presence and market reach.</data>
+  <data key="d2">chunk-710e433987ccbb1d687dbca379e116c4</data>
+  <data key="d3">[{"level": 0, "cluster": 1}]</data>
+</node>
+<node id="STRATEGIC PARTNERSHIP WITH TECHNOLOGY FIRM">
+  <data key="d0">EVENT</data>
+  <data key="d1">A strategic partnership was formed with a leading technology firm to develop innovative solutions for government agencies.</data>
+  <data key="d2">chunk-710e433987ccbb1d687dbca379e116c4</data>
+  <data key="d3">[{"level": 0, "cluster": 1}]</data>
+</node>
+<node id="WORLD WAR II">
+  <data key="d0">EVENT</data>
+  <data key="d1">A global conflict that occurred from 1939 to 1945, involving most of the world's nations and resulting in significant changes globally.</data>
+  <data key="d2">chunk-710e433987ccbb1d687dbca379e116c4</data>
+  <data key="d3">[{"level": 0, "cluster": 1}]</data>
+</node>
+<node id="OPERATING INCOME">
+  <data key="d0">EVENT</data>
+  <data key="d1">In January 2021, Acme Government Solutions' operating income reached $100 million due to increased market demand and changes in product prices.&lt;SEP&gt;The revenue generated from the company's core operations before accounting for interest and taxes.</data>
+  <data key="d2">chunk-7956ab069ce99514ade3267d3c938ac2&lt;SEP&gt;chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d3">[{"level": 0, "cluster": 1}]</data>
+</node>
+<node id="NET PROFIT">
+  <data key="d0">EVENT</data>
+  <data key="d1">The company's net profit was $20 million in January 2021, resulting from effective cost control measures and non-recurring gains and losses.&lt;SEP&gt;The profit remaining after all expenses, including taxes, have been deducted from the operating income.</data>
+  <data key="d2">chunk-7956ab069ce99514ade3267d3c938ac2&lt;SEP&gt;chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d3">[{"level": 0, "cluster": 1}]</data>
+</node>
+<node id="TOTAL ASSETS">
+  <data key="d0">METRIC</data>
+  <data key="d1">Acme Government Solutions' total assets stood at $500 million in January 2021, influenced by asset acquisitions, disposals, and revaluations.&lt;SEP&gt;The company's total assets were valued at $500 million.&lt;SEP&gt;The total value of everything owned by the company, including cash, investments, and physical assets.</data>
+  <data key="d2">chunk-975be914f8bb23cf2cc514afda9287d0&lt;SEP&gt;chunk-7956ab069ce99514ade3267d3c938ac2&lt;SEP&gt;chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d3">[{"level": 0, "cluster": 1}]</data>
+</node>
+<node id="TOTAL LIABILITIES">
+  <data key="d0">EVENT</data>
+  <data key="d1">The company's total liabilities amounted to $200 million in January 2021, influenced by new debt issuances, debt repayments, and debt restructuring activities.&lt;SEP&gt;Total liabilities amounted to $200 million, resulting in a debt ratio of 0.4 and debt-to-assets ratio of 40%.</data>
+  <data key="d2">chunk-975be914f8bb23cf2cc514afda9287d0&lt;SEP&gt;chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+</node>
+<node id="SHAREHOLDER EQUITY">
+  <data key="d0">METRIC</data>
+  <data key="d1">Entertainment Enterprises Inc.'s total shareholder equity at the end of an accounting period, representing ownership in the company.&lt;SEP&gt;Shareholder equity of $300 million was driven by net profit, dividends, and capital reserves.&lt;SEP&gt;Shareholder equity reached $300 million in January 2021, driven by the company's net profit, dividend distributions, and capital reserves.&lt;SEP&gt;The residual interest in the assets of the entity after deducting liabilities; the ownership claim of shareholders.</data>
+  <data key="d2">chunk-7956ab069ce99514ade3267d3c938ac2&lt;SEP&gt;chunk-689fcff3369d87c0d1932bfeb27bbc25&lt;SEP&gt;chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d3">[{"level": 0, "cluster": 1}]</data>
+</node>
+<node id="CASH FLOW">
+  <data key="d0">EVENT</data>
+  <data key="d1">Acme Government Solutions' cash flow amounted to $50 million in January 2021, reflecting efficient management of operating, investment, and financing activities.&lt;SEP&gt;Entertainment Enterprises Inc.'s total cash flow of $100 million, reflecting the movement of cash within its business operations.</data>
+  <data key="d2">chunk-689fcff3369d87c0d1932bfeb27bbc25&lt;SEP&gt;chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d3">[{"level": 0, "cluster": 1}]</data>
+</node>
+<node id="DEBT RATIO">
+  <data key="d0">METRIC</data>
+  <data key="d1">The debt ratio stood at 0.4 (40%) in January 2021, indicating a moderate level of debt relative to total assets.</data>
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d3">[{"level": 0, "cluster": 1}]</data>
+</node>
+<node id="DEBT TO ASSETS RATIO">
+  <data key="d0">METRIC</data>
+  <data key="d1">The debt to assets ratio was 40%, highlighting the company's financial leverage and overall balance between debt and equity financing.</data>
+  <data key="d2">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d3">[{"level": 0, "cluster": 1}]</data>
+</node>
+<node id="RETURN ON EQUITY">
+  <data key="d0">METRIC</data>
+  <data key="d1">Entertainment Enterprises Inc.'s return on shareholder equity, indicating operational efficiency based on profit generated relative to the equity base.&lt;SEP&gt;Return on equity stood at 10%, indicating efficient use of shareholder equity.&lt;SEP&gt;The return on equity of 6.67% in January 2021 reflects the operational efficiency generated from shareholder equity.</data>
+  <data key="d2">chunk-975be914f8bb23cf2cc514afda9287d0&lt;SEP&gt;chunk-689fcff3369d87c0d1932bfeb27bbc25&lt;SEP&gt;chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d3">[{"level": 0, "cluster": 1}]</data>
+</node>
+<node id="FINANCIAL PERFORMANCE REVIEW">
+  <data key="d0">EVENT</data>
+  <data key="d1">Conducted in April 2021 to assess the company's financial health and identify areas for improvement.</data>
+  <data key="d2">chunk-b2fe366c1e03267f881e81f6b3c08b86</data>
+</node>
+<node id="STRATEGIC PARTNERSHIP">
+  <data key="d0">EVENT</data>
+  <data key="d1">Announced in May 2021 to expand capabilities, market reach, and opportunities.</data>
+  <data key="d2">chunk-b2fe366c1e03267f881e81f6b3c08b86</data>
+</node>
+<node id="NEW MARKET EXPANSION PLAN">
+  <data key="d0">EVENT</data>
+  <data key="d1">Unveiled in June 2021 to diversify revenue streams and broaden the client base.</data>
+  <data key="d2">chunk-b2fe366c1e03267f881e81f6b3c08b86</data>
+</node>
+<node id="COMPLIANCE AND REGULATORY UPDATES">
+  <data key="d0">EVENT</data>
+  <data key="d1">Occurred in March 2021 to ensure adherence to laws and regulations, enhancing corporate governance.</data>
+  <data key="d2">chunk-b2fe366c1e03267f881e81f6b3c08b86</data>
+</node>
+<node id="BOARD OF DIRECTORS CHANGE">
+  <data key="d0">EVENT</data>
+  <data key="d1">Occurred in April 2021 to shape strategic direction with diverse expertise and perspectives.</data>
+  <data key="d2">chunk-b2fe366c1e03267f881e81f6b3c08b86</data>
+</node>
+<node id="MANAGEMENT CHANGES">
+  <data key="d0">EVENT</data>
+  <data key="d1">Happened in May 2021 to align management priorities with the company's vision and enhance performance.</data>
+  <data key="d2">chunk-b2fe366c1e03267f881e81f6b3c08b86</data>
+</node>
+<node id="SUSTAINABILITY AND SOCIAL RESPONSIBILITY INITIATIVES">
+  <data key="d0">EVENT</data>
+  <data key="d1">EVENT&lt;SEP&gt;In October 2019, EcoGuard Solutions achieved significant milestones in sustainability initiatives including community collaboration, reducing carbon footprint, and educational outreach to enhance its public image and market competitiveness.&lt;SEP&gt;Undertaken in June 2021 to promote environmental protection, social responsibility, and corporate citizenship.</data>
+  <data key="d2">chunk-b2fe366c1e03267f881e81f6b3c08b86&lt;SEP&gt;chunk-672984301753d0e346cd1c5cc1cfe908</data>
+</node>
+<node id="ENTERTAINMENT ENTERPRISES INC">
+  <data key="d0">ORGANIZATION</data>
+  <data key="d1">Entertainment Enterprises Inc. is an entertainment company established on January 1, 2000, in Los Angeles, California, primarily engaged in film, TV show, and music production and distribution.</data>
+  <data key="d2">chunk-aca93e51cb89abee49a4c47d5b74548a</data>
+</node>
+<node id="LOS ANGELES, CALIFORNIA">
+  <data key="d0">GEO</data>
+  <data key="d1">The headquarters of Entertainment Enterprises Inc., located in Los Angeles, California.</data>
+  <data key="d2">chunk-aca93e51cb89abee49a4c47d5b74548a</data>
+</node>
+<node id="MAJOR INVESTMENT IN &quot;THE GREAT ESCAPE&quot;">
+  <data key="d0">EVENT</data>
+  <data key="d1">In March 2019, a major investment of $50 million was made in the production of the blockbuster film "The Great Escape."</data>
+  <data key="d2">chunk-aca93e51cb89abee49a4c47d5b74548a</data>
+</node>
+<node id="$300 MILLION BOX OFFICE REVENUE PROJECTION">
+  <data key="d0">METRIC</data>
+  <data key="d1">The projected global box office revenue from the investment in "The Great Escape" is $300 million.</data>
+  <data key="d2">chunk-aca93e51cb89abee49a4c47d5b74548a</data>
+</node>
+<node id="DIGITAL DISTRIBUTION PLATFORM EXPANSION">
+  <data key="d0">EVENT</data>
+  <data key="d1">In January 2019, Entertainment Enterprises Inc. expanded its digital distribution platform by adding more titles and partnering with major streaming platforms for exclusive content licensing.</data>
+  <data key="d2">chunk-aca93e51cb89abee49a4c47d5b74548a</data>
+</node>
+<node id="ACQUISITION OF PRODUCTION STUDIO SPECIALIZING IN VISUAL EFFECTS AND ANIMATION">
+  <data key="d0">EVENT</data>
+  <data key="d1">Acquisition of a renowned production studio specializing in visual effects and animation to enhance internal production capabilities and competitive edge.</data>
+  <data key="d2">chunk-aca93e51cb89abee49a4c47d5b74548a</data>
+</node>
+<node id="30% EQUITY IN MUSIC PRODUCTIONS INC">
+  <data key="d0">EVENT</data>
+  <data key="d1">In June 2019, Entertainment Enterprises Inc. acquired 30% equity in Music Productions Inc., a leading record label.</data>
+  <data key="d2">chunk-aca93e51cb89abee49a4c47d5b74548a</data>
+</node>
+<node id="DEBT RESTRUCTURING">
+  <data key="d0">EVENT</data>
+  <data key="d1">In July 2019, the company underwent debt restructuring to optimize its capital structure and reduce liabilities by $20 million.&lt;SEP&gt;In September 2019, EcoGuard Solutions underwent debt restructuring to reduce liabilities by $15 million, improving financial stability.</data>
+  <data key="d2">chunk-975be914f8bb23cf2cc514afda9287d0&lt;SEP&gt;chunk-aca93e51cb89abee49a4c47d5b74548a</data>
+</node>
+<node id="BOND ISSUANCE FOR FINANCING ACTIVITY">
+  <data key="d0">EVENT</data>
+  <data key="d1">In August 2019, Entertainment Enterprises Inc. raised $100 million through a bond issuance to strengthen financial strength and support expansion and development.</data>
+  <data key="d2">chunk-aca93e51cb89abee49a4c47d5b74548a</data>
+</node>
+<node id="ASSET RESTRUCTURING">
+  <data key="d0">EVENT</data>
+  <data key="d1">In November 2019, EcoGuard Solutions restructured its assets to optimize operations and enhance efficiency.&lt;SEP&gt;In October 2019, the company underwent asset restructuring to focus on core entertainment businesses and sell non-core assets, improving operational efficiency and overall value.</data>
+  <data key="d2">chunk-975be914f8bb23cf2cc514afda9287d0&lt;SEP&gt;chunk-aca93e51cb89abee49a4c47d5b74548a</data>
+</node>
+<node id="ACQUISITION OF DREAM STUDIOS">
+  <data key="d0">EVENT</data>
+  <data key="d1">In November 2019, Entertainment Enterprises Inc. acquired Dream Studios for $200 million, expanding its business scope and market competitiveness.</data>
+  <data key="d2">chunk-aca93e51cb89abee49a4c47d5b74548a</data>
+</node>
+<node id="DIVIDEND DISTRIBUTION TO SHAREHOLDERS">
+  <data key="d0">EVENT</data>
+  <data key="d1">In December 2019, the company distributed $5 million of dividends to shareholders.</data>
+  <data key="d2">chunk-aca93e51cb89abee49a4c47d5b74548a</data>
+</node>
+<node id="OPERATING INCOME OF $500 MILLION">
+  <data key="d0">METRIC</data>
+  <data key="d1">The total operating income reached $500 million in a certain accounting period, reflecting main business income and other business income.</data>
+  <data key="d2">chunk-aca93e51cb89abee49a4c47d5b74548a</data>
+</node>
+<node id="NET PROFIT OF $50 MILLION">
+  <data key="d0">METRIC</data>
+  <data key="d1">The net profit amounted to $50 million after deducting costs and taxes from the total income within a certain accounting period.</data>
+  <data key="d2">chunk-aca93e51cb89abee49a4c47d5b74548a</data>
+</node>
+<node id="TOTAL ASSETS OF $1.2 BILLION">
+  <data key="d0">METRIC</data>
+  <data key="d1">Entertainment Enterprises Inc.'s total assets reached $1.2 billion at the end of an accounting period, influenced by asset acquisitions, disposals, and revaluation.</data>
+  <data key="d2">chunk-aca93e51cb89abee49a4c47d5b74548a</data>
+</node>
+<node id="TOTAL LIABILITIES OF $300 MILLION">
+  <data key="d0">METRIC</data>
+  <data key="d1">The company's total liabilities amounted to $300 million at the end of an accounting period.</data>
+  <data key="d2">chunk-aca93e51cb89abee49a4c47d5b74548a</data>
+</node>
+<node id="&lt;ENTITY_NAME&gt;">
+  <data key="d0">&lt;ENTITY_TYPE&gt;</data>
+  <data key="d1">&lt;entity_description&gt;</data>
+  <data key="d2">chunk-aca93e51cb89abee49a4c47d5b74548a</data>
+</node>
+<node id="DIVIDEND DISTRIBUTION">
+  <data key="d0">EVENT</data>
+  <data key="d1">In January 2021, Acme Government Solutions distributed $5 million of dividends to its shareholders.</data>
+  <data key="d2">chunk-aca93e51cb89abee49a4c47d5b74548a</data>
+  <data key="d3">[{"level": 0, "cluster": 2}]</data>
+</node>
+<node id="GOVERNMENT CONTRACT ACQUISITION">
+  <data key="d0">EVENT</data>
+  <data key="d1">In March 2019, Acme Government Solutions acquired a major government contract worth $100 million.</data>
+  <data key="d2">chunk-aca93e51cb89abee49a4c47d5b74548a</data>
+  <data key="d3">[{"level": 0, "cluster": 0}]</data>
+</node>
+<node id="ENTERTAINMENT ENTERPRISES INC.">
+  <data key="d0">ORGANIZATION</data>
+  <data key="d1">Entertainment Enterprises Inc. is an organization involved in the entertainment industry, focusing on asset management, shareholder equity, and strategic investments.&lt;SEP&gt;Entertainment Enterprises Inc. is an organization within the entertainment industry that has embraced diversity and inclusion, supported community engagement programs, initiated philanthropic efforts, and appointed experienced directors to its board of directors.</data>
+  <data key="d2">chunk-b2781b10037fc8d117504266c9640136&lt;SEP&gt;chunk-689fcff3369d87c0d1932bfeb27bbc25</data>
+</node>
+<node id="$1.2 BILLION">
+  <data key="d0">METRIC</data>
+  <data key="d1">The total assets held by Entertainment Enterprises Inc. at the end of a given accounting period.</data>
+  <data key="d2">chunk-689fcff3369d87c0d1932bfeb27bbc25</data>
+</node>
+<node id="$300 MILLION">
+  <data key="d0">METRIC</data>
+  <data key="d1">Total liabilities owed by Entertainment Enterprises Inc. at the end of a certain accounting period.</data>
+  <data key="d2">chunk-689fcff3369d87c0d1932bfeb27bbc25</data>
+</node>
+<node id="SUSTAINABILITY PROGRAM">
+  <data key="d0">EVENT</data>
+  <data key="d1">A significant initiative launched by Entertainment Enterprises Inc. in January 2019 to reduce its carbon footprint and implement environmentally friendly practices.</data>
+  <data key="d2">chunk-689fcff3369d87c0d1932bfeb27bbc25</data>
+</node>
+<node id="DIVERSITY AND INCLUSION INITIATIVE">
+  <data key="d0">EVENT</data>
+  <data key="d1">An organizational program aimed at promoting equal opportunities, fostering a diverse workforce, and improving workplace culture.</data>
+  <data key="d2">chunk-689fcff3369d87c0d1932bfeb27bbc25</data>
+</node>
+<node id="COMMUNITY ENGAGEMENT PROGRAMS">
+  <data key="d0">EVENT</data>
+  <data key="d1">Community-focused initiatives undertaken by Entertainment Enterprises Inc. to foster goodwill, strengthen relationships with stakeholders, and improve public image.&lt;SEP&gt;The company actively supported various community engagement programs, making a positive impact in local communities.</data>
+  <data key="d2">chunk-b2781b10037fc8d117504266c9640136&lt;SEP&gt;chunk-689fcff3369d87c0d1932bfeb27bbc25</data>
+</node>
+<node id="ASSET ACQUISITIONS">
+  <data key="d0">EVENT</data>
+  <data key="d1">Entertainment Enterprises Inc.'s acquisitions of additional assets contributed to its growth and expanded its operational capabilities.</data>
+  <data key="d2">chunk-689fcff3369d87c0d1932bfeb27bbc25</data>
+</node>
+<node id="ASSET DISPOSALS">
+  <data key="d0">EVENT</data>
+  <data key="d1">The process by which Entertainment Enterprises Inc. sold or disposed of certain assets, potentially freeing up capital for other purposes.</data>
+  <data key="d2">chunk-689fcff3369d87c0d1932bfeb27bbc25</data>
+</node>
+<node id="ASSET REVALUATION">
+  <data key="d0">EVENT</data>
+  <data key="d1">Entertainment Enterprises Inc.'s adjustments to the recorded values of its assets based on changes in market conditions or depreciation.</data>
+  <data key="d2">chunk-689fcff3369d87c0d1932bfeb27bbc25</data>
+</node>
+<node id="JENNIFER ADAMS">
+  <data key="d0">PERSON</data>
+  <data key="d1">Jennifer Adams is a new independent director appointed to Entertainment Enterprises Inc.'s board of directors in February 2019.</data>
+  <data key="d2">chunk-b2781b10037fc8d117504266c9640136</data>
+</node>
+<node id="MICHAEL COLLINS">
+  <data key="d0">PERSON</data>
+  <data key="d1">Michael Collins is another new independent director appointed to Entertainment Enterprises Inc.'s board of directors in February 2019.</data>
+  <data key="d2">chunk-b2781b10037fc8d117504266c9640136</data>
+</node>
+<node id="JANUARY 2019 SHAREHOLDERS MEETING DECISIONS">
+  <data key="d0">EVENT</data>
+  <data key="d1">In January 2019, key decisions were made at the shareholders' meeting including an increase in authorized share capital, election of new board members, and approval of dividend payments.</data>
+  <data key="d2">chunk-b2781b10037fc8d117504266c9640136</data>
+</node>
+<node id="DIVERSITY AND INCLUSION INITIATIVES">
+  <data key="d0">EVENT</data>
+  <data key="d1">Entertainment Enterprises Inc. embraced diversity and inclusion to position itself as a progressive organization within the entertainment industry.</data>
+  <data key="d2">chunk-b2781b10037fc8d117504266c9640136</data>
+</node>
+<node id="ADVANCED MANUFACTURING SOLUTIONS INC.">
+  <data key="d0">ORGANIZATION</data>
+  <data key="d1">Advanced Manufacturing Solutions Inc. is a publicly listed manufacturing company specializing in high-tech precision tools and equipment, established in Cityville, Techland on August 15, 2005.</data>
+  <data key="d2">chunk-7956ab069ce99514ade3267d3c938ac2</data>
+</node>
+<node id="CITYVILLE, TECHLAND">
+  <data key="d0">GEO</data>
+  <data key="d1">Cityville and Techland are the locations where Advanced Manufacturing Solutions Inc. operates its business.</data>
+  <data key="d2">chunk-7956ab069ce99514ade3267d3c938ac2</data>
+</node>
+<node id="2017">
+  <data key="d0">YEAR</data>
+  <data key="d1">The year 2017 was significant for Advanced Manufacturing Solutions Inc., marked by various financial developments and strategic initiatives.</data>
+  <data key="d2">chunk-7956ab069ce99514ade3267d3c938ac2</data>
+</node>
+<node id="ECOGUARD SOLUTIONS">
+  <data key="d0">ORGANIZATION</data>
+  <data key="d1">EcoGuard Solutions is a NASDAQ-listed company specializing in environmental protection services and solutions, established on April 15, 2010, based in San Francisco, California, United States.&lt;SEP&gt;EcoGuard Solutions is a company that focuses on environmental protection solutions and has made significant acquisitions in the industry.&lt;SEP&gt;EcoGuard Solutions is an environmental protection company that focuses on water purification, renewable energy, and air pollution control services.</data>
+  <data key="d2">chunk-975be914f8bb23cf2cc514afda9287d0&lt;SEP&gt;chunk-672984301753d0e346cd1c5cc1cfe908&lt;SEP&gt;chunk-6ae9afa65ef8f71c3dd7c7c926bf42f2</data>
+</node>
+<node id="NASDAQ">
+  <data key="d0">ORGANIZATION</data>
+  <data key="d1">National Association of Stock Exchange of Commodities is an American stock exchange where publicly traded companies can list their shares for trading.</data>
+  <data key="d2">chunk-6ae9afa65ef8f71c3dd7c7c926bf42f2</data>
+</node>
+<node id="SAN FRANCISCO">
+  <data key="d0">GEO</data>
+  <data key="d1">San Francisco is a major city located in the state of California, United States.</data>
+  <data key="d2">chunk-6ae9afa65ef8f71c3dd7c7c926bf42f2</data>
+</node>
+<node id="CALIFORNIA">
+  <data key="d0">GEO</data>
+  <data key="d1">California is a state located on the west coast of the United States.</data>
+  <data key="d2">chunk-6ae9afa65ef8f71c3dd7c7c926bf42f2</data>
+</node>
+<node id="UNITED STATES">
+  <data key="d0">GEO</data>
+  <data key="d1">The United States is a country located in North America.</data>
+  <data key="d2">chunk-6ae9afa65ef8f71c3dd7c7c926bf42f2</data>
+</node>
+<node id="PROJECT CLEANWATER">
+  <data key="d0">EVENT</data>
+  <data key="d1">A major investment and development project aimed at advancing water purification technology, with an investment of $10 million in 2019.</data>
+  <data key="d2">chunk-6ae9afa65ef8f71c3dd7c7c926bf42f2</data>
+</node>
+<node id="GOVERNMENT GRANT">
+  <data key="d0">EVENT</data>
+  <data key="d1">A financial award granted to EcoGuard Solutions for developing eco-friendly water purification solutions, amounting to $5 million in June 2019.</data>
+  <data key="d2">chunk-6ae9afa65ef8f71c3dd7c7c926bf42f2</data>
+</node>
+<node id="INTERNATIONAL TRADE AGREEMENT">
+  <data key="d0">EVENT</data>
+  <data key="d1">An agreement with a major water technology distributor in September 2019 that established a global distribution network for Project CleanWater.</data>
+  <data key="d2">chunk-6ae9afa65ef8f71c3dd7c7c926bf42f2</data>
+</node>
+<node id="EQUITY AND DEBT FINANCING">
+  <data key="d0">EVENT</data>
+  <data key="d1">A funding round raising $50 million through equity and debt financing in April 2019 to support operations expansion and new environmental technologies development.</data>
+  <data key="d2">chunk-6ae9afa65ef8f71c3dd7c7c926bf42f2</data>
+</node>
+<node id="ACQUISITION OF AQUALIFE INC.">
+  <data key="d0">EVENT</data>
+  <data key="d1">Acquisition of 75% equity of AquaLife Inc., a leading provider of sustainable water treatment solutions, in May 2019.</data>
+  <data key="d2">chunk-6ae9afa65ef8f71c3dd7c7c926bf42f2</data>
+</node>
+<node id="ENERGYECO INC.">
+  <data key="d0">ORGANIZATION</data>
+  <data key="d1">A company specializing in renewable energy solutions acquired by EcoGuard Solutions for $30 million in June 2019.</data>
+  <data key="d2">chunk-6ae9afa65ef8f71c3dd7c7c926bf42f2</data>
+</node>
+<node id="CLEANGART TECH">
+  <data key="d0">ORGANIZATION</data>
+  <data key="d1">A leading provider of air pollution control solutions, formed a strategic partnership with EcoGuard Solutions in July 2019.</data>
+  <data key="d2">chunk-6ae9afa65ef8f71c3dd7c7c926bf42f2</data>
+</node>
+<node id="EQUITY AND DEBT FINANCING INVESTMENT ROUND">
+  <data key="d0">EVENT</data>
+  <data key="d1">A significant funding round raising $50 million through equity and debt financing, aimed at supporting operations expansion and accelerating development of new environmental technologies.</data>
+  <data key="d2">chunk-6ae9afa65ef8f71c3dd7c7c926bf42f2</data>
+</node>
+<node id="FINANCIAL PERFORMANCE">
+  <data key="d0">EVENT</data>
+  <data key="d1">EcoGuard Solutions reported an operating income of $250 million and net profit of $30 million in 2019.</data>
+  <data key="d2">chunk-975be914f8bb23cf2cc514afda9287d0</data>
+</node>
+<node id="CORPORATE GOVERNANCE AND SUSTAINABILITY">
+  <data key="d0">EVENT</data>
+  <data key="d1">In 2019, EcoGuard Solutions prioritized corporate governance and sustainability initiatives to ensure regulatory compliance and protect shareholder interests.</data>
+  <data key="d2">chunk-975be914f8bb23cf2cc514afda9287d0</data>
+</node>
+<node id="RESEARCH AND DEVELOPMENT (R&amp;D)">
+  <data key="d0">EVENT</data>
+  <data key="d1">EcoGuard Solutions expanded its R&amp;D department in June 2019 to meet growing demand for innovative solutions by hiring top-tier scientists and engineers.</data>
+  <data key="d2">chunk-975be914f8bb23cf2cc514afda9287d0</data>
+</node>
+<node id="STRATEGIC PARTNERSHIP WITH AN INDUSTRY LEADER">
+  <data key="d0">EVENT</data>
+  <data key="d1">In August 2019, EcoGuard Solutions forged a partnership to improve market presence and technological capabilities through shared resources and knowledge-sharing.</data>
+  <data key="d2">chunk-975be914f8bb23cf2cc514afda9287d0</data>
+</node>
+<node id="MAJOR ACQUISITION">
+  <data key="d0">EVENT</data>
+  <data key="d1">In October 2019, EcoGuard Solutions acquired a competitor to consolidate market position, expand product portfolio, and leverage customer relationships for revenue growth.</data>
+  <data key="d2">chunk-975be914f8bb23cf2cc514afda9287d0</data>
+</node>
+<node id="ACQUISITION">
+  <data key="d0">EVENT</data>
+  <data key="d1">The acquisition of a competitor in October 2019 allowed EcoGuard Solutions to consolidate its market position, expand its product portfolio, and leverage acquired technology for revenue growth.</data>
+  <data key="d2">chunk-672984301753d0e346cd1c5cc1cfe908</data>
+</node>
+<node id="CORPORATE GOVERNANCE POLICIES">
+  <data key="d0">EVENT</data>
+  <data key="d1">In April 2019, EcoGuard Solutions revised its corporate governance policies with a focus on reporting mechanisms, compliance, and accountability to enhance transparency and stakeholder confidence.</data>
+  <data key="d2">chunk-672984301753d0e346cd1c5cc1cfe908</data>
+</node>
+<node id="RISK MANAGEMENT MEASURES">
+  <data key="d0">EVENT</data>
+  <data key="d1">In May 2019, EcoGuard Solutions implemented risk management measures establishing a dedicated department to conduct risk assessments and streamline reporting processes for resilience and continuous operation.</data>
+  <data key="d2">chunk-672984301753d0e346cd1c5cc1cfe908</data>
+</node>
+<node id="ETHICS AND INTEGRITY INCIDENTS">
+  <data key="d0">EVENT</data>
+  <data key="d1">In August 2019, EcoGuard Solutions took prompt action to address an incident of unauthorized data access by enhancing cybersecurity measures and providing employee training to reinforce ethical standards.</data>
+  <data key="d2">chunk-672984301753d0e346cd1c5cc1cfe908</data>
+</node>
+<node id="MR. MICHAEL THOMPSON">
+  <data key="d0">PERSON</data>
+  <data key="d1">Assumed the role of Chief Executive Officer in November 2019, optimizing the company's focus on R&amp;D and client relationships for sustainable growth.</data>
+  <data key="d2">chunk-672984301753d0e346cd1c5cc1cfe908</data>
+</node>
+<node id="MR. ROBERT JOHNSON">
+  <data key="d0">PERSON</data>
+  <data key="d1">Appointed to the Board of Directors in December 2019, bringing environmental science expertise and a positive impact on strategic direction and sustainable growth.</data>
+  <data key="d2">chunk-672984301753d0e346cd1c5cc1cfe908</data>
+</node>
+<node id="INFORMATION DISCLOSURE COMPLIANCE">
+  <data key="d0">EVENT</data>
+  <data key="d1">Achieved 97% compliance rate exceeding industry benchmarks fostering trust and transparency.</data>
+  <data key="d2">chunk-672984301753d0e346cd1c5cc1cfe908</data>
+</node>
+<node id="RELATED TRANSACTIONS COMPLIANCE">
+  <data key="d0">EVENT</data>
+  <data key="d1">Ensured fairness and compliance with comprehensive audit finding 100% compliance reinforcing integrity and fair business practices.</data>
+  <data key="d2">chunk-672984301753d0e346cd1c5cc1cfe908</data>
+</node>
+<node id="INTERNAL CONTROL SYSTEM">
+  <data key="d0">EVENT</data>
+  <data key="d1">Received an 'excellent' rating from independent audit commending coverage and evaluation processes governing operational and financial processes.</data>
+  <data key="d2">chunk-672984301753d0e346cd1c5cc1cfe908</data>
+</node>
+<node id="ACQUISITION OF COMPETITOR">
+  <data key="d0">ENTITY_TYPE</data>
+  <data key="d1">ORGANIZATION</data>
+  <data key="d2">chunk-672984301753d0e346cd1c5cc1cfe908</data>
+</node>
+<node id="REVISION OF CORPORATE GOVERNANCE POLICIES">
+  <data key="d0">ENTITY_TYPE</data>
+  <data key="d1">EVENT</data>
+  <data key="d2">chunk-672984301753d0e346cd1c5cc1cfe908</data>
+</node>
+<node id="IMPLEMENTATION OF RISK MANAGEMENT MEASURES">
+  <data key="d0">ENTITY_TYPE</data>
+  <data key="d1">EVENT</data>
+  <data key="d2">chunk-672984301753d0e346cd1c5cc1cfe908</data>
+</node>
+<node id="INCIDENT OF UNAUTHORIZED DATA ACCESS">
+  <data key="d0">ENTITY_TYPE</data>
+  <data key="d1">EVENT</data>
+  <data key="d2">chunk-672984301753d0e346cd1c5cc1cfe908</data>
+</node>
+<node id="MR. MICHAEL THOMPSON AS CHIEF EXECUTIVE OFFICER">
+  <data key="d0">ENTITY_TYPE</data>
+  <data key="d1">PERSON</data>
+  <data key="d2">chunk-672984301753d0e346cd1c5cc1cfe908</data>
+</node>
+<node id="MR. ROBERT JOHNSON TO THE BOARD OF DIRECTORS">
+  <data key="d0">ENTITY_TYPE</data>
+  <data key="d1">PERSON</data>
+  <data key="d2">chunk-672984301753d0e346cd1c5cc1cfe908</data>
+</node>
+<node id="INFORMATION DISCLOSURE COMPLIANCE RATE">
+  <data key="d0">ENTITY_TYPE</data>
+  <data key="d1">METRIC</data>
+  <data key="d2">chunk-672984301753d0e346cd1c5cc1cfe908</data>
+</node>
+<node id="RELATED TRANSACTIONS COMPLIANCE RATE">
+  <data key="d0">ENTITY_TYPE</data>
+  <data key="d1">METRIC</data>
+  <data key="d2">chunk-672984301753d0e346cd1c5cc1cfe908</data>
+</node>
+<node id="INTERNAL CONTROL SYSTEM RATING">
+  <data key="d0">ENTITY_TYPE</data>
+  <data key="d1">METRIC</data>
+  <data key="d2">chunk-672984301753d0e346cd1c5cc1cfe908</data>
+</node>
+<node id="ACQUISITION OF ENERGYECO INC.">
+  <data key="d2">chunk-6ae9afa65ef8f71c3dd7c7c926bf42f2</data>
+  <data key="d1">The acquisition provided additional resources and expertise for the development of renewable energy solutions, supporting EcoGuard Solutions' commitment to sustainability.)&lt;SEP&gt;The acquisition strengthened EcoGuard Solutions' business scope by adding expertise in renewable energy solutions, improving its overall competitiveness and market position.)</data>
+  <data key="d0">"UNKNOWN"</data>
+</node>
+<node id="PARTNERSHIP WITH CLEANGART TECH">
+  <data key="d2">chunk-6ae9afa65ef8f71c3dd7c7c926bf42f2</data>
+  <data key="d1">The partnership with CleanAirTech enabled the provision of integrated environmental protection services, enhancing EcoGuard Solutions' offerings and expanding its market reach.)</data>
+  <data key="d0">"UNKNOWN"</data>
+</node>
+<node id="INTERNATIONAL TRADE AGREEMENT WITH ACQUISITION OF AQUALIFE INC.">
+  <data key="d2">chunk-6ae9afa65ef8f71c3dd7c7c926bf42f2</data>
+  <data key="d1">The partnership with EnergyEco Inc. and the acquisition of AquaLife Inc. enabled EcoGuard Solutions to expand its global reach through international trade agreements, enhancing its market presence and competitiveness.)</data>
+  <data key="d0">"UNKNOWN"</data>
+</node>
+<edge source="ACME GOVERNMENT SOLUTIONS" target="$5 MILLION">
+  <data key="d4">9.0</data>
+  <data key="d5">The dividend distribution of $5 million enhanced shareholder returns and showcased the company's commitment to investors.</data>
+  <data key="d6">chunk-710e433987ccbb1d687dbca379e116c4</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="ACME GOVERNMENT SOLUTIONS" target="$100 MILLION">
+  <data key="d4">18.0</data>
+  <data key="d5">The acquisition of a major government contract directly contributed to the successful dividend distribution, enhancing revenue potential.&lt;SEP&gt;The acquisition of a major government contract increased revenue potential and market share, contributing to financial stability and growth opportunities.</data>
+  <data key="d6">chunk-710e433987ccbb1d687dbca379e116c4</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="ACME GOVERNMENT SOLUTIONS" target="REGIONAL OFFICES EXPANSION">
+  <data key="d4">8.0</data>
+  <data key="d5">Establishing regional offices expanded market reach and access to new geographic markets.</data>
+  <data key="d6">chunk-710e433987ccbb1d687dbca379e116c4</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="ACME GOVERNMENT SOLUTIONS" target="STRATEGIC PARTNERSHIP WITH TECHNOLOGY FIRM">
+  <data key="d4">9.0</data>
+  <data key="d5">The partnership provided access to advanced technology and expertise, strengthening the company's competitive advantage in developing innovative solutions for government agencies.</data>
+  <data key="d6">chunk-710e433987ccbb1d687dbca379e116c4</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="ACME GOVERNMENT SOLUTIONS" target="WORLD WAR II">
+  <data key="d4">2.0</data>
+  <data key="d5">The company may have provided services related to government during this historical period.</data>
+  <data key="d6">chunk-710e433987ccbb1d687dbca379e116c4</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="ACME GOVERNMENT SOLUTIONS" target="OPERATING INCOME">
+  <data key="d4">9.0</data>
+  <data key="d5">Increased market demand and changes in product prices directly contributed to Acme Government Solutions' operating income reaching $100 million.</data>
+  <data key="d6">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="ACME GOVERNMENT SOLUTIONS" target="NET PROFIT">
+  <data key="d4">9.0</data>
+  <data key="d5">Effective cost control measures and non-recurring gains/losses resulted in a net profit of $20 million for Acme Government Solutions.</data>
+  <data key="d6">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="ACME GOVERNMENT SOLUTIONS" target="TOTAL ASSETS">
+  <data key="d4">9.0</data>
+  <data key="d5">Acme's total assets reached $500 million due to significant asset acquisitions, disposals, and revaluations.</data>
+  <data key="d6">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="ACME GOVERNMENT SOLUTIONS" target="SHAREHOLDER EQUITY">
+  <data key="d4">9.0</data>
+  <data key="d5">The company's shareholder equity of $300 million was driven by net profit, dividends, and capital reserves.</data>
+  <data key="d6">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="ACME GOVERNMENT SOLUTIONS" target="CASH FLOW">
+  <data key="d4">9.0</data>
+  <data key="d5">Efficient management resulted in a cash flow of $50 million for Acme Government Solutions.</data>
+  <data key="d6">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="ACME GOVERNMENT SOLUTIONS" target="DEBT RATIO">
+  <data key="d4">9.0</data>
+  <data key="d5">A debt ratio of 0.4 indicates a moderate level of debt relative to total assets, suggesting balanced financial leverage.</data>
+  <data key="d6">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="ACME GOVERNMENT SOLUTIONS" target="DEBT TO ASSETS RATIO">
+  <data key="d4">9.0</data>
+  <data key="d5">The debt to assets ratio of 40% highlights the company's financial leverage and overall balance between debt and equity financing.</data>
+  <data key="d6">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="ACME GOVERNMENT SOLUTIONS" target="RETURN ON EQUITY">
+  <data key="d4">9.0</data>
+  <data key="d5">A return on equity of 6.67% reflects efficient use of shareholder equity to generate profits.</data>
+  <data key="d6">chunk-a62ff4f6b31d69fe0b86e45c1a16b1c2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="ACME GOVERNMENT SOLUTIONS" target="DIVIDEND DISTRIBUTION">
+  <data key="d4">18.0</data>
+  <data key="d5">Acme Government Solutions made the decision to distribute dividends to shareholders.</data>
+  <data key="d6">chunk-aca93e51cb89abee49a4c47d5b74548a</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="ACME GOVERNMENT SOLUTIONS" target="GOVERNMENT CONTRACT ACQUISITION">
+  <data key="d4">18.0</data>
+  <data key="d5">Acme Government Solutions successfully acquired a major government contract.</data>
+  <data key="d6">chunk-aca93e51cb89abee49a4c47d5b74548a</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="$5 MILLION" target="DIVIDEND DISTRIBUTION">
+  <data key="d4">20.0</data>
+  <data key="d5">The dividend distribution amounted to $5 million.</data>
+  <data key="d6">chunk-aca93e51cb89abee49a4c47d5b74548a</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="$100 MILLION" target="GOVERNMENT CONTRACT ACQUISITION">
+  <data key="d4">20.0</data>
+  <data key="d5">The acquired government contract was worth $100 million.</data>
+  <data key="d6">chunk-aca93e51cb89abee49a4c47d5b74548a</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="DEBT RESTRUCTURING" target="ECOGUARD SOLUTIONS">
+  <data key="d4">9.0</data>
+  <data key="d5">Debt restructuring improved financial stability and freed resources for investments.</data>
+  <data key="d6">chunk-975be914f8bb23cf2cc514afda9287d0</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="DIVIDEND DISTRIBUTION" target="GOVERNMENT CONTRACT ACQUISITION">
+  <data key="d4">16.0</data>
+  <data key="d5">The dividend distribution was a direct result of the successful government contract acquisition.</data>
+  <data key="d6">chunk-aca93e51cb89abee49a4c47d5b74548a</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="ECOGUARD SOLUTIONS" target="PROJECT CLEANWATER">
+  <data key="d4">10.0</data>
+  <data key="d5">EcoGuard Solutions made significant investments and partnerships related to the development and expansion of Project CleanWater.</data>
+  <data key="d6">chunk-6ae9afa65ef8f71c3dd7c7c926bf42f2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="ECOGUARD SOLUTIONS" target="EQUITY AND DEBT FINANCING INVESTMENT ROUND">
+  <data key="d4">8.0</data>
+  <data key="d5">The investment round provided resources to support EcoGuard Solutions' growth initiatives.)</data>
+  <data key="d6">chunk-6ae9afa65ef8f71c3dd7c7c926bf42f2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="ECOGUARD SOLUTIONS" target="ACQUISITION">
+  <data key="d4">9.0</data>
+  <data key="d5">The acquisition strengthened EcoGuard Solutions' market position, expanded product portfolio, and enabled revenue growth through acquired technology.</data>
+  <data key="d6">chunk-672984301753d0e346cd1c5cc1cfe908</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="PROJECT CLEANWATER" target="GOVERNMENT GRANT">
+  <data key="d4">9.0</data>
+  <data key="d5">The government grant provided valuable financial support for the research, development, and marketing of Project CleanWater, enhancing EcoGuard Solutions' reputation in the industry.)</data>
+  <data key="d6">chunk-6ae9afa65ef8f71c3dd7c7c926bf42f2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="PROJECT CLEANWATER" target="INTERNATIONAL TRADE AGREEMENT">
+  <data key="d4">8.0</data>
+  <data key="d5">This agreement established a global distribution network for Project CleanWater, significantly boosting its market potential and expanding EcoGuard Solutions' global reach.)</data>
+  <data key="d6">chunk-6ae9afa65ef8f71c3dd7c7c926bf42f2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="PROJECT CLEANWATER" target="ACQUISITION OF AQUALIFE INC.">
+  <data key="d4">7.0</data>
+  <data key="d5">The acquisition expanded the company's market share in the water treatment industry and enhanced its control over the supply chain, enabling the offering of comprehensive environmental services.)</data>
+  <data key="d6">chunk-6ae9afa65ef8f71c3dd7c7c926bf42f2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="PROJECT CLEANWATER" target="ENERGYECO INC.">
+  <data key="d4">6.0</data>
+  <data key="d5">Acquiring EnergyEco Inc. allowed EcoGuard Solutions to expand its business scope to include renewable energy services and strengthened its market competitiveness.)</data>
+  <data key="d6">chunk-6ae9afa65ef8f71c3dd7c7c926bf42f2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="PROJECT CLEANWATER" target="CLEANGART TECH">
+  <data key="d4">5.0</data>
+  <data key="d5">The partnership with CleanAirTech enabled the offering of integrated environmental protection services, strengthening EcoGuard Solutions' position in the air pollution control sector.)</data>
+  <data key="d6">chunk-6ae9afa65ef8f71c3dd7c7c926bf42f2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="INTERNATIONAL TRADE AGREEMENT" target="ACQUISITION OF AQUALIFE INC.">
+  <data key="d4">4.0</data>
+  <data key="d5">This agreement facilitated access to new markets for AquaLife Inc.'s products, contributing to the overall success of EcoGuard Solutions' acquisition strategy.)</data>
+  <data key="d6">chunk-6ae9afa65ef8f71c3dd7c7c926bf42f2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="ACQUISITION OF AQUALIFE INC." target="ACQUISITION OF AQUALIFE INC.">
+  <data key="d4">7.0</data>
+  <data key="d5">EcoGuard Solutions acquired 75% equity of AquaLife Inc., enhancing its market presence and expanding its capabilities in the water treatment sector.)</data>
+  <data key="d6">chunk-6ae9afa65ef8f71c3dd7c7c926bf42f2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="ENERGYECO INC." target="ACQUISITION OF ENERGYECO INC.">
+  <data key="d4">12.0</data>
+  <data key="d5">The acquisition provided additional resources and expertise for the development of renewable energy solutions, supporting EcoGuard Solutions' commitment to sustainability.)&lt;SEP&gt;The acquisition strengthened EcoGuard Solutions' business scope by adding expertise in renewable energy solutions, improving its overall competitiveness and market position.)</data>
+  <data key="d6">chunk-6ae9afa65ef8f71c3dd7c7c926bf42f2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="ENERGYECO INC." target="INTERNATIONAL TRADE AGREEMENT WITH ACQUISITION OF AQUALIFE INC.">
+  <data key="d4">3.0</data>
+  <data key="d5">The partnership with EnergyEco Inc. and the acquisition of AquaLife Inc. enabled EcoGuard Solutions to expand its global reach through international trade agreements, enhancing its market presence and competitiveness.)</data>
+  <data key="d6">chunk-6ae9afa65ef8f71c3dd7c7c926bf42f2</data>
+  <data key="d7">1</data>
+</edge>
+<edge source="CLEANGART TECH" target="PARTNERSHIP WITH CLEANGART TECH">
+  <data key="d4">5.0</data>
+  <data key="d5">The partnership with CleanAirTech enabled the provision of integrated environmental protection services, enhancing EcoGuard Solutions' offerings and expanding its market reach.)</data>
+  <data key="d6">chunk-6ae9afa65ef8f71c3dd7c7c926bf42f2</data>
+  <data key="d7">1</data>
+</edge>
+</graph></graphml>
