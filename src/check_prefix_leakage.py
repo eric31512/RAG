@@ -87,7 +87,7 @@ def check_leakage(graph_path, chunks_path):
         print(f" - {n} (Degree: {d})")
 
 if __name__ == "__main__":
-    KG_DIR = "/tmp2/cctsai/project/RAG/graph/prefix_original_kg"
+    KG_DIR = "/tmp2/cctsai/project/RAG/graph/prefix_original_kg_1"
     graphml_file = os.path.join(KG_DIR, "graph_chunk_entity_relation.graphml")
     chunks_file = os.path.join(KG_DIR, "kv_store_text_chunks.json")
     
