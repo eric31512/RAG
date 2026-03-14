@@ -190,56 +190,56 @@ async def ollama_embedding_func(texts: list[str]) -> np.ndarray:
         embeddings.append(response['embedding'])
     return np.array(embeddings)
 
-# def load_cached_chunks(cache_path: str, use_prefix: bool = True) -> list[str]:
-#     """Load pre-cached chunks.
-    
-#     Args:
-#         cache_path: Path to the chunk cache file (JSON)
-#         use_prefix: If True, include contextual prefix as Background Context.
-#                     If False, only use the original content.
-#     """
-#     with open(cache_path, 'r', encoding='utf-8') as f:
-#         chunks = json.load(f)
-    
-#     documents = []
-#     for chunk in chunks:
-#         meta = chunk.get('metadata', {})
-#         content = meta.get('original_content', chunk['page_content'])
-        
-#         if use_prefix:
-#             prefix = meta.get('contextual_prefix', '')
-#             # 用明確標記讓 LLM 區分背景與目標
-#             combined = (
-#                 f"-Background Context (DO NOT extract from this section)-\n"
-#                 f"{prefix}\n\n"
-#                 f"-Target Chunk (Extract ONLY from the text below)-\n"
-#                 f"{content}"
-#             )
-#         else:
-#             combined = content
-        
-#         documents.append(combined)
-    
-#     print(f"Loaded {len(documents)} chunks (use_prefix={use_prefix}) from cache")
-#     return documents
-
-#merge prefix and content
-def load_cached_chunks(cache_path: str , use_prefix: bool = True) -> list[str]:
-    """Load pre-cached chunks and return as list of strings.
+def load_cached_chunks(cache_path: str, use_prefix: bool = True) -> list[str]:
+    """Load pre-cached chunks.
     
     Args:
         cache_path: Path to the chunk cache file (JSON)
-    
-    Returns:
-        List of chunk content strings
+        use_prefix: If True, include contextual prefix as Background Context.
+                    If False, only use the original content.
     """
     with open(cache_path, 'r', encoding='utf-8') as f:
         chunks = json.load(f)
     
-    # Extract page_content from each chunk
-    documents = [chunk['page_content'] for chunk in chunks]
-    print(f"Loaded {len(documents)} chunks from cache")
+    documents = []
+    for chunk in chunks:
+        meta = chunk.get('metadata', {})
+        content = meta.get('original_content', chunk['page_content'])
+        
+        if use_prefix:
+            prefix = meta.get('contextual_prefix', '')
+            # 用明確標記讓 LLM 區分背景與目標
+            combined = (
+                f"-Background Context (DO NOT extract from this section)-\n"
+                f"{prefix}\n\n"
+                f"-Target Chunk (Extract ONLY from the text below)-\n"
+                f"{content}"
+            )
+        else:
+            combined = content
+        
+        documents.append(combined)
+    
+    print(f"Loaded {len(documents)} chunks (use_prefix={use_prefix}) from cache")
     return documents
+
+#merge prefix and content
+# def load_cached_chunks(cache_path: str , use_prefix: bool = True) -> list[str]:
+#     """Load pre-cached chunks and return as list of strings.
+    
+#     Args:
+#         cache_path: Path to the chunk cache file (JSON)
+    
+#     Returns:
+#         List of chunk content strings
+#     """
+#     with open(cache_path, 'r', encoding='utf-8') as f:
+#         chunks = json.load(f)
+    
+#     # Extract page_content from each chunk
+#     documents = [chunk['page_content'] for chunk in chunks]
+#     print(f"Loaded {len(documents)} chunks from cache")
+#     return documents
 
 # merge 12
 def load_merged_chunks(cache_path: str, group_size: int = 12, overlap: int = 2) -> list[str]:
