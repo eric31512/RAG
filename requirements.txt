@@ -7,6 +7,8 @@ numpy
 openai
 pysbd
 pyserini
+nano-graphrag
+networkx
 
 # NLP
 rouge
