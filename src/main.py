@@ -1,14 +1,13 @@
 from tqdm import tqdm
 from pathlib import Path
 from utils import load_jsonl, save_jsonl
-from retriever import create_retriever
-from recursiveChunker import recursive_chunk
+from retriever_main import create_retriever
+from chunker import recursive_chunk
 from generator import generate_answer
 import argparse
-from query_rewriter import rewrite_query
 import os
 
-def main(query_path, docs_path, language, output_path, mode="hybrid"):
+def main(query_path, docs_path, language, output_path, mode="hybrid", kg_dir=None):
     """
     Main RAG pipeline with configurable retrieval mode.
     
@@ -40,15 +39,8 @@ def main(query_path, docs_path, language, output_path, mode="hybrid"):
     chunk_size = 128 if language == "zh" else 512
     use_kg = mode in ["kg", "kg-contextual", "hybrid-kg", "hybrid-kg-contextual"]
     contextual_kg = mode in ["kg-contextual", "hybrid-kg-contextual"]
-    retriever = create_retriever(chunks, language, chunksize=chunk_size, use_kg=use_kg, contextual_kg=contextual_kg)
+    retriever = create_retriever(chunks, language, chunksize=chunk_size, use_kg=use_kg, contextual_kg=contextual_kg, kg_dir=kg_dir)
     print("Retriever created successfully.")
-
-    # Define rewrite mode
-    # "multi", "hyde", "decompose", "none"
-    if language == 'zh':
-        rewrite_mode = 'none'
-    else:
-        rewrite_mode = 'none' 
 
     for query in tqdm(queries, desc="Processing Queries"):
         # 4. Retrieve relevant chunks
@@ -59,28 +51,9 @@ def main(query_path, docs_path, language, output_path, mode="hybrid"):
             FINAL_TOP_K = 3
 
         
-        # choose mode: "none" / "multi" / "hyde" / "decompose" / "stepback"
-        rewritten_queries = rewrite_query(
-            query_text,
-            language=language,
-            mode=rewrite_mode,      # or "multi", "hyde", "decompose", "stepback" ,"none"
-            num_queries=3      # optional, for "multi"
-        )
-       
-        CANDIDATE_FACTOR = 3
-
-        all_chunks = []
-        for q in rewritten_queries:
-            # for hyde mode
-            #retrieved = retriever.retrieve(q, top_k=FINAL_TOP_K)
-            if hasattr(q, 'query_text'): # 處理不同 rewrite 回傳格式的防呆
-                q_text = q.query_text
-            else:
-                q_text = str(q)
-                
-            # Use mode parameter for retrieval
-            retrieved = retriever.retrieve(q_text, top_k=FINAL_TOP_K, mode=mode)
-            all_chunks.extend(retrieved)
+        # Use mode parameter for retrieval
+        retrieved = retriever.retrieve(query_text, top_k=FINAL_TOP_K, mode=mode)
+        all_chunks = retrieved
 
         # Deduplicate by retriever_id
         seen, unique = set(), []
@@ -117,6 +90,7 @@ if __name__ == "__main__":
                         choices=['hybrid', 'kg', 'kg-contextual', 'hybrid-kg', 'hybrid-kg-contextual'], 
                         default='hybrid',
                         help='Retrieval mode: hybrid, kg, kg-contextual, hybrid-kg, hybrid-kg-contextual')
+    parser.add_argument('--kg_dir', help='Custom Knowledge Graph directory to load', default=None)
     args = parser.parse_args()
     
     # Map KG modes to use correct retrieve mode
@@ -128,5 +102,5 @@ if __name__ == "__main__":
         'hybrid-kg-contextual': 'hybrid-kg'
     }.get(args.mode, 'hybrid')
     
-    main(args.query_path, args.docs_path, args.language, args.output, mode=args.mode)
+    main(args.query_path, args.docs_path, args.language, args.output, mode=args.mode, kg_dir=args.kg_dir)
 

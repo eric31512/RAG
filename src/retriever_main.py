@@ -11,7 +11,7 @@ from llama_index.core.postprocessor import SimilarityPostprocessor
 
 from llama_index.embeddings.ollama import OllamaEmbedding
 from llama_index.core import StorageContext, load_index_from_storage
-from pyserini_bm25 import PyseriniBM25Retriever
+from retriever_bm25 import PyseriniBM25Retriever
 from utils import load_ollama_config
 from reranker import Reranker
 import os
@@ -21,7 +21,7 @@ Settings.llm = None
 Settings.embed_model = None
 
 class Retriever:
-    def __init__(self, chunks, language="en", chunksize=1024, similarity_threshold=0.5, use_kg=False, contextual_kg=False):
+    def __init__(self, chunks, language="en", chunksize=1024, similarity_threshold=0.5, use_kg=False, contextual_kg=False, kg_dir=None):
         self.language = language
         
         # Convert to LlamaIndex nodes
@@ -110,8 +110,8 @@ class Retriever:
         self.kg_retriever = None
         if use_kg:
             try:
-                from kg_retriever import create_kg_retriever
-                self.kg_retriever = create_kg_retriever(language, contextual=contextual_kg)
+                from retriever_kg import create_kg_retriever
+                self.kg_retriever = create_kg_retriever(language, contextual=contextual_kg, kg_dir=kg_dir)
                 kg_type = "contextual" if contextual_kg else "regular"
                 print(f"[Retriever] KG retrieval enabled for {language} ({kg_type})")
             except Exception as e:
@@ -243,7 +243,7 @@ class Retriever:
 
 
 
-def create_retriever(chunks, language, chunksize, similarity_threshold=0.5, use_kg=False, contextual_kg=False):
+def create_retriever(chunks, language, chunksize, similarity_threshold=0.5, use_kg=False, contextual_kg=False, kg_dir=None):
     """
     Factory function to create a configured Retriever.
     """
@@ -253,7 +253,8 @@ def create_retriever(chunks, language, chunksize, similarity_threshold=0.5, use_
         chunksize=chunksize,
         similarity_threshold=similarity_threshold,
         use_kg=use_kg,
-        contextual_kg=contextual_kg
+        contextual_kg=contextual_kg,
+        kg_dir=kg_dir
     )
 
 

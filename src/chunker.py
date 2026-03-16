@@ -282,11 +282,11 @@ def recursive_chunk(docs, language, chunk_size, mode="contextual", num_workers=2
 
     # Build cache path based on mode
     if mode == "contextual":
-        cache_path = f"./chunk_cache/{language}_contextual_chunksize{chunk_size}"
+        cache_path = f"./cache/chunk_cache/{language}_contextual_chunksize{chunk_size}"
     elif mode == "subject_replace":
-        cache_path = f"./chunk_cache/{language}_subject_replace_chunksize{chunk_size}"
+        cache_path = f"./cache/chunk_cache/{language}_subject_replace_chunksize{chunk_size}"
     else:
-        cache_path = f"./chunk_cache/{language}_chunksize{chunk_size}"
+        cache_path = f"./cache/chunk_cache/{language}_chunksize{chunk_size}"
     
     if os.path.exists(cache_path):
         with open(cache_path, "r", encoding="utf-8") as f:
