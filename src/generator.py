@@ -530,7 +530,7 @@ def _get_domain_prompt_zh(query, context, domain):
 ### 回答：
 """
 
-def generate_answer(query, context_chunks, language):
+def generator(query, context_chunks, language):
     formatted_context = []
     kg_structured_parts = []
     doc_count = 0
@@ -614,5 +614,5 @@ if __name__ == "__main__":
         {"page_content": "France is a country in Europe. Its capital is Paris."},
         {"page_content": "The Eiffel Tower is located in Paris, the capital city of France."}
     ]
-    answer = generate_answer(query, context_chunks)
+    answer = generator(query, context_chunks)
     print("Generated Answer:", answer)

@@ -265,7 +265,7 @@ def main_summarize(language, doc_text, metadata=None):
         print(f"Error generating document summary: {e}")
         return ""
 
-def recursive_chunk(docs, language, chunk_size, mode="contextual", num_workers=2):
+def chunker(docs, language, chunk_size, mode="contextual", num_workers=2):
     """Split documents into chunks using recursive character splitting.
     
     Args:
@@ -279,20 +279,6 @@ def recursive_chunk(docs, language, chunk_size, mode="contextual", num_workers=2
         num_workers: Number of parallel threads for LLM calls (default=2, keep low for memory)
     """
     print(f"Chunk size: {chunk_size}, Overlap: {chunk_size // 5}, Mode: {mode}, Workers: {num_workers}")
-
-    # Build cache path based on mode
-    if mode == "contextual":
-        cache_path = f"./cache/chunk_cache/{language}_contextual_chunksize{chunk_size}"
-    elif mode == "subject_replace":
-        cache_path = f"./cache/chunk_cache/{language}_subject_replace_chunksize{chunk_size}"
-    else:
-        cache_path = f"./cache/chunk_cache/{language}_chunksize{chunk_size}"
-    
-    if os.path.exists(cache_path):
-        with open(cache_path, "r", encoding="utf-8") as f:
-            chunks = json.load(f)
-        print(f"Chunk cache hit: {cache_path}")
-        return chunks
 
     if language == "en":
         text_splitter = RecursiveCharacterTextSplitter(
@@ -414,7 +400,7 @@ if __name__ == "__main__":
     print(f"Loaded {len(docs_for_chunking)} documents.")
 
     # Run recursive chunking
-    chunks = recursive_chunk(docs_for_chunking, args.language, chunk_size,
+    chunks = chunker(docs_for_chunking, args.language, chunk_size,
                              mode=args.mode, num_workers=args.workers)
 
     # Save to chunk_cache (cache path is determined by mode inside recursive_chunk)

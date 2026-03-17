@@ -1,13 +1,13 @@
 from tqdm import tqdm
 from pathlib import Path
 from utils import load_jsonl, save_jsonl
-from retriever_main import create_retriever
-from chunker import recursive_chunk
-from generator import generate_answer
+from retriever_main import retriever
+from chunker import chunker
+from generator import generator
 import argparse
 import os
 
-def main(query_path, docs_path, language, output_path, mode="hybrid", kg_dir=None):
+def main(query_path, docs_path, language, chunk_cache, output_path, mode="hybrid", kg_dir=None):
     """
     Main RAG pipeline with configurable retrieval mode.
     
@@ -15,9 +15,7 @@ def main(query_path, docs_path, language, output_path, mode="hybrid", kg_dir=Non
         mode: 
             - 'hybrid': BM25+Vector+Reranker only
             - 'kg': Regular KG only
-            - 'kg-contextual': Contextual KG only
             - 'hybrid-kg': Hybrid + Regular KG
-            - 'hybrid-kg-contextual': Hybrid + Contextual KG
     """
     # 1. Load Data
     print(f"Loading documents... (mode={mode})")
@@ -27,19 +25,23 @@ def main(query_path, docs_path, language, output_path, mode="hybrid", kg_dir=Non
     print(f"Loaded {len(queries)} queries.")
 
     # 2. Chunk Documents
-    print("Chunking documents...")
-    if language=="zh":
-        chunks = recursive_chunk(docs_for_chunking, language, chunk_size=128)
+    if os.path.exists(chunk_cache):
+        with open(chunk_cache, "r", encoding="utf-8") as f:
+            chunks = json.load(f)
+        print(f"Chunk cache hit: {chunk_cache}")
     else:
-        chunks = recursive_chunk(docs_for_chunking, language, chunk_size=512)
-    print(f"Created {len(chunks)} chunks.")
+        print("Chunking documents...")
+        if language=="zh":
+            chunks = chunker(docs_for_chunking, language, chunk_size=128)
+        else:
+            chunks = chunker(docs_for_chunking, language, chunk_size=512)
+        print(f"Created {len(chunks)} chunks.")
 
     # 3. Create Retriever (enable KG if mode uses it)
     print("Creating retriever...")
     chunk_size = 128 if language == "zh" else 512
-    use_kg = mode in ["kg", "kg-contextual", "hybrid-kg", "hybrid-kg-contextual"]
-    contextual_kg = mode in ["kg-contextual", "hybrid-kg-contextual"]
-    retriever = create_retriever(chunks, language, chunksize=chunk_size, use_kg=use_kg, contextual_kg=contextual_kg, kg_dir=kg_dir)
+    use_kg = mode in ["kg", "hybrid-kg"]
+    retriever = retriever(chunks, language, chunksize=chunk_size, use_kg=use_kg, kg_dir=kg_dir)
     print("Retriever created successfully.")
 
     for query in tqdm(queries, desc="Processing Queries"):
@@ -68,7 +70,7 @@ def main(query_path, docs_path, language, output_path, mode="hybrid", kg_dir=Non
         
         # 5. Generate Answer
         print("Generating answer...")
-        answer = generate_answer(query_text, final_chunks, language)
+        answer = generator(query_text, final_chunks, language)
         print(f"Generated Answer: {answer}") #for test prompt
 
         query["prediction"]["content"] = answer
@@ -85,11 +87,12 @@ if __name__ == "__main__":
     parser.add_argument('--query_path', help='Path to the query file')
     parser.add_argument('--docs_path', help='Path to the documents file')
     parser.add_argument('--language', help='Language to filter queries (zh or en), if not specified, process all')
+    parser.add_argument('--chunk_cache', type=str, default=None, help='Path to the chunk cache file')
     parser.add_argument('--output', help='Path to the output file')
     parser.add_argument('--mode', 
-                        choices=['hybrid', 'kg', 'kg-contextual', 'hybrid-kg', 'hybrid-kg-contextual'], 
+                        choices=['hybrid', 'kg', 'hybrid-kg'], 
                         default='hybrid',
-                        help='Retrieval mode: hybrid, kg, kg-contextual, hybrid-kg, hybrid-kg-contextual')
+                        help='Retrieval mode: hybrid, kg, hybrid-kg')
     parser.add_argument('--kg_dir', help='Custom Knowledge Graph directory to load', default=None)
     args = parser.parse_args()
     
@@ -97,10 +100,8 @@ if __name__ == "__main__":
     retrieve_mode = mode_mapping = {
         'hybrid': 'hybrid',
         'kg': 'kg',
-        'kg-contextual': 'kg',
-        'hybrid-kg': 'hybrid-kg',
-        'hybrid-kg-contextual': 'hybrid-kg'
+        'hybrid-kg': 'hybrid-kg'
     }.get(args.mode, 'hybrid')
     
-    main(args.query_path, args.docs_path, args.language, args.output, mode=args.mode, kg_dir=args.kg_dir)
+    main(args.query_path, args.docs_path, args.language, args.chunk_cache, args.output, mode=args.mode, kg_dir=args.kg_dir)
 

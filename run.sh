@@ -48,7 +48,7 @@ run_kg_results() {
     log "[INFO] Evaluation completed. Results saved to ${EXP_DIR}/eval_${kg_name}.jsonl"
 }
 
-run_kg_results "en" "./graph/prefix_original_kg_all"
-run_kg_results "en" "./graph/original_contextual_kg_all"
+run_kg_results "en" "./graph/original_kg_all"
+run_kg_results "en" "./graph/merged12_kg_all"
 
 log "[INFO] All inference tasks completed."

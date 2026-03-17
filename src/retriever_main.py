@@ -14,6 +14,7 @@ from llama_index.core import StorageContext, load_index_from_storage
 from retriever_bm25 import PyseriniBM25Retriever
 from utils import load_ollama_config
 from reranker import Reranker
+from retriever_kg import create_kg_retriever
 import os
 
 # Disable OpenAI defaults - use Ollama only (fully offline)
@@ -21,7 +22,7 @@ Settings.llm = None
 Settings.embed_model = None
 
 class Retriever:
-    def __init__(self, chunks, language="en", chunksize=1024, similarity_threshold=0.5, use_kg=False, contextual_kg=False, kg_dir=None):
+    def __init__(self, chunks, language="en", chunksize=1024, similarity_threshold=0.5, use_kg=False, kg_dir=None):
         self.language = language
         
         # Convert to LlamaIndex nodes
@@ -86,11 +87,11 @@ class Retriever:
         
         vector = vector_index.as_retriever(similarity_top_k=self.retrieve_topk)
         if language == "zh":
-            bm25_weight = 0.6
-            vector_weight = 0.4
+            bm25_weight = 0.0
+            vector_weight = 1.0
         else:
-            bm25_weight = 0.5
-            vector_weight = 0.5
+            bm25_weight = 0.0
+            vector_weight = 1.0
         # 2. Hybrid Fusion (RRF)
         self.retriever = QueryFusionRetriever(
             retrievers=[bm25, vector],
@@ -106,14 +107,11 @@ class Retriever:
         
         # KG Retriever (optional)
         self.use_kg = use_kg
-        self.contextual_kg = contextual_kg
         self.kg_retriever = None
         if use_kg:
             try:
-                from retriever_kg import create_kg_retriever
-                self.kg_retriever = create_kg_retriever(language, contextual=contextual_kg, kg_dir=kg_dir)
-                kg_type = "contextual" if contextual_kg else "regular"
-                print(f"[Retriever] KG retrieval enabled for {language} ({kg_type})")
+                self.kg_retriever = create_kg_retriever(language, kg_dir=kg_dir)
+                print(f"[Retriever] KG retrieval enabled for {language}")
             except Exception as e:
                 print(f"[Retriever] Warning: KG retrieval disabled - {e}")
                 self.use_kg = False
@@ -125,8 +123,7 @@ class Retriever:
         Args:
             query: The query string
             top_k: Number of results to return
-            mode: Retrieval mode - 'hybrid', 'kg', 'kg-contextual',
-                  'hybrid-kg', 'hybrid-kg-contextual'
+            mode: Retrieval mode - 'hybrid', 'kg', 'hybrid-kg'
         
         Returns:
             List of retrieved chunks with metadata
@@ -141,7 +138,7 @@ class Retriever:
         kg_entity_names = []
         
         # --- Step 1: KG retrieval (do this first to get entity names for query expansion) ---
-        if mode in ["kg", "kg-contextual", "hybrid-kg", "hybrid-kg-contextual"]:
+        if mode in ["kg", "hybrid-kg"]:
             if self.kg_retriever:
                 try:
                     kg_result = self.kg_retriever.retrieve_local(query)
@@ -179,12 +176,12 @@ class Retriever:
                           
                 except Exception as e:
                     print(f"[Retriever] KG retrieval failed: {e}")
-            elif mode in ["kg", "kg-contextual"]:
+            elif mode in ["kg"]:
                 print("[Retriever] Warning: KG-only mode but KG retriever not initialized")
         
         # --- Step 2: Hybrid retrieval (with optional query expansion) ---
         hybrid_nodes = []
-        if mode in ["hybrid", "hybrid-kg", "hybrid-kg-contextual"]:
+        if mode in ["hybrid", "hybrid-kg"]:
             # Query expansion: append top KG entity names to improve BM25/vector recall
             expanded_query = query
             if kg_entity_names:
@@ -243,7 +240,7 @@ class Retriever:
 
 
 
-def create_retriever(chunks, language, chunksize, similarity_threshold=0.5, use_kg=False, contextual_kg=False, kg_dir=None):
+def retriever(chunks, language, chunksize, similarity_threshold=0.5, use_kg=False, kg_dir=None):
     """
     Factory function to create a configured Retriever.
     """
@@ -253,14 +250,5 @@ def create_retriever(chunks, language, chunksize, similarity_threshold=0.5, use_
         chunksize=chunksize,
         similarity_threshold=similarity_threshold,
         use_kg=use_kg,
-        contextual_kg=contextual_kg,
         kg_dir=kg_dir
     )
-
-
-def create_kg_retriever(language, contextual=False):
-    """
-    Factory function to create a KG Retriever.
-    """
-    from kg_retriever import KGRetriever
-    return KGRetriever(language=language, contextual=contextual)

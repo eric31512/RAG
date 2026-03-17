@@ -188,24 +188,17 @@ def _parse_structured_context(raw_context: str) -> dict:
 class KGRetriever:
     """Knowledge Graph Retriever using nano-graphrag."""
     
-    def __init__(self, language="en", contextual=False, kg_dir=None):
+    def __init__(self, language="en", kg_dir=None):
         """
         Initialize KG Retriever.
         
         Args:
             language: Language code ('en' or 'zh')
-            contextual: If True, use contextual KG cache
             kg_dir: If provided, use this specific KG directory
         """
         self.language = language
-        self.contextual = contextual
         my_rag_dir = os.path.dirname(os.path.abspath(__file__))
         parent_dir = os.path.dirname(my_rag_dir)
-        
-        if contextual:
-            cache_name = f"nano_graphrag_cache_contextual_{language}"
-        else:
-            cache_name = f"nano_graphrag_cache_{language}"
         
         local_cache = os.path.join(my_rag_dir, cache_name)
         parent_cache = os.path.join(parent_dir, cache_name)
@@ -358,9 +351,9 @@ class KGRetriever:
         return self.retrieve(query, mode="global")
 
 
-def create_kg_retriever(language: str, contextual: bool = False, kg_dir: str = None) -> KGRetriever:
+def create_kg_retriever(language: str, kg_dir: str = None) -> KGRetriever:
     """Factory function to create KG Retriever."""
-    return KGRetriever(language=language, contextual=contextual, kg_dir=kg_dir)
+    return KGRetriever(language=language, kg_dir=kg_dir)
 
 
 if __name__ == "__main__":
